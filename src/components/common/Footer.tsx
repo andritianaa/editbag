@@ -29,7 +29,7 @@ export const Footer = () => {
             <li className="relative inline-block pe-8 before:absolute before:end-3 before:top-1/2 before:-translate-y-1/2 before:text-neutral-600 before:content-['/'] last:pe-0 last-of-type:before:hidden">
               <Link
                 className="inline-flex gap-x-2 text-sm text-neutral-500 hover:text-neutral-200"
-                href="#"
+                href="/products"
               >
                 Products
               </Link>

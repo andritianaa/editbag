@@ -38,14 +38,14 @@ export const FAQ = () => {
               assets.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-3">
+          <AccordionItem value="item-4">
             <AccordionTrigger>How do I download an asset?</AccordionTrigger>
             <AccordionContent>
               After logging in, browse or search for the asset you need, click
               on the download button, and the file will be saved to your device.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-3">
+          <AccordionItem value="item-5">
             <AccordionTrigger>
               What are the usage rights for the assets?
             </AccordionTrigger>

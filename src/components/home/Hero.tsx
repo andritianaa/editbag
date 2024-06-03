@@ -25,7 +25,7 @@ export const Hero = (props: HeroProps) => {
           <span>
             video <span className="text-[#7ed957]">creations</span>
           </span>
-          <img src="/emoji/laptop.png" alt="" className="size-14 rotate-12" />
+          <img src="/emoji/Laptop.png" alt="" className="size-14 rotate-12" />
         </span>
       </p>
     </Layout>
