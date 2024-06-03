@@ -15,7 +15,7 @@ export default async function RoutePage(props: PageParams<{}>) {
   return (
     <>
       <NavBar />
-      <Layout className="flex flex-col items-center justify-center">
+      <Layout className="flex min-h-[calc(100vh-10.56rem)] flex-col items-center justify-center">
         <Card className="mt-2 flex w-full max-w-xl flex-col-reverse p-2">
           {downloaded.map((post) => (
             <Link href={`/products/${post.post.id}`} key={post.post.id}>

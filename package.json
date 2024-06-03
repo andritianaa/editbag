@@ -68,6 +68,7 @@
     "next-safe-action": "^6.2.0",
     "next-themes": "^0.3.0",
     "nextjs-toploader": "^1.6.12",
+    "pexels": "^1.4.0",
     "preline": "^2.1.0",
     "prisma": "^5.13.0",
     "react": "^18",

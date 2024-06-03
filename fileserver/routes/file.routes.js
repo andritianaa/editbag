@@ -19,7 +19,6 @@ const fileUpload = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
     cb(null, true);
-    // return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
   },
 });
 

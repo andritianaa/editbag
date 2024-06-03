@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <>
       <footer className="mx-auto mt-auto flex w-full justify-center bg-[#020817] px-4 py-10 sm:px-6 lg:px-8">
-        <div className="flex w-full max-w-[85rem] items-center justify-center gap-5 max-md:flex-col">
+        <div className="flex w-full items-center justify-between gap-5 max-md:flex-col">
           <div>
             <Link
               className="flex-none text-xl font-semibold text-white"

@@ -28,7 +28,7 @@ export default async function RoutePage(props: PageParams<{ id: string }>) {
   if (post) {
     return (
       <>
-        <div className="dark mx-auto max-w-3xl px-4 pb-12 pt-6 sm:px-6 lg:px-8 lg:pt-10">
+        <div className="dark mx-auto min-h-[calc(100vh-10.56rem)] max-w-3xl px-4 pb-12 pt-6 sm:px-6 lg:px-8 lg:pt-10">
           <div className="max-w-2xl">
             <div className="mb-6 flex items-center justify-between">
               <div className="flex w-full gap-x-5 sm:items-center sm:gap-x-3">
