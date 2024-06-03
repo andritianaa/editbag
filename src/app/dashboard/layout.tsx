@@ -30,9 +30,9 @@ export default async function RouteLayout(props: LayoutParams<{}>) {
   if (user) {
     return (
       <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-        <div className="hidden border-r bg-muted/40 bg-white dark:bg-[#020817] md:block">
-          <div className="flex h-full max-h-screen flex-col gap-2 bg-white dark:bg-[#020817]">
-            <div className="flex h-14 items-center justify-end gap-4 border-b bg-muted/40 bg-white px-4 dark:bg-[#020817] lg:h-[60px] lg:px-6">
+        <div className="hidden border-r bg-[#020817] bg-muted/40 md:block">
+          <div className="flex h-full max-h-screen flex-col gap-2 bg-[#020817]">
+            <div className="flex h-14 items-center justify-end gap-4 border-b bg-[#020817] bg-muted/40 px-4 lg:h-[60px] lg:px-6">
               <Link className="flex items-center gap-2 font-semibold" href="#">
                 <Link href="/">
                   <Logo />
@@ -51,13 +51,6 @@ export default async function RouteLayout(props: LayoutParams<{}>) {
                 >
                   <HomeIcon className="h-4 w-4" />
                   Dashboard
-                </Link>
-                <Link
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#fbc466]"
-                  href="/dashboard/analytics"
-                >
-                  <LineChartIcon className="h-4 w-4" />
-                  Analytics
                 </Link>
                 <Link
                   className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#fbc466]"
@@ -85,7 +78,7 @@ export default async function RouteLayout(props: LayoutParams<{}>) {
           </div>
         </div>
         <div className="flex flex-col">
-          <header className="flex h-14 items-center justify-end gap-4 border-b bg-white px-4 dark:bg-[#020817] lg:h-[60px] lg:px-6">
+          <header className="flex h-14 items-center justify-end gap-4 border-b bg-[#020817] px-4 lg:h-[60px] lg:px-6">
             <Sheet>
               <SheetTrigger asChild>
                 <Button
@@ -113,13 +106,6 @@ export default async function RouteLayout(props: LayoutParams<{}>) {
                   >
                     <HomeIcon className="h-5 w-5" />
                     Dashboard
-                  </Link>
-                  <Link
-                    className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:text-foreground"
-                    href="/dashboard/analytics"
-                  >
-                    <LineChartIcon className="h-5 w-5" />
-                    Analytics
                   </Link>
                   <Link
                     className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:text-foreground"

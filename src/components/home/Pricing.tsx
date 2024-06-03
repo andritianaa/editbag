@@ -13,7 +13,7 @@ export default function Pricing() {
   return (
     <section className="bg-transparent py-10 sm:py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center text-white">
           <h2 className="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
             Pricing & Plans
           </h2>
@@ -23,7 +23,7 @@ export default function Pricing() {
           </p>
         </div>
 
-        <div className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-6 sm:mt-16 sm:grid-cols-2">
+        <div className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-6 text-black sm:mt-16 sm:grid-cols-2">
           <Card className="rounded-md">
             <div className="p-6 md:px-9 md:py-10">
               <div className="inline-block rounded-full bg-gray-100/20 px-4 py-2">

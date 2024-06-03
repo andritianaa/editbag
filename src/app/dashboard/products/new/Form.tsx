@@ -7,7 +7,7 @@ import { ImageUpload } from "@/features/upload/Images";
 import { useState } from "react";
 import { publish } from "@/actions/blog.actions";
 import { toast } from "sonner";
-import { PostStatus } from "@prisma/client";
+import { Categories, PostStatus, SubCategories } from "@prisma/client";
 import {
   Select,
   SelectContent,
@@ -18,8 +18,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { FileUpload } from "@/features/upload/File";
+import { NewCategory } from "@/components/dashboard/NewCategory";
+import { NewSubCategory } from "@/components/dashboard/NewSubCategory";
 
-export type formProps = {};
+export type formProps = {
+  categories: Categories[];
+  subCategories: SubCategories[];
+};
 
 export const Form = (props: formProps) => {
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -29,7 +34,12 @@ export const Form = (props: formProps) => {
   const [subImage, setSubImage] = useState<string>("");
   const [fileSize, setFileSize] = useState<string>("");
   const [fileURL, setFileURL] = useState<string>("");
-  const [type, setType] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
+  const [subCategory, setSubCategory] = useState<string>("");
+  const [categories, setCategories] = useState<Categories[]>(props.categories);
+  const [subCategories, setSubCategories] = useState<SubCategories[]>(
+    props.subCategories
+  );
 
   const handleImageUrlChange = (newImageUrl: string) => {
     console.log(newImageUrl);
@@ -54,7 +64,7 @@ export const Form = (props: formProps) => {
   };
 
   const handlePublish = async () => {
-    if (text && title && imageUrl && subtitle && fileURL && type) {
+    if (text && title && imageUrl && subtitle && fileURL && category) {
       await publish(
         title,
         text,
@@ -64,7 +74,8 @@ export const Form = (props: formProps) => {
         subImage,
         fileSize,
         fileURL,
-        type
+        category,
+        subCategory
       );
       toast.success("New product added");
       window.location.href = "/dashboard/products";
@@ -78,7 +89,7 @@ export const Form = (props: formProps) => {
       toast.error("You must provide an image");
     } else if (!fileURL) {
       toast.error("You must provide a file");
-    } else if (!type) {
+    } else if (!category) {
       toast.error("You must provide a type");
     }
   };
@@ -94,12 +105,24 @@ export const Form = (props: formProps) => {
         subImage ?? "",
         fileSize ?? "",
         fileURL ?? "",
-        type ?? ""
+        category ?? "",
+        subCategory ?? ""
       );
       toast.success("Saved to draft");
     } else {
       toast.error("You must provide a title");
     }
+  };
+
+  const handleNewCategory = (name: string) => {
+    toast.message("New category added");
+    setCategory(name);
+    setCategories([...categories, { name, id: categories.length }]);
+  };
+  const handleNewSubCategory = (name: string) => {
+    toast.message("New subcategory added");
+    setSubCategory(name);
+    setSubCategories([...subCategories, { name, id: subCategories.length }]);
   };
 
   return (
@@ -116,22 +139,44 @@ export const Form = (props: formProps) => {
         label="Subtitle"
         onChange={(e) => handleSubtitleChange(e.target.value)}
       />
-      <Select value={type} onValueChange={setType}>
-        <SelectTrigger className="w-full">
-          <SelectValue placeholder="Select an asset type..." />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            <SelectLabel>Select an asset type...</SelectLabel>
-            <SelectItem value="3D Assets">3D Assets</SelectItem>
-            <SelectItem value="After Effect">After Effect</SelectItem>
-            <SelectItem value="Illustrator">Illustrator</SelectItem>
-            <SelectItem value="Photoshop">Photoshop</SelectItem>
-            <SelectItem value="Premier Pro">Premier Pro</SelectItem>
-            <SelectItem value="Sound effect">Sound effect</SelectItem>
-          </SelectGroup>
-        </SelectContent>
-      </Select>
+      <div className="flex gap-2">
+        <Select value={category} onValueChange={setCategory}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Select an asset category..." />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Select an asset category...</SelectLabel>
+              {categories.map((c) => (
+                <SelectItem key={c.id} value={c.name}>
+                  {c.name}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        <NewCategory onAdd={handleNewCategory} />
+      </div>
+      <div className="flex gap-2">
+        <Select value={subCategory} onValueChange={setSubCategory}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Select an asset sub category..." />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Select an asset sub category...</SelectLabel>
+              <SelectItem value=" ">Aucun</SelectItem>
+              {subCategories.map((c) => (
+                <SelectItem key={c.id} value={c.name}>
+                  {c.name}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+        <NewSubCategory onAdd={handleNewSubCategory} />
+      </div>
+
       <div className="flex flex-wrap gap-2">
         <ImageUpload
           image={imageUrl}

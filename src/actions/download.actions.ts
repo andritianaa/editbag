@@ -40,7 +40,7 @@ export const getDownloaded = async (): Promise<
       id: number;
       title: string;
       subtitle: string;
-      type: string;
+      category: string;
       imageUrl: string;
     };
   }[]
@@ -59,7 +59,7 @@ export const getDownloaded = async (): Promise<
             id: true,
             title: true,
             subtitle: true,
-            type: true,
+            category: true,
             image: true, // Sélectionner spécifiquement l'image du post
           },
         },
@@ -70,7 +70,7 @@ export const getDownloaded = async (): Promise<
         id: d.post.id,
         title: d.post.title,
         subtitle: d.post.subtitle,
-        type: d.post.type,
+        category: d.post.category,
         imageUrl: d.post.image, // Assurez-vous que la propriété renvoyée correspond à la structure attendue
       },
     }));

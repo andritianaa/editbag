@@ -40,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="dark">
-      <body className={cn("min-h-screen bg-background", inter.className)}>
+      <body className={cn("min-h-screen bg-[#15172e]", inter.className)}>
         <Providers>
           <NextTopLoader showSpinner={false} color="#fbc466" />
           {children}

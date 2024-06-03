@@ -15,7 +15,6 @@ export type ProductProps = {
   title: string;
   subTitle: string;
   category: string;
-  type: string;
   isFavorite: boolean;
 };
 
@@ -47,7 +46,7 @@ export const Product = (props: ProductProps) => {
   return (
     <Link
       href={`/products/${props.id}`}
-      className="relative w-full max-w-sm space-y-2 overflow-hidden"
+      className="relative w-full max-w-xs space-y-2 overflow-hidden"
     >
       {isFavorite ? (
         <Button
@@ -92,7 +91,7 @@ export const Product = (props: ProductProps) => {
             />
           )}
           <Badge className="absolute bottom-2 left-2 rounded">
-            {props.type}
+            {props.category}
           </Badge>
         </div>
         <CardContent className="h-16">

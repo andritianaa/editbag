@@ -63,7 +63,7 @@ export default async function RoutePage(props: PageParams<{}>) {
                   <TableRow key={user.id}>
                     <TableCell className="hidden sm:table-cell">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <Avatar className="size-12 aspect-square rounded-md object-cover">
+                      <Avatar className="aspect-square size-12 rounded-md object-cover">
                         <AvatarImage
                           src={
                             user.image ??
@@ -73,13 +73,11 @@ export default async function RoutePage(props: PageParams<{}>) {
                         />
                       </Avatar>
                     </TableCell>
-                    <TableCell className="font-medium">
-                      {user.name}
-                    </TableCell>
+                    <TableCell className="font-medium">{user.name}</TableCell>
                     <TableCell>
                       <Badge variant="outline">{user.email}</Badge>
                     </TableCell>
-                    
+
                     <TableCell className="hidden md:table-cell">
                       {user.createdAt.toLocaleDateString()}
                     </TableCell>
@@ -108,11 +106,6 @@ export default async function RoutePage(props: PageParams<{}>) {
             </TableBody>
           </Table>
         </CardContent>
-        <CardFooter>
-          <div className="text-xs text-muted-foreground">
-            Showing <strong>1-10</strong> of <strong>32</strong> products
-          </div>
-        </CardFooter>
       </Card>
     </div>
   );

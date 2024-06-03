@@ -7,6 +7,7 @@ import { Download } from "@/features/Download";
 import { Content } from "./Content";
 import { currentUser } from "../../../lib/current-user";
 import { Button } from "../../../components/ui/button";
+import { Footer } from "../../../components/common/Footer";
 
 export default async function RoutePage(props: PageParams<{ id: string }>) {
   const user = await currentUser();
@@ -27,7 +28,7 @@ export default async function RoutePage(props: PageParams<{ id: string }>) {
   if (post) {
     return (
       <>
-        <div className="mx-auto max-w-3xl px-4 pb-12 pt-6 sm:px-6 lg:px-8 lg:pt-10">
+        <div className="dark mx-auto max-w-3xl px-4 pb-12 pt-6 sm:px-6 lg:px-8 lg:pt-10">
           <div className="max-w-2xl">
             <div className="mb-6 flex items-center justify-between">
               <div className="flex w-full gap-x-5 sm:items-center sm:gap-x-3">
@@ -48,8 +49,15 @@ export default async function RoutePage(props: PageParams<{ id: string }>) {
                           {post.fileSize}
                         </li>
                         <li className="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-gray-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600">
-                          <Badge variant="default">{post.type}</Badge>
+                          <Badge variant="default">{post.category}</Badge>
                         </li>
+                        {post.subCategory ?? (
+                          <li className="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-gray-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600">
+                            <Badge variant="outline" className="p-4">
+                              {post.subCategory}
+                            </Badge>
+                          </li>
+                        )}
                       </ul>
                     </div>
                   </div>
@@ -84,6 +92,7 @@ export default async function RoutePage(props: PageParams<{ id: string }>) {
             </div>
           </div>
         </div>
+        <Footer />
       </>
     );
   } else notFound();

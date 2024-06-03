@@ -8,7 +8,6 @@ export type MDXProps = {
   onChange: (text: string | null) => void;
 };
 
-
 export const MDXInput = (props: MDXProps) => {
   const { theme } = useTheme();
   const [text, setText] = useState<string | undefined>("");
@@ -22,7 +21,7 @@ export const MDXInput = (props: MDXProps) => {
   };
 
   return (
-    <div className=" h-[70vh]" data-color-mode={theme}>
+    <div className="h-[70vh]" data-color-mode="dark">
       <MDEditor
         height="100%"
         value={text}

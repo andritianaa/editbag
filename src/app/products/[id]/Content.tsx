@@ -7,10 +7,8 @@ export type ContentProps = {
 };
 
 export const Content = (props: ContentProps) => {
-  const { theme } = useTheme();
-
   return (
-    <div className="" data-color-mode={theme}>
+    <div className="" data-color-mode="dark">
       <MarkdownPreview source={props.content} style={{ padding: 16 }} />
     </div>
   );

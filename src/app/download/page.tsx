@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Badge } from "../../components/ui/badge";
 import Link from "next/link";
 import { NavBar } from "../../components/common/NavBar";
+import { Footer } from "../../components/common/Footer";
 
 export default async function RoutePage(props: PageParams<{}>) {
   const downloaded = await getDownloaded();
@@ -29,7 +30,7 @@ export default async function RoutePage(props: PageParams<{}>) {
                   <p className="text-sm text-muted-foreground">
                     {post.post.subtitle}
                   </p>
-                  <Badge className="w-fit">{post.post.type}</Badge>
+                  <Badge className="w-fit">{post.post.category}</Badge>
                 </div>
               </div>
             </Link>
@@ -37,6 +38,7 @@ export default async function RoutePage(props: PageParams<{}>) {
           <CardTitle className="pb-4">All files you have downloaded</CardTitle>
         </Card>
       </Layout>
+      <Footer />
     </>
   );
 }

@@ -17,7 +17,46 @@ export const getPost = async (): Promise<
     select: {
       postId: true,
     },
+    orderBy: {
+      postId: "desc",
+    },
   });
+  const favoritePostIds = favoritePosts.map((fav) => fav.postId);
+  const results = posts.map((post) => ({
+    ...post,
+    id: post.id.toString(),
+    isFavorite: favoritePostIds.includes(post.id),
+  }));
+  return results;
+};
+
+export const mostDownloadedPost = async (): Promise<
+  (Omit<Post, "id"> & { id: string; isFavorite: boolean })[]
+> => {
+  const user = await currentUser();
+  const posts = await prisma.post.findMany({
+    take: 3,
+    orderBy: {
+      Downloaded: {
+        _count: "desc",
+      },
+    },
+    include: {
+      Downloaded: true,
+    },
+  });
+  const favoritePosts = await prisma.favorite.findMany({
+    where: {
+      userId: user?.id ?? 0,
+    },
+    select: {
+      postId: true,
+    },
+    orderBy: {
+      postId: "desc",
+    },
+  });
+
   const favoritePostIds = favoritePosts.map((fav) => fav.postId);
   const results = posts.map((post) => ({
     ...post,

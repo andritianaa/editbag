@@ -13,7 +13,8 @@ export const publish = async (
   subImage: string,
   fileSize: string,
   fileUrl: string,
-  type: string
+  category: string,
+  subCategory: string
 ) => {
   const user = await currentUser();
   if (user) {
@@ -28,7 +29,8 @@ export const publish = async (
         fileSize,
         fileUrl,
         status,
-        type,
+        category,
+        subCategory,
         createdAt: new Date(),
       },
     });
@@ -44,7 +46,8 @@ export const edit = async (
   subImage: string | null,
   fileSize: string,
   fileUrl: string,
-  type: string,
+  category: string,
+  subCategory: string,
   id: number
 ) => {
   await prisma.post.update({
@@ -60,7 +63,8 @@ export const edit = async (
       fileSize,
       fileUrl,
       status,
-      type,
+      category,
+      subCategory,
     },
   });
 };

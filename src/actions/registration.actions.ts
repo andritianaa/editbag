@@ -1,6 +1,7 @@
-"use server"
-import { Operator } from "@prisma/client"
+"use server";
 
-export const registrate = async (projectName: string, paymentReference: string, phoneNumber: string, paymentType: Operator) => {
-
-}
+export const registrate = async (
+  projectName: string,
+  paymentReference: string,
+  phoneNumber: string
+) => {};

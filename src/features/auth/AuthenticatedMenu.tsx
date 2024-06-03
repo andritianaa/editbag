@@ -38,7 +38,6 @@ export const AuthenticatedMenu = (props: UserProps) => {
               alt={`${props.email} - profile picture`}
             />
           </Avatar>
-          {props.name}
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-full">

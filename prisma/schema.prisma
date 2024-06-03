@@ -92,23 +92,25 @@ model Authenticator {
 
 //blog
 model Post {
-  id       Int        @id @default(autoincrement())
-  title    String
-  subtitle String
-  content  String
-  image    String
-  subImage String?
-  fileUrl  String
-  fileSize String
-  type     String     @default("Photoshop")
-  status   PostStatus
-  Rating   Rating[]
-  Comment  Comment[]
+  id          Int        @id @default(autoincrement())
+  title       String
+  subtitle    String
+  content     String
+  image       String
+  subImage    String?
+  fileUrl     String
+  fileSize    String
+  category    String     @default("Photoshop")
+  subCategory String     @default("")
+  status      PostStatus
+  Rating      Rating[]
+  Comment     Comment[]
 
-  createdAt  DateTime
-  updatedAt  DateTime     @updatedAt
-  Favorite   Favorite[]
-  Downloaded Downloaded[]
+  createdAt    DateTime
+  updatedAt    DateTime     @updatedAt
+  Favorite     Favorite[]
+  Downloaded   Downloaded[]
+  categoriesId Int?
 }
 
 enum PostStatus {
@@ -152,4 +154,14 @@ model Downloaded {
   userId Int
   post   Post @relation(fields: [postId], references: [id], onDelete: Cascade)
   user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Categories {
+  id   Int    @id @default(autoincrement())
+  name String
+}
+
+model SubCategories {
+  id   Int    @id @default(autoincrement())
+  name String
 }

@@ -4,8 +4,8 @@ export type HeroProps = {};
 
 export const Hero = (props: HeroProps) => {
   return (
-    <Layout className="flex h-[60vh] items-center justify-center text-center">
-      <p className="customTitle flex flex-col">
+    <Layout className="flex h-[60vh] scale-50 items-center justify-center text-center md:scale-75 lg:scale-100">
+      <p className="customTitle flex flex-col text-white">
         <span className="flex justify-center">
           <img src="/emoji/dice.png" alt="" className="size-14" />
           <span>

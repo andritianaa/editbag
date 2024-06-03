@@ -7,7 +7,7 @@ import { ImageUpload } from "@/features/upload/Images";
 import { useState } from "react";
 import { edit, publish } from "@/actions/blog.actions";
 import { toast } from "sonner";
-import { Post, PostStatus } from "@prisma/client";
+import { Categories, Post, PostStatus, SubCategories } from "@prisma/client";
 import {
   Select,
   SelectContent,
@@ -19,7 +19,9 @@ import {
 } from "@/components/ui/select";
 import { FileUpload } from "@/features/upload/File";
 
-export const Form = (props: Post) => {
+export const Form = (
+  props: Post & { categories: Categories[]; subCategories: SubCategories[] }
+) => {
   const [imageUrl, setImageUrl] = useState<string>(props.image);
   const [text, setText] = useState<string | null>(props.content);
   const [title, setTitle] = useState<string>(props.title);
@@ -27,7 +29,13 @@ export const Form = (props: Post) => {
   const [subImage, setSubImage] = useState<string | null>(props.subImage ?? "");
   const [fileSize, setFileSize] = useState<string>(props.fileSize ?? "");
   const [fileURL, setFileURL] = useState<string>(props.fileUrl ?? "");
-  const [type, setType] = useState<string>(props.title);
+  const [category, setCategory] = useState<string>(props.category);
+  const [subCategory, setSubCategory] = useState<string>(props.subCategory);
+
+  const [categories, setCategories] = useState<Categories[]>(props.categories);
+  const [subCategories, setSubCategories] = useState<SubCategories[]>(
+    props.subCategories
+  );
 
   const handleImageUrlChange = (newImageUrl: string) => {
     console.log(newImageUrl);
@@ -52,7 +60,7 @@ export const Form = (props: Post) => {
   };
 
   const handlePublish = async () => {
-    if (text && title && imageUrl && subtitle && fileURL && type) {
+    if (text && title && imageUrl && subtitle && fileURL && category) {
       await edit(
         title,
         text,
@@ -62,7 +70,8 @@ export const Form = (props: Post) => {
         subImage ?? "",
         fileSize ?? "",
         fileURL,
-        type,
+        category,
+        subCategory,
         props.id
       );
       toast.success("New product added");
@@ -77,7 +86,7 @@ export const Form = (props: Post) => {
       toast.error("You must provide an image");
     } else if (!fileURL) {
       toast.error("You must provide a file");
-    } else if (!type) {
+    } else if (!category) {
       toast.error("You must provide a type");
     }
   };
@@ -93,7 +102,8 @@ export const Form = (props: Post) => {
         subImage ?? "",
         fileSize ?? "",
         fileURL ?? "",
-        type ?? "",
+        category ?? "",
+        subCategory ?? "",
         props.id
       );
       toast.success("Saved to draft");
@@ -118,19 +128,34 @@ export const Form = (props: Post) => {
         value={subtitle}
         onChange={(e) => handleSubtitleChange(e.target.value)}
       />
-      <Select value={type} onValueChange={setType}>
+      <Select value={category} onValueChange={setCategory}>
         <SelectTrigger className="w-full">
-          <SelectValue placeholder="Select an asset type..." />
+          <SelectValue placeholder="Select an asset category..." />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            <SelectLabel>Select an asset type...</SelectLabel>
-            <SelectItem value="3D Assets">3D Assets</SelectItem>
-            <SelectItem value="After Effect">After Effect</SelectItem>
-            <SelectItem value="Illustrator">Illustrator</SelectItem>
-            <SelectItem value="Photoshop">Photoshop</SelectItem>
-            <SelectItem value="Premier Pro">Premier Pro</SelectItem>
-            <SelectItem value="Sound effect">Sound effect</SelectItem>
+            <SelectLabel>Select an asset category...</SelectLabel>
+            {categories.map((c) => (
+              <SelectItem key={c.id} value={c.name}>
+                {c.name}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+      <Select value={subCategory} onValueChange={setSubCategory}>
+        <SelectTrigger className="w-full">
+          <SelectValue placeholder="Select an asset sub category..." />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Select an asset sub category...</SelectLabel>
+            <SelectItem value=" ">Aucun</SelectItem>
+            {subCategories.map((c) => (
+              <SelectItem key={c.id} value={c.name}>
+                {c.name}
+              </SelectItem>
+            ))}
           </SelectGroup>
         </SelectContent>
       </Select>

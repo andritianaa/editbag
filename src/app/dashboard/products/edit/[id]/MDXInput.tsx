@@ -6,9 +6,8 @@ import { useTheme } from "next-themes";
 
 export type MDXProps = {
   onChange: (text: string) => void;
-  value : string
+  value: string;
 };
-
 
 export const MDXInput = (props: MDXProps) => {
   const { theme } = useTheme();
@@ -23,7 +22,7 @@ export const MDXInput = (props: MDXProps) => {
   };
 
   return (
-    <div className=" h-[70vh]" data-color-mode={theme}>
+    <div className="h-[70vh]" data-color-mode="dark">
       <MDEditor
         height="100%"
         value={text}
