@@ -8,21 +8,21 @@ import NextTopLoader from "nextjs-toploader";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Editbag: Let's Build faster",
-  description: `Editbag is a boilerplate project based on Next.js, a React framework. It provides a starting point for building web applications with modern tooling and best practices.`,
+  title: "Editbag: Download video assets",
+  description: `Everything you need for stunning video creation`,
   openGraph: {
-    title: "Editbag: Let's Build faster",
-    description: `Editbag is a boilerplate project based on Next.js, a React framework. It provides a starting point for building web applications with modern tooling and best practices.`,
-    url: "https://editbag.vercel.app",
+    title: "Editbag: Download video assets",
+    description: `Everything you need for stunning video creation`,
+    url: "https://editbag.com",
     siteName: "Editbag",
     images: [
       {
-        url: "https://editbag.vercel.app/preview.png",
+        url: "https://editbag.com/preview.png",
         width: 800,
         height: 600,
       },
       {
-        url: "https://editbag.vercel.app/preview.png",
+        url: "https://editbag.com/preview.png",
         width: 1800,
         height: 1600,
         alt: "My custom alt",

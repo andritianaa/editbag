@@ -23,7 +23,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { PostWithAuthor } from "@/types/posts";
 import { Post } from "@prisma/client";
 
 export type TableProps = {
