@@ -10,16 +10,7 @@ import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Button } from "../../components/ui/button";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { Footer } from "../../components/common/Footer";
 
 export type contentProps = {
@@ -237,6 +228,108 @@ export const Content = (props: contentProps) => {
               </Drawer>
             </div>
             <div className="flex flex-wrap justify-center gap-4">
+              {props.products
+                .filter(
+                  (product) =>
+                    product.status === "online" &&
+                    (selectedCategories.length === 0 ||
+                      selectedCategories.includes(product.category)) &&
+                    (selectedSubCategories.length === 0 ||
+                      selectedSubCategories.includes(product.subCategory)) &&
+                    (textSearch.trim() === "" ||
+                      product.title
+                        .toLowerCase()
+                        .includes(textSearch.toLowerCase()) ||
+                      product.subtitle
+                        .toLowerCase()
+                        .includes(textSearch.toLowerCase()) ||
+                      product.category
+                        .toLowerCase()
+                        .includes(textSearch.toLowerCase()) ||
+                      product.subCategory
+                        .toLowerCase()
+                        .includes(textSearch.toLowerCase()))
+                )
+                .map((product) => (
+                  <Product
+                    key={product.id}
+                    subImage={product.subImage ?? null}
+                    id={parseInt(product.id)}
+                    imageUrl={product.image}
+                    title={product.title}
+                    category={product.category}
+                    subTitle={product.subtitle}
+                    isFavorite={product.isFavorite}
+                  />
+                ))}
+              {props.products
+                .filter(
+                  (product) =>
+                    product.status === "online" &&
+                    (selectedCategories.length === 0 ||
+                      selectedCategories.includes(product.category)) &&
+                    (selectedSubCategories.length === 0 ||
+                      selectedSubCategories.includes(product.subCategory)) &&
+                    (textSearch.trim() === "" ||
+                      product.title
+                        .toLowerCase()
+                        .includes(textSearch.toLowerCase()) ||
+                      product.subtitle
+                        .toLowerCase()
+                        .includes(textSearch.toLowerCase()) ||
+                      product.category
+                        .toLowerCase()
+                        .includes(textSearch.toLowerCase()) ||
+                      product.subCategory
+                        .toLowerCase()
+                        .includes(textSearch.toLowerCase()))
+                )
+                .map((product) => (
+                  <Product
+                    key={product.id}
+                    subImage={product.subImage ?? null}
+                    id={parseInt(product.id)}
+                    imageUrl={product.image}
+                    title={product.title}
+                    category={product.category}
+                    subTitle={product.subtitle}
+                    isFavorite={product.isFavorite}
+                  />
+                ))}
+              {props.products
+                .filter(
+                  (product) =>
+                    product.status === "online" &&
+                    (selectedCategories.length === 0 ||
+                      selectedCategories.includes(product.category)) &&
+                    (selectedSubCategories.length === 0 ||
+                      selectedSubCategories.includes(product.subCategory)) &&
+                    (textSearch.trim() === "" ||
+                      product.title
+                        .toLowerCase()
+                        .includes(textSearch.toLowerCase()) ||
+                      product.subtitle
+                        .toLowerCase()
+                        .includes(textSearch.toLowerCase()) ||
+                      product.category
+                        .toLowerCase()
+                        .includes(textSearch.toLowerCase()) ||
+                      product.subCategory
+                        .toLowerCase()
+                        .includes(textSearch.toLowerCase()))
+                )
+                .map((product) => (
+                  <Product
+                    key={product.id}
+                    subImage={product.subImage ?? null}
+                    id={parseInt(product.id)}
+                    imageUrl={product.image}
+                    title={product.title}
+                    category={product.category}
+                    subTitle={product.subtitle}
+                    isFavorite={product.isFavorite}
+                  />
+                ))}
               {props.products
                 .filter(
                   (product) =>

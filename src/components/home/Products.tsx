@@ -9,9 +9,22 @@ export const Products = async (props: ProductsProps) => {
   const products = await getPost();
   const mostDownloaded = await mostDownloadedPost();
   return (
-    <LayoutContent className="space-y-8">
-      <div className="flex flex-col justify-center gap-4">
-        <Label className="text-center text-2xl font-bold">Recently added</Label>
+    <LayoutContent className="space-y-8 pb-20 lg:pb-[120px]">
+      <div className="flex flex-col justify-center gap-4 pb-8 pt-20 lg:pb-[70px] lg:pt-[120px]">
+        <div className="w-full px-4">
+          <div className="mx-auto mb-6 max-w-[485px] text-center">
+            <span className="mb-2 block text-lg font-semibold text-[#fbc466]">
+              Products
+            </span>
+            <h2 className="text-dark mb-3 text-3xl font-bold dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
+              Recently added product
+            </h2>
+            <p className="text-body-color dark:text-dark-6 text-base">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
+              suscipit amet omnis.
+            </p>
+          </div>
+        </div>
         <div className="flex flex-wrap items-center justify-center gap-2">
           {products
             .filter((product) => product.status === "online")
@@ -30,9 +43,13 @@ export const Products = async (props: ProductsProps) => {
         </div>
       </div>
       <div className="flex flex-col justify-center gap-4">
-        <Label className="text-center text-2xl font-bold">
-          Most downloaded
-        </Label>
+        <div className="w-full px-4">
+          <div className="mx-auto mb-6 max-w-[485px] text-center">
+            <h2 className="mb-3 text-3xl font-bold text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
+              Most downloaded
+            </h2>
+          </div>
+        </div>
         <div className="flex flex-wrap items-center justify-center gap-2">
           {mostDownloaded
             .filter((product) => product.status === "online")
