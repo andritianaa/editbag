@@ -66,7 +66,7 @@ export const ImageUpload = (props: ImagesProps) => {
             />
             <label
               htmlFor={`image${componentId}`}
-              className="flex w-full cursor-pointer items-center justify-center rounded-lg bg-[#020817] p-2 text-sm"
+              className="flex w-full cursor-pointer items-center justify-center rounded-lg bg-[#191919] p-2 text-sm"
             >
               Select another image
             </label>
@@ -75,7 +75,7 @@ export const ImageUpload = (props: ImagesProps) => {
           <>
             <label
               htmlFor={`image${componentId}`}
-              className="flex size-40 cursor-pointer items-center justify-center rounded-lg border-dashed bg-[#020817] p-2 text-center text-sm"
+              className="flex size-40 cursor-pointer items-center justify-center rounded-lg border-dashed bg-[#191919] p-2 text-center text-sm"
             >
               Click to select image or drop here
             </label>

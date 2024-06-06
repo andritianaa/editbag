@@ -147,7 +147,7 @@ export const Content = (props: contentProps) => {
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full rounded border bg-[#020817] px-3 py-2 transition-colors focus:border-blue-900 focus:outline-0"
+                className="w-full rounded border bg-[#191919] px-3 py-2 transition-colors focus:border-blue-900 focus:outline-0"
                 value={textSearch}
                 onChange={(e) => handleTextChange(e.target.value)}
               />

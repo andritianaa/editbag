@@ -12,7 +12,7 @@ export const Pricing = (props: PricingProps) => {
   return (
     <section
       id="pricing"
-      className="relative z-20 overflow-hidden bg-[#020817] pb-12 pt-20 lg:pb-[90px] lg:pt-[120px]"
+      className="relative z-20 overflow-hidden bg-[#191919] pb-12 pt-20 lg:pb-[90px] lg:pt-[120px]"
     >
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">

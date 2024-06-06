@@ -30,9 +30,9 @@ export default async function RouteLayout(props: LayoutParams<{}>) {
   if (user) {
     return (
       <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-        <div className="hidden border-r bg-[#020817] bg-muted/40 md:block">
-          <div className="flex h-full max-h-screen flex-col gap-2 bg-[#020817]">
-            <div className="flex h-14 items-center justify-end gap-4 border-b bg-[#020817] bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+        <div className="hidden border-r bg-[#191919] bg-muted/40 md:block">
+          <div className="flex h-full max-h-screen flex-col gap-2 bg-[#191919]">
+            <div className="flex h-14 items-center justify-end gap-4 border-b bg-[#191919] bg-muted/40 px-4 lg:h-[60px] lg:px-6">
               <Link className="flex items-center gap-2 font-semibold" href="#">
                 <Link href="/">
                   <Logo />
@@ -78,7 +78,7 @@ export default async function RouteLayout(props: LayoutParams<{}>) {
           </div>
         </div>
         <div className="flex flex-col">
-          <header className="flex h-14 items-center justify-end gap-4 border-b bg-[#020817] px-4 lg:h-[60px] lg:px-6">
+          <header className="flex h-14 items-center justify-end gap-4 border-b bg-[#191919] px-4 lg:h-[60px] lg:px-6">
             <Sheet>
               <SheetTrigger asChild>
                 <Button

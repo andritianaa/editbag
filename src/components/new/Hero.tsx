@@ -25,7 +25,7 @@ export const Hero = (props: HeroProps) => {
             >
               <h1
                 data-aos="fade-up"
-                className="mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]"
+                className="animatedText mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]"
               >
                 Everything you need for stunning video creations
               </h1>

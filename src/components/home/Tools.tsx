@@ -56,7 +56,7 @@ const Block = ({ className, ...rest }) => {
 };
 
 const HeaderBlock = () => (
-  <Block className="col-span-12 row-span-2 bg-white dark:bg-[#020817] md:col-span-6">
+  <Block className="col-span-12 row-span-2 bg-white dark:bg-[#191919] md:col-span-6">
     <Logo />
     <h1 className="mb-12 text-4xl font-medium leading-tight text-blue-500">
       {" Hi, I'm Andritiana. "}
