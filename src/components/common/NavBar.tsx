@@ -14,7 +14,7 @@ export const NavBar = async () => {
   const categoriesData = await getCategories();
 
   return (
-    <nav className="sticky top-0 z-50 border-b bg-[#191919] p-2">
+    <nav className="dotedNav max-w-screen sticky top-0 z-50 bg-[#191919] bg-opacity-50 p-2 py-4">
       <Layout className="flex items-center justify-between">
         <Link href="/">
           <Logo />

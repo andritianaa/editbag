@@ -18,7 +18,11 @@ const AccordionItem = forwardRef<
   ElementRef<typeof Item>,
   ComponentPropsWithoutRef<typeof Item>
 >(({ className, ...props }, ref) => (
-  <Item ref={ref} className={cn("border-b", className)} {...props} />
+  <Item
+    ref={ref}
+    className={cn("border-none w-full overflow-hidden px-4", className)}
+    {...props}
+  />
 ));
 AccordionItem.displayName = "AccordionItem";
 
@@ -30,7 +34,7 @@ const AccordionTrigger = forwardRef<
     <Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
+        "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180 border-none",
         className
       )}
       {...props}
@@ -48,7 +52,7 @@ const AccordionContent = forwardRef<
 >(({ className, children, ...props }, ref) => (
   <Content
     ref={ref}
-    className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className="accordeonContent overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
     {...props}
   >
     <div className={cn("pb-4 pt-0", className)}>{children}</div>

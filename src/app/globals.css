@@ -20,7 +20,7 @@
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
+    --border: 0 0% 25%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
     --radius: 0.5rem;
@@ -125,41 +125,49 @@
 .zoomEffect {
   animation: zoomEffect 0.5s ease-out forwards;
 }
-
-body {
-  --token-9c666bfb-c0d9-42c3-871a-b155e4622d7e: #1a1a1a;
-  --token-5e6f39f8-b4a9-477f-b020-8529c731d2b0: rgba(38, 38, 38, .6);
-  --token-672c8571-8125-444c-8e78-7839f14d4165: #f2f9fb;
-  --token-1a1a0162-81ed-461f-a45f-dd186cfd67de: #C4C3C6;
-  --token-b9331d89-68ac-4d2d-b300-418f068edd76: rgba(255, 255, 255, .48);
-  --token-afa577e8-656f-4c43-91b8-9f54d00eed1c: #191919;
-  --token-93c687f8-741e-4ff7-a7ac-6d828b30e8a6: rgba(255, 255, 255, .05);
-  --token-453bc13c-d1fe-4e41-8437-573a6a0d2bb3: rgb(194, 168, 255);
-  --token-a99cc210-53f4-4a06-a504-c791c5667a1f: hsl(75, 69%, 71%);
-  --token-de20aae4-b9e3-4889-96c6-3c9ddfca9fb3: rgb(255, 153, 235);
-  --token-5bfee248-5f26-44e5-bb73-d8ec3a603756: rgb(255, 148, 210);
-  --token-782db439-cd80-45c7-a4d7-f3534a6d1225: hsl(348, 100%, 78%);
-  --token-5bd83abb-9da9-4531-b25d-3b70d9eda54b: hsl(47, 100%, 74%);
-  --token-cc0abdb1-ee38-4efe-baf9-d88e2e153c1c: hsl(28, 100%, 75%);
-  --token-ed690eb7-b130-4089-a7fb-00954b050579: hsl(9, 100%, 76%);
-  --token-3c63f8a8-6355-4aa1-a6e0-7f6621af47a0: hsl(152, 86%, 70%);
-  --token-e8866c23-28a9-4a84-8b84-464c3f2aa5f2: hsl(136, 84%, 68%);
-  --token-5534b0ea-f15a-4830-bf31-9e66723cc13b: rgb(60, 195, 94);
-  --token-779b5083-8e8e-4a46-a1e3-b59c01bcb103: hsl(185, 91%, 75%);
-  --token-a9f949bc-0a8c-41b9-aa8a-bddc928d8eb9: hsl(204, 93%, 77%);
-  --token-e58f9037-5459-40ab-b93b-f76f4189aba2: rgb(90, 133, 226);
-  --token-196c9aa7-683d-44cb-ae26-8e6b6f296dc6: hsl(205, 1%, 5%);
+.animatedText{
+  text-transform: none;
+  background-image: linear-gradient(to right, rgb(194, 168, 255), rgb(194, 168, 255), rgb(255, 153, 235), rgb(255, 153, 235), rgb(255, 148, 210), rgb(255, 148, 210), hsl(348, 100%, 78%), rgb(255, 143, 165), hsl(28, 100%, 75%), rgb(255, 187, 128), hsl(47, 100%, 74%), rgb(255, 226, 122), rgb(173, 216, 230), rgb(144, 238, 144));
+  background-clip: text;
+  color: transparent;
+  filter: hue-rotate(0deg);
+  background-size: 600% auto;
+  animation: moveGradient 20s ease-in-out infinite;
 }
 
-.animatedText{
-text-transform: none;
-background-image: linear-gradient(to right, var(--token-453bc13c-d1fe-4e41-8437-573a6a0d2bb3, rgb(194, 168, 255)), var(--token-de20aae4-b9e3-4889-96c6-3c9ddfca9fb3, rgb(255, 153, 235)), var(--token-5bfee248-5f26-44e5-bb73-d8ec3a603756, rgb(255, 148, 210)), var(--token-782db439-cd80-45c7-a4d7-f3534a6d1225, rgb(255, 143, 165)), var(--token-cc0abdb1-ee38-4efe-baf9-d88e2e153c1c, rgb(255, 187, 128)), var(--token-5bd83abb-9da9-4531-b25d-3b70d9eda54b, rgb(255, 226, 122)));
-background-clip: text;
-color: transparent;
-filter: hue-rotate(0deg);
+@keyframes moveGradient {
+  0% { background-position: 0% 10%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position:0 90%; }
 }
 
 .gradientBG{
 filter: hue-rotate(0deg);
-background-image: linear-gradient(to right, var(--token-453bc13c-d1fe-4e41-8437-573a6a0d2bb3, rgb(194, 168, 255)), var(--token-de20aae4-b9e3-4889-96c6-3c9ddfca9fb3, rgb(255, 153, 235))) !important;
+background-image: linear-gradient(to right, rgb(194, 168, 255), rgb(194, 168, 255), rgb(255, 153, 235), rgb(255, 153, 235)) !important;
+}
+
+.custom-bg::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png') repeat;
+  height: 400%;
+  width: 400%;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: -1; /* Ensure it stays behind other content */
+}
+
+.dotedNav{
+  backdrop-filter: blur(30px);
+  background-image: radial-gradient(circle, transparent 25%, rgb(25, 25, 25) 26%), linear-gradient(45deg, transparent 46%, rgb(25, 25, 25) 47%, rgb(25, 25, 25) 52%, transparent 53%), linear-gradient(135deg, transparent 46%, rgb(25, 25, 25) 47%, rgb(25, 25, 25) 52%, transparent 53%);
+  background-size: 12px 12px;
+  opacity: 1;
+}
+
+.twin .accordeonContent{
+  display: none !important;
 }

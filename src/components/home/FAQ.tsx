@@ -6,14 +6,24 @@ import {
 } from "@/components/ui/accordion";
 import { Layout } from "../layout/Layout";
 import { Label } from "../ui/label";
+import { Glowing } from "../common/Glowing";
 
 export const FAQ = () => {
   return (
-    <div className="h-full w-full max-md:p-4">
-      <Layout className="card my-8 max-w-3xl space-y-4 p-16 pt-8 max-md:my-0 max-md:p-8">
-        <Label className="text-2xl font-bold">Frequently asked question</Label>
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
+    <>
+      <h1 className="animatedText pb-2 text-center text-6xl font-bold">
+        Frequently Asked Questions
+      </h1>
+      <p className="max-w-lg text-center text-lg text-muted-foreground">
+        Seamlessly utilize your preferred tools for projects, start to finish.
+      </p>
+      <Accordion
+        type="single"
+        collapsible
+        className="w-full max-w-2xl space-y-4"
+      >
+        <Glowing color="#8ecffb">
+          <AccordionItem value="item-1 p-0">
             <AccordionTrigger>What is this website?</AccordionTrigger>
             <AccordionContent>
               This website is a resource for downloading high-quality assets for
@@ -21,7 +31,9 @@ export const FAQ = () => {
               music, sound effects, and templates.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-2">
+        </Glowing>
+        <Glowing color="#8ecffb">
+          <AccordionItem value="item-2 p-0">
             <AccordionTrigger>
               Who can use the assets on this website?
             </AccordionTrigger>
@@ -31,21 +43,27 @@ export const FAQ = () => {
               high-quality multimedia content.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-3">
+        </Glowing>
+        <Glowing color="#8ecffb">
+          <AccordionItem value="item-3  p-0">
             <AccordionTrigger>Account and Membership</AccordionTrigger>
             <AccordionContent>
               Yes, you need to create an account and subscribe to download
               assets.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-4">
+        </Glowing>
+        <Glowing color="#8ecffb">
+          <AccordionItem value="item-4  p-0">
             <AccordionTrigger>How do I download an asset?</AccordionTrigger>
             <AccordionContent>
               After logging in, browse or search for the asset you need, click
               on the download button, and the file will be saved to your device.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-5">
+        </Glowing>
+        <Glowing color="#8ecffb">
+          <AccordionItem value="item-5  p-0">
             <AccordionTrigger>
               What are the usage rights for the assets?
             </AccordionTrigger>
@@ -55,8 +73,8 @@ export const FAQ = () => {
               standalone files is prohibited.
             </AccordionContent>
           </AccordionItem>
-        </Accordion>
-      </Layout>
-    </div>
+        </Glowing>
+      </Accordion>
+    </>
   );
 };
