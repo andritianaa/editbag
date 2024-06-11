@@ -1,37 +1,53 @@
 /* eslint-disable @next/next/no-img-element */
-import { Check } from "lucide-react";
+import { Check, MoveRight } from "lucide-react";
 import { Layout, LayoutContent } from "../layout/Layout";
 import { Card } from "../ui/card";
 import { Glowing } from "../common/Glowing";
 import { FAQ } from "./FAQ";
+import { Play } from "../common/Play";
+import Link from "next/link";
 export type HeroProps = {};
 
 export const Hero = (props: HeroProps) => {
   return (
     <Layout className="flex flex-col items-center justify-center">
-      <div className="flex h-[70vh] w-full max-w-6xl flex-col items-start justify-center space-y-8 py-8">
+      {/* hero */}
+      <div className="flex h-[70vh] w-full max-w-6xl flex-col items-start justify-center space-y-10 py-8">
         <div className="text-left text-3xl font-bold text-white sm:text-4xl lg:text-6xl">
-          <p className="animatedText pb-4">Everything you need</p>
-          <p className="max-w-xl">for stunning video creations</p>
+          <p className="animatedText leading-[5rem]">Everything you need</p>
+          <p className="max-w-xl leading-[5rem]">
+            for stunning video creations
+          </p>
         </div>
         <p className="max-w-lg text-left text-lg text-muted-foreground">
           An online library of resources for video editing to turn your ideas
           into amazing videos.
         </p>
-        <button className="inline-flex h-12 items-center justify-center rounded-full bg-[#9e74ff9a] px-6 font-bold text-white transition-colors hover:bg-[#9e74ff]">
-          Browse contents
-        </button>
+        <div className="flex gap-6">
+          <button className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#554c69c6] px-6 font-semibold text-white transition-colors hover:bg-[#9e74ff]">
+            <Play />
+            Watch video
+          </button>
+          <Link href="/products">
+            <button className="pinkButton inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 font-semibold text-white transition-colors">
+              Brows content
+              <MoveRight color="#000000" />
+            </button>
+          </Link>
+        </div>
       </div>
+      {/* screenshot */}
 
       <div className="flex h-[70vh] w-full max-w-6xl flex-col items-center space-y-8">
         <div className="rounded-lg border border-[#3f3f3f] bg-[#212121] p-8">
           <img
-            src="/screenshot.png"
+            src="/screenshot.avif"
             alt=""
             className="max-h-[60vh] w-full rounded-lg shadow-xl"
           />
         </div>
       </div>
+      {/* features */}
 
       <div className="mt-32 flex w-full max-w-6xl items-start justify-center gap-10 py-8">
         <Card className="flex w-[50%] items-center justify-center border border-[#3f3f3f] bg-[#212121]">
@@ -81,7 +97,7 @@ export const Hero = (props: HeroProps) => {
           </p>
         </div>
       </div>
-
+      {/* more features */}
       <div className="flex w-full max-w-6xl flex-col items-center justify-center space-y-8 p-8">
         <h1 className="animatedText text-6xl font-bold">More Features</h1>
         <p className="max-w-lg text-center text-lg text-muted-foreground">
@@ -339,12 +355,46 @@ export const Hero = (props: HeroProps) => {
           </div>
         </div>
       </div>
+      {/* relied on by organizations */}
+      <div className="flex w-full max-w-6xl flex-col items-center justify-center gap-10 py-8">
+        <h1 className="text-center text-4xl font-bold">
+          Relied on by organizations globally{" "}
+        </h1>
+        <div className="gradient-mask flex w-full max-w-6xl items-start justify-between">
+          <img
+            src="https://framerusercontent.com/images/0Pskbix5TM633pdRUP65cVWKPUI.svg"
+            alt=""
+            className="grayscale filter"
+          />
+          <img
+            src="https://framerusercontent.com/images/4M7Flg31lO5JIF3kTB2ejdKtg.svg"
+            alt=""
+            className="grayscale filter"
+          />
+          <img
+            src="https://framerusercontent.com/images/c9br9ECfTtC1OBlCElnHGFVZi3o.svg"
+            alt=""
+            className="grayscale filter"
+          />
+          <img
+            src="https://framerusercontent.com/images/Zv92GInEvKaZzdFEPve5yCcz5NI.svg"
+            alt=""
+            className="grayscale filter"
+          />
+          <img
+            src="https://framerusercontent.com/images/l0AIm4dNymLUb8QHxLD7VrW8k0.svg"
+            alt=""
+            className="grayscale filter"
+          />
+        </div>
+      </div>
 
+      {/* plan  */}
       <div className="flex w-full flex-col items-center justify-center space-y-8 p-8">
         <p className="max-w-lg text-center text-lg text-muted-foreground">
           Select a plan
         </p>
-        <h1 className="animatedText pb-2 text-6xl font-bold">Pricing</h1>
+        <h1 id="pricing" className="animatedText pb-2 text-6xl font-bold">Pricing</h1>
         <p className="max-w-lg text-center text-lg text-muted-foreground">
           These are a few of the key features of AITool that distinguish it from
           other AI platforms.
@@ -352,10 +402,10 @@ export const Hero = (props: HeroProps) => {
         <div className="container mx-auto">
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Glowing
-              color="#af853d"
-              className="relative mb-10 w-full rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
+              color="#fbc466"
+              className="relative w-full rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
             >
-              <span className="text-dark mb-5 block text-xl font-medium dark:text-white">
+              <span className="mb-5 block rounded-full bg-white/10 px-6 py-2 text-xl font-medium text-white backdrop-blur-2xl">
                 Starter
               </span>
               <h2 className="text-dark mb-4 text-4xl font-semibold dark:text-white xl:text-[42px] xl:leading-[1.21]">
@@ -414,13 +464,13 @@ export const Hero = (props: HeroProps) => {
             </Glowing>
 
             <Glowing
-              color="#af853d"
-              className="relative mb-10 w-full overflow-hidden rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
+              color="#fbc466"
+              className="relative w-full overflow-hidden rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
             >
               <p className="absolute right-[-50px] inline-block -rotate-90 rounded-bl-md rounded-tl-md bg-[#fbc466] px-5 py-2 text-base font-medium text-black">
                 Recommended
               </p>
-              <span className="text-dark mb-5 block text-xl font-medium dark:text-white">
+              <span className="mb-5 block rounded-full bg-white/10 px-6 py-2 text-xl font-medium text-white backdrop-blur-2xl">
                 Business
               </span>
               <h2 className="text-dark mb-4 text-4xl font-semibold dark:text-white xl:text-[42px] xl:leading-[1.21]">
@@ -482,6 +532,73 @@ export const Hero = (props: HeroProps) => {
           </div>
         </div>
       </div>
+
+      {/* community */}
+      {/* relied on by organizations */}
+      <div className="flex w-full max-w-6xl flex-col items-center justify-center gap-10 py-8">
+        <h1 className="text-center text-4xl font-bold">
+          Community members opinions
+        </h1>
+        <div className="gradient-mask flex w-full max-w-6xl items-start justify-between gap-16">
+          <Card className="w-full max-w-sm overflow-hidden rounded-lg border bg-[rgba(38,38,38,.6)]">
+            <p className="p-6 pb-4 font-mono text-lg">
+              For numerous months, I have employed AITool and am in awe of its
+              remarkable features. This AI instrument comprehends intricate
+              inquiries and delivers precise suggestions, enhancing my
+              efficiency and streamlining daily tasks.
+            </p>
+            <div className="flex justify-between bg-[#1a1a1a] px-4 py-6">
+              <div className="">
+                <h1 className="text-xl font-semibold">Siena Rodriguez</h1>
+                <p className="text-muted-foreground">Entrepreneur</p>
+              </div>
+              <img
+                src="https://framerusercontent.com/images/0rwLyHR38lGn29ByfJ9jV0IA.png?scale-down-to=512"
+                alt=""
+                className="size-14 rounded-full"
+              />
+            </div>
+          </Card>
+          <Card className="w-full max-w-sm overflow-hidden rounded-lg border bg-[rgba(38,38,38,.6)]">
+            <p className="p-6 pb-4 font-mono text-lg">
+              I was astounded by the precision and swiftness of the AI
+              instrument on AITool. It comprehended my inquiries and delivered
+              pertinent suggestions in a matter of seconds.
+            </p>
+            <div className="flex justify-between bg-[#1a1a1a] px-4 py-6">
+              <div className="">
+                <h1 className="text-xl font-semibold">Nikita Johnson</h1>
+                <p className="text-muted-foreground">Sales Executive</p>
+              </div>
+              <img
+                src="https://framerusercontent.com/images/bpeWvtoxuajqEtlukZhUFt9KM.png"
+                alt=""
+                className="size-14 rounded-full bg-[#c2a8ff]"
+              />
+            </div>
+          </Card>
+          <Card className="w-full max-w-sm overflow-hidden rounded-lg border bg-[rgba(38,38,38,.6)]">
+            <p className="p-6 pb-4 font-mono text-lg">
+              I was astounded by the precision and swiftness of the AI
+              instrument on AITool. It comprehended instrument on AITool my
+              inquiries and delivered pertinent suggestions in a matter of
+              seconds.
+            </p>
+            <div className="flex justify-between bg-[#1a1a1a] px-4 py-6">
+              <div className="">
+                <h1 className="text-xl font-semibold">Cheryl Chen</h1>
+                <p className="text-muted-foreground">Creative director</p>
+              </div>
+              <img
+                src="https://framerusercontent.com/images/mUVPNgOqhd1MFYjLtFtiBwvxfY.png"
+                alt=""
+                className="size-14 rounded-full bg-[#c2a8ff]"
+              />
+            </div>
+          </Card>
+        </div>
+      </div>
+
       <div className="flex w-full flex-col items-center justify-center space-y-8 p-8">
         <FAQ />
       </div>

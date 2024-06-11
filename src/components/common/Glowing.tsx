@@ -49,10 +49,10 @@ export const Glowing = (props: GlowingProps) => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="flex flex-wrap gap-10 backdrop-blur">
+          <div className="flex flex-wrap gap-10">
             <div
               className={cn(
-                "flex flex-1 flex-col items-start gap-5 rounded-xl border-2 border-solid border-[#eceff133] bg-[#212121] text-white transition-colors",
+                "flex flex-1 flex-col items-start gap-5 rounded-xl border-2 border-solid border-[#eceff133] bg-[rgba(38,38,38,.6)] text-white transition-colors",
                 props.className
               )}
             >
@@ -63,21 +63,22 @@ export const Glowing = (props: GlowingProps) => {
           {/* twin cards */}
           {isHovered && (
             <div
-              className="pointer-events-none absolute inset-0 flex select-none flex-wrap gap-10 opacity-20"
+              className="glow pointer-events-none absolute inset-0 flex select-none flex-wrap gap-10 opacity-10"
               style={{
-                opacity: "0.5",
+                opacity: "0.2",
+                transition: "opacity 0.5s ease-in-out", // Added transition here
                 mask: `
-                  radial-gradient(
-                    15rem 15rem at var(--x) var(--y),
-                    #000 1%,
-                    transparent 100%
-                  )`,
+                radial-gradient(
+                  15rem 15rem at var(--x) var(--y),
+                  #000 1%,
+                  transparent 100%
+                )`,
                 WebkitMask: `
-                  radial-gradient(
-                    15rem 15rem at var(--x) var(--y),
-                    #000 1%,
-                    transparent 100%
-                  )`,
+                radial-gradient(
+                  15rem 15rem at var(--x) var(--y),
+                  #000 1%,
+                  transparent 100%
+                )`,
               }}
             >
               {/* card */}

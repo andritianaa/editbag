@@ -11,28 +11,25 @@ import { getCategories } from "../../actions/categories.actions";
 
 export const NavBar = async () => {
   const user = await currentUser();
-  const categoriesData = await getCategories();
 
   return (
     <nav className="dotedNav max-w-screen sticky top-0 z-50 bg-[#191919] bg-opacity-50 p-2 py-4">
-      <Layout className="flex items-center justify-between">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4">
         <Link href="/">
           <Logo />
         </Link>
-        <div className="max-md:hidden">
-          <a href="/products">
-            <Button variant="ghost">Products</Button>
-          </a>
-          {categoriesData.map((c) => (
-            <a
-              href={`/products?categories=${c.name.replace(/ /g, "+")}`}
-              key={c.id}
-            >
-              <Button variant="ghost">{c.name}</Button>
-            </a>
-          ))}
-        </div>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
+          <div className="max-md:hidden">
+            <Link href={`/about`}>
+              <Button variant="ghost">About</Button>
+            </Link>
+            <Link href={`/contact`}>
+              <Button variant="ghost">Contact</Button>
+            </Link>
+            <Link href={`/#pricing`}>
+              <Button variant="ghost">Pricing</Button>
+            </Link>
+          </div>
           {!user && <SigninBtn />}
           {user && (
             <AuthenticatedMenu
@@ -43,9 +40,9 @@ export const NavBar = async () => {
               privileges={user.privileges}
             />
           )}
-          <MenuResponsive categoriesData={categoriesData} />
+          <MenuResponsive />
         </div>
-      </Layout>
+      </div>
     </nav>
   );
 };

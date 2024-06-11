@@ -134,6 +134,15 @@
   background-size: 600% auto;
   animation: moveGradient 20s ease-in-out infinite;
 }
+.animatedTextWhite{
+  background-color: white;
+  text-transform: none;
+  background-clip: text;
+  color: transparent;
+  filter: hue-rotate(0deg);
+  background-size: 600% auto;
+  animation: moveGradient 20s ease-in-out infinite;
+}
 
 @keyframes moveGradient {
   0% { background-position: 0% 10%; }
@@ -170,4 +179,49 @@ background-image: linear-gradient(to right, rgb(194, 168, 255), rgb(194, 168, 25
 
 .twin .accordeonContent{
   display: none !important;
+}
+
+.play-button {
+  width: 0;
+  height: 0;
+  border-left: .3rem solid transparent;
+  border-right: .3rem solid transparent;
+  border-bottom: .5rem solid white;
+  cursor: pointer;
+  transition: transform 0.2s;
+  transform: scale(3) rotate(-45deg);
+}
+
+.pinkButton{
+  background: linear-gradient(105deg, var(--token-453bc13c-d1fe-4e41-8437-573a6a0d2bb3, rgb(194, 168, 255)) /* {&quot;name&quot;:&quot;Primitive/Purple&quot;} */ 0%, var(--token-de20aae4-b9e3-4889-96c6-3c9ddfca9fb3, rgb(255, 153, 235)) /* {&quot;name&quot;:&quot;Primitives/Pink&quot;} */ 52.25225225225225%, var(--token-5bd83abb-9da9-4531-b25d-3b70d9eda54b, rgb(255, 226, 122)) /* {&quot;name&quot;:&quot;Primitives/Yellow&quot;} */ 100%);
+  opacity: 1;
+  transition: ease all .3s;
+  background-size: 200% 200%;
+            background-position: 0 0;
+            color: black;
+
+}
+
+.pinkButton:hover{
+  background-position: 100% 0;
+  /* background: white; */
+}
+
+.glow{
+transition: ease all .5s;
+}
+
+.gradient-mask {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  place-items: start;
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  opacity: 1;
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgb(0, 0, 0) 85%, rgba(0, 0, 0, 0) 100%);
+  overflow: hidden;
 }

@@ -11,9 +11,7 @@ import {
 } from "lucide-react";
 import { Categories } from "@prisma/client";
 
-export type MenuResponsiveProps = {
-  categoriesData: Categories[];
-};
+export type MenuResponsiveProps = {};
 
 export const MenuResponsive = (props: MenuResponsiveProps) => {
   return (
@@ -34,22 +32,22 @@ export const MenuResponsive = (props: MenuResponsiveProps) => {
               <Logo />
             </Link>
           </Link>
-          <a href="/products">
-            <Button variant="ghost" className="w-full justify-start text-lg">
-              Products
-            </Button>
-          </a>
 
-          {props.categoriesData.slice(0, 4).map((c) => (
-            <a
-              href={`/products?categories=${c.name.replace(/ /g, "+")}`}
-              key={c.id}
-            >
-              <Button variant="ghost" className="w-full justify-start text-lg">
-                {c.name}
-              </Button>
-            </a>
-          ))}
+          <Link href={`/about`}>
+            <Button variant="ghost" className="w-full justify-start text-lg">
+              About
+            </Button>
+          </Link>
+          <Link href={`/contact`}>
+            <Button variant="ghost" className="w-full justify-start text-lg">
+              Contact
+            </Button>
+          </Link>
+          <Link href={`/#pricing`}>
+            <Button variant="ghost" className="w-full justify-start text-lg">
+              Pricing
+            </Button>
+          </Link>
         </nav>
       </SheetContent>
     </Sheet>
