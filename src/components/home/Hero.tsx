@@ -495,7 +495,7 @@ export const Hero = (props: HeroProps) => {
               </div>
               <a
                 href="javascript:void(0)"
-                className="hover:bg-blue-dark inline-block rounded-md bg-[#fbc466] px-7 py-3 text-center text-base font-medium text-black transition"
+                className="hover:bg-blue-dark recommended inline-block rounded-md px-7 py-3 text-center text-base font-medium text-black transition"
               >
                 Get started
               </a>
@@ -560,7 +560,7 @@ export const Hero = (props: HeroProps) => {
               </div>
               <a
                 href="javascript:void(0)"
-                className="hover:bg-blue-dark inline-block rounded-md bg-[#fbc466] px-7 py-3 text-center text-base font-medium text-black transition"
+                className="hover:bg-blue-dark recommended inline-block rounded-md px-7 py-3 text-center text-base font-medium text-black transition"
               >
                 Get started
               </a>

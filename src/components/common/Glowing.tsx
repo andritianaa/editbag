@@ -87,9 +87,7 @@ export const Glowing = (props: GlowingProps) => {
                   `twin flex flex-1 flex-col items-start gap-5 rounded-xl border-2 border-solid border-[${props.color}] bg-[${props.color}] p-10 text-transparent text-white transition-colors overflow-hidden`,
                   props.className
                 )}
-              >
-                {props.children}
-              </div>
+              ></div>
             </div>
           )}
         </div>
