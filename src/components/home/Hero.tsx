@@ -9,8 +9,10 @@ import { Play } from "../common/Play";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { Footer } from "../common/Footer";
+import { testimonials } from "../../lib/testimonial";
+import { logos } from "../../lib/logos";
 export type HeroProps = {};
 
 export const Hero = (props: HeroProps) => {
@@ -49,7 +51,6 @@ export const Hero = (props: HeroProps) => {
         </div>
       </div>
       {/* screenshot */}
-
       <div
         data-aos="fade"
         data-aos-duration="1500"
@@ -64,11 +65,10 @@ export const Hero = (props: HeroProps) => {
         </div>
       </div>
       {/* features */}
-
       <div
         data-aos="fade"
         data-aos-duration="1500"
-        className="mt-32 flex w-full max-w-6xl items-start justify-center gap-10 py-8"
+        className="mt-32 flex w-full max-w-6xl items-start justify-center gap-20 py-8"
       >
         <Card className="flex w-[50%] items-center justify-center border border-[#3f3f3f] bg-[#212121]">
           <img
@@ -78,7 +78,7 @@ export const Hero = (props: HeroProps) => {
           />
         </Card>
         <div className="sticky top-[5.5rem] w-[50%]">
-          <p className="text-2xl font-bold">Delightful user experience</p>
+          <p className="mb-2 text-3xl font-bold">Delightful user experience</p>
           <p className="text-lg">
             AITool assists you in managing your tasks and achieving your goals
             using an interactive and straightforward method.
@@ -88,7 +88,7 @@ export const Hero = (props: HeroProps) => {
       <div
         data-aos="fade"
         data-aos-duration="1500"
-        className="flex w-full max-w-6xl flex-row-reverse items-start justify-center gap-10 py-8"
+        className="flex w-full max-w-6xl flex-row-reverse items-start justify-center gap-20 py-8"
       >
         <Card className="flex w-[50%] items-center justify-center border border-[#3f3f3f] bg-[#212121]">
           <img
@@ -98,7 +98,7 @@ export const Hero = (props: HeroProps) => {
           />
         </Card>
         <div className="sticky top-[5.5rem] w-[50%]">
-          <p className="text-2xl font-bold">Customization theme</p>
+          <p className="mb-2 text-3xl font-bold">Customization theme</p>
           <p className="text-lg">
             AITool offers lot of customizations, one of them allowing you to
             choose from light, dark and black UI theme.
@@ -108,7 +108,7 @@ export const Hero = (props: HeroProps) => {
       <div
         data-aos="fade"
         data-aos-duration="1500"
-        className="flex w-full max-w-6xl items-start justify-center gap-10 py-8"
+        className="flex w-full max-w-6xl items-start justify-center gap-20 py-8"
       >
         <Card className="flex w-[50%] items-center justify-center border border-[#3f3f3f] bg-[#212121]">
           <img
@@ -118,7 +118,7 @@ export const Hero = (props: HeroProps) => {
           />
         </Card>
         <div className="sticky top-[5.5rem] w-[50%]">
-          <p className="text-2xl font-bold">Smart Automation</p>
+          <p className="mb-2 text-3xl font-bold">Smart Automation</p>
           <p className="text-lg">
             Utilizing intelligent automation and exceptional safety measures,
             this is the ideal choice for teams aiming to increase efficiency.
@@ -137,7 +137,11 @@ export const Hero = (props: HeroProps) => {
           other AI platforms.
         </p>
         <div className="flex flex-wrap">
-          <div className="w-full p-6 md:w-1/2 lg:w-1/3">
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="1500"
+            className="w-full p-6 md:w-1/2 lg:w-1/3"
+          >
             <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#c2a8ff]">
                 <svg
@@ -154,16 +158,20 @@ export const Hero = (props: HeroProps) => {
                   />
                 </svg>
               </div>
-              <h4 className="text-dark mb-3 text-xl font-bold dark:text-white">
+              <h4 className="mb-4 text-2xl font-bold text-white">
                 Create command
               </h4>
-              <p className="text-body-color dark:text-dark-6 mb-8 lg:mb-9">
+              <p className="text-dark-6 mb-8 text-lg lg:mb-9">
                 Enables users to locate solutions to their inquiries without
                 browsing numerous resources.
               </p>
             </div>
           </div>
-          <div className="w-full p-6 md:w-1/2 lg:w-1/3">
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="1500"
+            className="w-full p-6 md:w-1/2 lg:w-1/3"
+          >
             <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#ff99eb]">
                 <svg
@@ -180,16 +188,20 @@ export const Hero = (props: HeroProps) => {
                   />
                 </svg>
               </div>
-              <h4 className="text-dark mb-3 text-xl font-bold dark:text-white">
+              <h4 className="mb-4 text-2xl font-bold text-white">
                 Improve everyday
               </h4>
-              <p className="text-body-color dark:text-dark-6 mb-8 lg:mb-9">
+              <p className="text-dark-6 mb-8 text-lg lg:mb-9">
                 The app uses natural language processing to understand user
                 queries and provide accurate and relevant responses.
               </p>
             </div>
           </div>
-          <div className="w-full p-6 md:w-1/2 lg:w-1/3">
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="1500"
+            className="w-full p-6 md:w-1/2 lg:w-1/3"
+          >
             <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#ffbb80]">
                 <svg
@@ -238,16 +250,20 @@ export const Hero = (props: HeroProps) => {
                   />
                 </svg>
               </div>
-              <h4 className="text-dark mb-3 text-xl font-bold dark:text-white">
+              <h4 className="mb-4 text-2xl font-bold text-white">
                 Connect everywhere
               </h4>
-              <p className="text-body-color dark:text-dark-6 mb-8 lg:mb-9">
+              <p className="text-dark-6 mb-8 text-lg lg:mb-9">
                 Connect with the AI tool from anywhere, on any device, making it
                 more accessible and convenient.
               </p>
             </div>
           </div>
-          <div className="w-full p-6 md:w-1/2 lg:w-1/3">
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="1500"
+            className="w-full p-6 md:w-1/2 lg:w-1/3"
+          >
             <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#ffe27a]">
                 <svg
@@ -276,16 +292,20 @@ export const Hero = (props: HeroProps) => {
                   />
                 </svg>
               </div>
-              <h4 className="text-dark mb-3 text-xl font-bold dark:text-white">
+              <h4 className="mb-4 text-2xl font-bold text-white">
                 Create command
               </h4>
-              <p className="text-body-color dark:text-dark-6 mb-8 lg:mb-9">
+              <p className="text-dark-6 mb-8 text-lg lg:mb-9">
                 Enables users to locate solutions to their inquiries without
                 browsing numerous resources.
               </p>
             </div>
           </div>
-          <div className="w-full p-6 md:w-1/2 lg:w-1/3">
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="1500"
+            className="w-full p-6 md:w-1/2 lg:w-1/3"
+          >
             <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#69f28d]">
                 <svg
@@ -314,16 +334,20 @@ export const Hero = (props: HeroProps) => {
                   />
                 </svg>
               </div>
-              <h4 className="text-dark mb-3 text-xl font-bold dark:text-white">
+              <h4 className="mb-4 text-2xl font-bold text-white">
                 Improve everyday
               </h4>
-              <p className="text-body-color dark:text-dark-6 mb-8 lg:mb-9">
+              <p className="text-dark-6 mb-8 text-lg lg:mb-9">
                 The app uses natural language processing to understand user
                 queries and provide accurate and relevant responses.
               </p>
             </div>
           </div>
-          <div className="w-full p-6 md:w-1/2 lg:w-1/3">
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="1500"
+            className="w-full p-6 md:w-1/2 lg:w-1/3"
+          >
             <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#8ecffb]">
                 <svg
@@ -352,10 +376,10 @@ export const Hero = (props: HeroProps) => {
                   />
                 </svg>
               </div>
-              <h4 className="text-dark mb-3 text-xl font-bold dark:text-white">
+              <h4 className="mb-4 text-2xl font-bold text-white">
                 Improve everyday
               </h4>
-              <p className="text-body-color dark:text-dark-6 mb-8 lg:mb-9">
+              <p className="text-dark-6 mb-8 text-lg lg:mb-9">
                 The app uses natural language processing to understand user
                 queries and provide accurate and relevant responses.
               </p>
@@ -373,51 +397,47 @@ export const Hero = (props: HeroProps) => {
           Relied on by organizations globally{" "}
         </h1>
         <div className="gradient-mask flex w-full max-w-6xl items-start justify-between">
-          <img
-            src="https://framerusercontent.com/images/0Pskbix5TM633pdRUP65cVWKPUI.svg"
-            alt=""
-            className="grayscale filter"
-          />
-          <img
-            src="https://framerusercontent.com/images/4M7Flg31lO5JIF3kTB2ejdKtg.svg"
-            alt=""
-            className="grayscale filter"
-          />
-          <img
-            src="https://framerusercontent.com/images/c9br9ECfTtC1OBlCElnHGFVZi3o.svg"
-            alt=""
-            className="grayscale filter"
-          />
-          <img
-            src="https://framerusercontent.com/images/Zv92GInEvKaZzdFEPve5yCcz5NI.svg"
-            alt=""
-            className="grayscale filter"
-          />
-          <img
-            src="https://framerusercontent.com/images/l0AIm4dNymLUb8QHxLD7VrW8k0.svg"
-            alt=""
-            className="grayscale filter"
-          />
+          <div className="flex animate-infinite-scroll gap-10">
+            {Array.from({ length: 30 }).map((_, index) => (
+              <Fragment key={index}>
+                {logos.map((t) => (
+                  <img key={t} src={t} alt="" className="grayscale filter" />
+                ))}
+              </Fragment>
+            ))}
+          </div>
         </div>
       </div>
-
       {/* plan  */}
-      <div
-        data-aos="fade"
-        data-aos-duration="1500"
-        className="flex w-full flex-col items-center justify-center space-y-8 p-8"
-      >
-        <p className="max-w-lg text-center text-lg text-muted-foreground">
+      <div className="flex w-full flex-col items-center justify-center space-y-8 p-8">
+        <p
+          data-aos="fade"
+          data-aos-duration="1500"
+          className="max-w-lg text-center text-lg text-muted-foreground"
+        >
           Select a plan
         </p>
-        <h1 id="pricing" className="animatedText pb-2 text-6xl font-bold">
+        <h1
+          data-aos="fade"
+          data-aos-duration="1500"
+          id="pricing"
+          className="animatedText pb-2 text-6xl font-bold"
+        >
           Pricing
         </h1>
-        <p className="max-w-lg text-center text-lg text-muted-foreground">
+        <p
+          data-aos="fade"
+          data-aos-duration="1500"
+          className="max-w-lg text-center text-lg text-muted-foreground"
+        >
           These are a few of the key features of AITool that distinguish it from
           other AI platforms.
         </p>
-        <div className="container mx-auto">
+        <div
+          data-aos="fade"
+          data-aos-duration="1500"
+          className="container mx-auto"
+        >
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Glowing
               color="#8ecffb"
@@ -485,7 +505,7 @@ export const Hero = (props: HeroProps) => {
               color="#8ecffb"
               className="relative w-full overflow-hidden rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
             >
-              <p className="absolute right-[-50px] inline-block -rotate-90 rounded-bl-md rounded-tl-md bg-[#fbc466] px-5 py-2 text-base font-medium text-black">
+              <p className="recommended absolute right-[-50px] inline-block -rotate-90 rounded-bl-md rounded-tl-md px-5 py-2 text-base font-medium text-black">
                 Recommended
               </p>
               <span className="mb-5 block rounded-full bg-white/10 px-6 py-2 text-xl font-medium text-white backdrop-blur-2xl">
@@ -550,7 +570,6 @@ export const Hero = (props: HeroProps) => {
           </div>
         </div>
       </div>
-
       {/* community */}
       {/* relied on by organizations */}
       <div
@@ -561,66 +580,34 @@ export const Hero = (props: HeroProps) => {
         <h1 className="text-center text-4xl font-bold">
           Community members opinions
         </h1>
-        <div className="gradient-mask flex w-full max-w-6xl items-start justify-between gap-16">
-          <Card className="w-full max-w-sm overflow-hidden rounded-lg border bg-[rgba(38,38,38,.6)]">
-            <p className="p-6 pb-4 font-mono text-lg">
-              For numerous months, I have employed AITool and am in awe of its
-              remarkable features. This AI instrument comprehends intricate
-              inquiries and delivers precise suggestions, enhancing my
-              efficiency and streamlining daily tasks.
-            </p>
-            <div className="flex justify-between bg-[#1a1a1a] px-4 py-6">
-              <div className="">
-                <h1 className="text-xl font-semibold">Siena Rodriguez</h1>
-                <p className="text-muted-foreground">Entrepreneur</p>
-              </div>
-              <img
-                src="https://framerusercontent.com/images/0rwLyHR38lGn29ByfJ9jV0IA.png?scale-down-to=512"
-                alt=""
-                className="size-14 rounded-full"
-              />
-            </div>
-          </Card>
-          <Card className="w-full max-w-sm overflow-hidden rounded-lg border bg-[rgba(38,38,38,.6)]">
-            <p className="p-6 pb-4 font-mono text-lg">
-              I was astounded by the precision and swiftness of the AI
-              instrument on AITool. It comprehended my inquiries and delivered
-              pertinent suggestions in a matter of seconds.
-            </p>
-            <div className="flex justify-between bg-[#1a1a1a] px-4 py-6">
-              <div className="">
-                <h1 className="text-xl font-semibold">Nikita Johnson</h1>
-                <p className="text-muted-foreground">Sales Executive</p>
-              </div>
-              <img
-                src="https://framerusercontent.com/images/bpeWvtoxuajqEtlukZhUFt9KM.png"
-                alt=""
-                className="size-14 rounded-full bg-[#c2a8ff]"
-              />
-            </div>
-          </Card>
-          <Card className="w-full max-w-sm overflow-hidden rounded-lg border bg-[rgba(38,38,38,.6)]">
-            <p className="p-6 pb-4 font-mono text-lg">
-              I was astounded by the precision and swiftness of the AI
-              instrument on AITool. It comprehended instrument on AITool my
-              inquiries and delivered pertinent suggestions in a matter of
-              seconds.
-            </p>
-            <div className="flex justify-between bg-[#1a1a1a] px-4 py-6">
-              <div className="">
-                <h1 className="text-xl font-semibold">Cheryl Chen</h1>
-                <p className="text-muted-foreground">Creative director</p>
-              </div>
-              <img
-                src="https://framerusercontent.com/images/mUVPNgOqhd1MFYjLtFtiBwvxfY.png"
-                alt=""
-                className="size-14 rounded-full bg-[#c2a8ff]"
-              />
-            </div>
-          </Card>
+        <div className="gradient-mask flex w-full max-w-6xl items-start justify-between">
+          <div className="flex animate-infinite-scroll gap-16">
+            {Array.from({ length: 10 }).map((_, index) => (
+              <Fragment key={index}>
+                {testimonials.map((t) => (
+                  <Card
+                    key={t.imgSrc}
+                    className="h-fit w-[340px] overflow-hidden rounded-lg border bg-[rgba(38,38,38,.6)]"
+                  >
+                    <p className="p-6 pb-4 font-mono text-lg">{t.text}</p>
+                    <div className="flex justify-between bg-[#1a1a1a] px-4 py-6">
+                      <div className="">
+                        <h1 className="text-xl font-semibold">{t.name}</h1>
+                        <p className="text-muted-foreground">{t.title}</p>
+                      </div>
+                      <img
+                        src={t.imgSrc}
+                        alt=""
+                        className="size-14 rounded-full bg-[#c2a8ff]"
+                      />
+                    </div>
+                  </Card>
+                ))}
+              </Fragment>
+            ))}
+          </div>
         </div>
       </div>
-
       <div
         data-aos="fade"
         data-aos-duration="1500"

@@ -155,6 +155,19 @@ filter: hue-rotate(0deg);
 background-image: linear-gradient(to right, rgb(194, 168, 255), rgb(194, 168, 255), rgb(255, 153, 235), rgb(255, 153, 235)) !important;
 }
 
+.recommended{
+  background-image: linear-gradient(to right, rgb(194, 168, 255), rgb(194, 168, 255), rgb(255, 153, 235), rgb(255, 153, 235), rgb(255, 148, 210), rgb(255, 148, 210), hsl(348, 100%, 78%), rgb(255, 143, 165), hsl(28, 100%, 75%), rgb(255, 187, 128), hsl(47, 100%, 74%), rgb(255, 226, 122), rgb(173, 216, 230), rgb(144, 238, 144));
+  filter: hue-rotate(0deg);
+  background-size: 600% auto;
+  animation: moveBG 20s ease-in-out infinite;
+}
+
+@keyframes moveBG {
+  0% { background-position:  10% 0%; }
+  50% { background-position:  50% 100%; }
+  100% { background-position: 90% 0; }
+}
+
 .custom-bg::before {
   content: "";
   position: fixed;
