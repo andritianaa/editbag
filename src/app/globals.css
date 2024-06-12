@@ -242,3 +242,19 @@ transition: ease all .5s;
 a{
   transition: ease all .3s;
 }
+
+.rainbow-shadow {
+  position: absolute;
+  inset: -1rem;
+  border-radius: 9999px;
+  background: linear-gradient(to right, 
+              rgb(224, 44, 45), 
+              rgb(247, 146, 0), 
+              rgb(244, 240, 0), 
+              rgb(12, 255, 10), 
+              rgb(11, 228, 255), 
+              rgb(233, 8, 247));
+  opacity: 0.4;
+  backdrop-filter: blur(20px); /* Ajoute un flou à l'ombre */
+  transition: opacity 1s ease;
+}
