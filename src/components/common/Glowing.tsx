@@ -52,7 +52,7 @@ export const Glowing = (props: GlowingProps) => {
           <div className="flex flex-wrap gap-10">
             <div
               className={cn(
-                "flex flex-1 flex-col items-start gap-5 rounded-xl border-2 border-solid border-[#eceff133] bg-[rgba(38,38,38,.6)] text-white transition-colors",
+                "flex flex-1 flex-col items-start gap-5 rounded-xl border border-solid border-[#eceff133] bg-[rgba(38,38,38,.6)] text-white transition-colors",
                 props.className
               )}
             >

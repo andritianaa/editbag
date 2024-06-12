@@ -1,3 +1,4 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
 import { Check, MoveRight } from "lucide-react";
 import { Layout, LayoutContent } from "../layout/Layout";
@@ -5,14 +6,29 @@ import { Card } from "../ui/card";
 import { Glowing } from "../common/Glowing";
 import { FAQ } from "./FAQ";
 import { Play } from "../common/Play";
+import { Twitter } from "../common/twitter";
 import Link from "next/link";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+import { Logo } from "../common/Logo";
+import { Facebook } from "../common/Facebook";
+import { Instagram } from "../common/Instagram";
+import { useEffect } from "react";
 export type HeroProps = {};
 
 export const Hero = (props: HeroProps) => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <Layout className="flex flex-col items-center justify-center">
       {/* hero */}
-      <div className="flex h-[70vh] w-full max-w-6xl flex-col items-start justify-center space-y-10 py-8">
+      <div
+        data-aos="fade"
+        data-aos-duration="1500"
+        className="flex h-[70vh] w-full max-w-6xl flex-col items-start justify-center space-y-10 py-8"
+      >
         <div className="text-left text-3xl font-bold text-white sm:text-4xl lg:text-6xl">
           <p className="animatedText leading-[5rem]">Everything you need</p>
           <p className="max-w-xl leading-[5rem]">
@@ -38,7 +54,11 @@ export const Hero = (props: HeroProps) => {
       </div>
       {/* screenshot */}
 
-      <div className="flex h-[70vh] w-full max-w-6xl flex-col items-center space-y-8">
+      <div
+        data-aos="fade"
+        data-aos-duration="1500"
+        className="flex h-[70vh] w-full max-w-6xl flex-col items-center space-y-8"
+      >
         <div className="rounded-lg border border-[#3f3f3f] bg-[#212121] p-8">
           <img
             src="/screenshot.avif"
@@ -49,7 +69,11 @@ export const Hero = (props: HeroProps) => {
       </div>
       {/* features */}
 
-      <div className="mt-32 flex w-full max-w-6xl items-start justify-center gap-10 py-8">
+      <div
+        data-aos="fade"
+        data-aos-duration="1500"
+        className="mt-32 flex w-full max-w-6xl items-start justify-center gap-10 py-8"
+      >
         <Card className="flex w-[50%] items-center justify-center border border-[#3f3f3f] bg-[#212121]">
           <img
             src="https://framerusercontent.com/images/4CgzWyHvfnclw7zTig67f8Ecgl8.png"
@@ -65,7 +89,11 @@ export const Hero = (props: HeroProps) => {
           </p>
         </div>
       </div>
-      <div className="flex w-full max-w-6xl flex-row-reverse items-start justify-center gap-10 py-8">
+      <div
+        data-aos="fade"
+        data-aos-duration="1500"
+        className="flex w-full max-w-6xl flex-row-reverse items-start justify-center gap-10 py-8"
+      >
         <Card className="flex w-[50%] items-center justify-center border border-[#3f3f3f] bg-[#212121]">
           <img
             src="https://framerusercontent.com/images/bnnutbU3kyeL97GzQIXp0CAmA.png"
@@ -81,7 +109,11 @@ export const Hero = (props: HeroProps) => {
           </p>
         </div>
       </div>
-      <div className="flex w-full max-w-6xl items-start justify-center gap-10 py-8">
+      <div
+        data-aos="fade"
+        data-aos-duration="1500"
+        className="flex w-full max-w-6xl items-start justify-center gap-10 py-8"
+      >
         <Card className="flex w-[50%] items-center justify-center border border-[#3f3f3f] bg-[#212121]">
           <img
             src="https://framerusercontent.com/images/AKPoNO79KUV6LLktEb6iyng0Ro0.png"
@@ -98,7 +130,11 @@ export const Hero = (props: HeroProps) => {
         </div>
       </div>
       {/* more features */}
-      <div className="flex w-full max-w-6xl flex-col items-center justify-center space-y-8 p-8">
+      <div
+        data-aos="fade"
+        data-aos-duration="1500"
+        className="flex w-full max-w-6xl flex-col items-center justify-center space-y-8 p-8"
+      >
         <h1 className="animatedText text-6xl font-bold">More Features</h1>
         <p className="max-w-lg text-center text-lg text-muted-foreground">
           These are a few of the key features of AITool that distinguish it from
@@ -106,11 +142,7 @@ export const Hero = (props: HeroProps) => {
         </p>
         <div className="flex flex-wrap">
           <div className="w-full p-6 md:w-1/2 lg:w-1/3">
-            <div
-              className="wow fadeInUp group mb-12"
-              data-aos="zoom-in-up"
-              data-aos-delay="150"
-            >
+            <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#c2a8ff]">
                 <svg
                   className="scale-75"
@@ -136,11 +168,7 @@ export const Hero = (props: HeroProps) => {
             </div>
           </div>
           <div className="w-full p-6 md:w-1/2 lg:w-1/3">
-            <div
-              className="wow fadeInUp group mb-12"
-              data-aos="zoom-in-up"
-              data-aos-delay="200"
-            >
+            <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#ff99eb]">
                 <svg
                   className="scale-75"
@@ -166,11 +194,7 @@ export const Hero = (props: HeroProps) => {
             </div>
           </div>
           <div className="w-full p-6 md:w-1/2 lg:w-1/3">
-            <div
-              className="wow fadeInUp group mb-12"
-              data-aos="zoom-in-up"
-              data-aos-delay="250"
-            >
+            <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#ffbb80]">
                 <svg
                   className="scale-75"
@@ -228,11 +252,7 @@ export const Hero = (props: HeroProps) => {
             </div>
           </div>
           <div className="w-full p-6 md:w-1/2 lg:w-1/3">
-            <div
-              className="wow fadeInUp group mb-12"
-              data-aos="zoom-in-up"
-              data-aos-delay="300"
-            >
+            <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#ffe27a]">
                 <svg
                   className="scale-75"
@@ -270,11 +290,7 @@ export const Hero = (props: HeroProps) => {
             </div>
           </div>
           <div className="w-full p-6 md:w-1/2 lg:w-1/3">
-            <div
-              className="wow fadeInUp group mb-12"
-              data-aos="zoom-in-up"
-              data-aos-delay="350"
-            >
+            <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#69f28d]">
                 <svg
                   className="scale-75"
@@ -312,11 +328,7 @@ export const Hero = (props: HeroProps) => {
             </div>
           </div>
           <div className="w-full p-6 md:w-1/2 lg:w-1/3">
-            <div
-              className="wow fadeInUp group mb-12"
-              data-aos="zoom-in-up"
-              data-aos-delay="400"
-            >
+            <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#8ecffb]">
                 <svg
                   className="scale-75"
@@ -356,7 +368,11 @@ export const Hero = (props: HeroProps) => {
         </div>
       </div>
       {/* relied on by organizations */}
-      <div className="flex w-full max-w-6xl flex-col items-center justify-center gap-10 py-8">
+      <div
+        data-aos="fade"
+        data-aos-duration="1500"
+        className="flex w-full max-w-6xl flex-col items-center justify-center gap-10 py-8"
+      >
         <h1 className="text-center text-4xl font-bold">
           Relied on by organizations globally{" "}
         </h1>
@@ -390,11 +406,17 @@ export const Hero = (props: HeroProps) => {
       </div>
 
       {/* plan  */}
-      <div className="flex w-full flex-col items-center justify-center space-y-8 p-8">
+      <div
+        data-aos="fade"
+        data-aos-duration="1500"
+        className="flex w-full flex-col items-center justify-center space-y-8 p-8"
+      >
         <p className="max-w-lg text-center text-lg text-muted-foreground">
           Select a plan
         </p>
-        <h1 id="pricing" className="animatedText pb-2 text-6xl font-bold">Pricing</h1>
+        <h1 id="pricing" className="animatedText pb-2 text-6xl font-bold">
+          Pricing
+        </h1>
         <p className="max-w-lg text-center text-lg text-muted-foreground">
           These are a few of the key features of AITool that distinguish it from
           other AI platforms.
@@ -402,7 +424,7 @@ export const Hero = (props: HeroProps) => {
         <div className="container mx-auto">
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Glowing
-              color="#fbc466"
+              color="#8ecffb"
               className="relative w-full rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
             >
               <span className="mb-5 block rounded-full bg-white/10 px-6 py-2 text-xl font-medium text-white backdrop-blur-2xl">
@@ -464,7 +486,7 @@ export const Hero = (props: HeroProps) => {
             </Glowing>
 
             <Glowing
-              color="#fbc466"
+              color="#8ecffb"
               className="relative w-full overflow-hidden rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
             >
               <p className="absolute right-[-50px] inline-block -rotate-90 rounded-bl-md rounded-tl-md bg-[#fbc466] px-5 py-2 text-base font-medium text-black">
@@ -535,7 +557,11 @@ export const Hero = (props: HeroProps) => {
 
       {/* community */}
       {/* relied on by organizations */}
-      <div className="flex w-full max-w-6xl flex-col items-center justify-center gap-10 py-8">
+      <div
+        data-aos="fade"
+        data-aos-duration="1500"
+        className="flex w-full max-w-6xl flex-col items-center justify-center gap-10 py-8"
+      >
         <h1 className="text-center text-4xl font-bold">
           Community members opinions
         </h1>
@@ -599,9 +625,95 @@ export const Hero = (props: HeroProps) => {
         </div>
       </div>
 
-      <div className="flex w-full flex-col items-center justify-center space-y-8 p-8">
+      <div
+        data-aos="fade"
+        data-aos-duration="1500"
+        className="flex w-full flex-col items-center justify-center space-y-8 p-8"
+      >
         <FAQ />
       </div>
+
+      <footer
+        data-aos="fade"
+        data-aos-duration="1500"
+        className="flex w-full max-w-6xl flex-col items-center justify-center gap-10 py-8"
+      >
+        <div className="flex w-full justify-between">
+          <div className="flex w-1/2 flex-col">
+            <Logo className="mb-2" />
+            <p className="w-1/2 text-lg">
+              An online-based solution combining AI potential with the
+              simplicity of a subscription-based software method.
+            </p>
+          </div>
+          <div className="flex w-1/4 flex-col">
+            <h1 className="mb-2 text-2xl font-semibold">Contact</h1>
+            <p className="text-lg">
+              Email: hello@tool.ai <br /> Address: <br />
+              Singel 258
+              <br /> 1234 AB Amsterdam
+              <br /> The Netherlands
+            </p>
+          </div>
+          <div className="flex flex-col">
+            <h1 className="mb-2 text-2xl font-semibold">Links</h1>
+            <Link className="w-full text-lg hover:text-[#c2a8ff]" href="#">
+              About
+            </Link>
+            <Link className="w-full text-lg hover:text-[#c2a8ff]" href="#">
+              Contact
+            </Link>
+            <Link
+              className="w-full text-lg hover:text-[#c2a8ff]"
+              href="/#pricing"
+            >
+              Pricing
+            </Link>
+            <Link className="w-full text-lg hover:text-[#c2a8ff]" href="#">
+              Home 02
+            </Link>
+            <Link className="w-full text-lg hover:text-[#c2a8ff]" href="#">
+              More products
+            </Link>
+          </div>
+        </div>
+        <div className="h-[2px] w-full bg-[#c2a8ff]"></div>
+        <div className="flex w-full justify-between">
+          <div className="w-1/2">
+            <p className="text-lg">© 2024, AITool. All Rights Reserved</p>
+            <span className="flex gap-2">
+              <Link className="text-lg hover:text-[#c2a8ff]" href="#">
+                Term of Services
+              </Link>{" "}
+              <p className="animatedText">✦</p>
+              <Link className="text-lg hover:text-[#c2a8ff]" href="#">
+                Privacy Policy
+              </Link>
+            </span>
+          </div>
+
+          <div className="flex gap-4">
+            <Link
+              href="https://twitter.com"
+              className="flex size-12 items-center justify-center rounded-full border-2 border-transparent bg-[#554c69c6] p-2 hover:border-white hover:bg-transparent"
+            >
+              <Twitter />
+            </Link>
+            <Link
+              href="https://facebook.com"
+              className="flex size-12 items-center justify-center rounded-full border-2 border-transparent bg-[#554c69c6] p-2 hover:border-white hover:bg-transparent"
+            >
+              <Facebook />
+            </Link>
+            <Link
+              href="https://instagram.com"
+              className="flex size-12 items-center justify-center rounded-full border-2 border-transparent bg-[#554c69c6] p-2 hover:border-white hover:bg-transparent"
+            >
+              <Instagram />
+            </Link>
+          </div>
+        </div>
+      </footer>
     </Layout>
   );
 };

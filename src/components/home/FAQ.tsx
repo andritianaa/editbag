@@ -1,3 +1,4 @@
+"use client";
 import {
   Accordion,
   AccordionContent,
@@ -7,10 +8,19 @@ import {
 import { Layout } from "../layout/Layout";
 import { Label } from "../ui/label";
 import { Glowing } from "../common/Glowing";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 export const FAQ = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <>
+    <div
+      data-aos="fade"
+      data-aos-duration="1500"
+      className="flex flex-col items-center gap-8"
+    >
       <h1 className="animatedText pb-2 text-center text-6xl font-bold">
         Frequently Asked Questions
       </h1>
@@ -75,6 +85,6 @@ export const FAQ = () => {
           </AccordionItem>
         </Glowing>
       </Accordion>
-    </>
+    </div>
   );
 };
