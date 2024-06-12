@@ -33,6 +33,11 @@ export const MenuResponsive = (props: MenuResponsiveProps) => {
             </Link>
           </Link>
 
+          <Link href={`/`}>
+            <Button variant="ghost" className="w-full justify-start text-lg">
+              Affiliation
+            </Button>
+          </Link>
           <Link href={`/about`}>
             <Button variant="ghost" className="w-full justify-start text-lg">
               About

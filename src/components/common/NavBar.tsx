@@ -20,6 +20,9 @@ export const NavBar = async () => {
         </Link>
         <div className="flex items-center gap-2">
           <div className="max-md:hidden">
+            <Link href={`/`}>
+              <Button variant="ghost">Affiliation</Button>
+            </Link>
             <Link href={`/about`}>
               <Button variant="ghost">About</Button>
             </Link>
