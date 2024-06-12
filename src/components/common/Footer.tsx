@@ -64,11 +64,11 @@ export const Footer = () => {
         <div className="w-1/2">
           <p className="text-lg">© 2024, AITool. All Rights Reserved</p>
           <span className="flex gap-2">
-            <Link className="text-lg hover:text-[#c2a8ff]" href="#">
+            <Link className="text-lg hover:text-[#c2a8ff]" href="/terms">
               Term of Services
             </Link>{" "}
             <p className="animatedText">✦</p>
-            <Link className="text-lg hover:text-[#c2a8ff]" href="#">
+            <Link className="text-lg hover:text-[#c2a8ff]" href="/privacy">
               Privacy Policy
             </Link>
           </span>
