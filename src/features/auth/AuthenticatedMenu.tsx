@@ -8,9 +8,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { redirect, useRouter } from "next/navigation";
 
 import { Bookmark, Download, LayoutDashboard, LogOut } from "lucide-react";
-import { SignOutAction } from "@/actions/auth.actions";
+import { signOut } from "next-auth/react";
+
 import Link from "next/link";
 import { Privilege } from "@prisma/client";
 import { Separator } from "../../components/ui/separator";
@@ -24,6 +26,8 @@ export type UserProps = {
 };
 
 export const AuthenticatedMenu = (props: UserProps) => {
+  const router = useRouter();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -85,7 +89,10 @@ export const AuthenticatedMenu = (props: UserProps) => {
         <Separator />
         <DropdownMenuItem
           className="flex items-center gap-3"
-          onClick={() => SignOutAction()}
+          onClick={async () => {
+            await signOut({ redirect: false });
+            router.push("/");
+          }}
         >
           <LogOut size={21} />
           <span>Log out</span>

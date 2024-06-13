@@ -43,7 +43,7 @@ export default async function RoutePage(props: PageParams<{}>) {
                         name=""
                         id=""
                         placeholder="Enter your full name"
-                        className="border-gray- block w-full rounded-md border bg-[#1c1c1c] p-4 text-black placeholder-gray-500 caret-blue-600 transition-all duration-200 focus:border-blue-600 focus:outline-none"
+                        className="border-gray- block w-full rounded-md border bg-[#1c1c1c] p-4 text-white placeholder-gray-500 transition-all duration-200 focus:border-white focus:outline-none"
                       />
                     </div>
                   </div>
@@ -59,7 +59,7 @@ export default async function RoutePage(props: PageParams<{}>) {
                         name=""
                         id=""
                         placeholder="Enter email to get started"
-                        className="border-gray- block w-full rounded-md border bg-[#1c1c1c] p-4 text-black placeholder-gray-500 caret-blue-600 transition-all duration-200 focus:border-blue-600 focus:outline-none"
+                        className="border-gray- block w-full rounded-md border bg-[#1c1c1c] p-4 text-black placeholder-gray-500 caret-white transition-all duration-200 focus:border-white focus:outline-none"
                       />
                     </div>
                   </div>
@@ -75,7 +75,7 @@ export default async function RoutePage(props: PageParams<{}>) {
                         name=""
                         id=""
                         placeholder="Enter your password"
-                        className="border-gray- block w-full rounded-md border bg-[#1c1c1c] p-4 text-black placeholder-gray-500 caret-blue-600 transition-all duration-200 focus:border-blue-600 focus:outline-none"
+                        className="border-gray- block w-full rounded-md border bg-[#1c1c1c] p-4 text-white placeholder-gray-500 caret-white transition-all duration-200 focus:border-white focus:outline-none"
                       />
                     </div>
                   </div>
@@ -132,7 +132,6 @@ export default async function RoutePage(props: PageParams<{}>) {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

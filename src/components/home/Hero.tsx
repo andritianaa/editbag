@@ -565,8 +565,6 @@ export const Hero = (props: HeroProps) => {
                 Get started
               </a>
             </Glowing>
-
-            <div className="w-full p-6 md:w-1/2 lg:w-1/3"></div>
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
 import NextTopLoader from "nextjs-toploader";
+import AuthContext from "@/context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,10 +48,12 @@ export default function RootLayout({
           inter.className
         )}
       >
-        <Providers>
-          <NextTopLoader showSpinner={false} color="#fbc466" />
-          {children}
-        </Providers>
+        <AuthContext>
+          <Providers>
+            <NextTopLoader showSpinner={false} color="#fbc466" />
+            {children}
+          </Providers>
+        </AuthContext>
       </body>
     </html>
   );
