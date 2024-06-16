@@ -258,3 +258,10 @@ a{
   backdrop-filter: blur(20px); /* Ajoute un flou à l'ombre */
   transition: opacity 1s ease;
 }
+
+.glow-effect {
+  opacity: 0.2;
+  transition: opacity 0.5s ease-in-out;
+  mask: radial-gradient(15rem 15rem at var(--x) var(--y), #000 1%, transparent 100%);
+  -webkit-mask: radial-gradient(15rem 15rem at var(--x) var(--y), #000 1%, transparent 100%);
+}

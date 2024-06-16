@@ -7,7 +7,7 @@ export default async function RoutePage(props: PageParams<{}>) {
   return (
     <>
       <NavBar />
-      <div className="h-full w-full max-md:p-4">
+      <div className="flex h-full w-full flex-col items-center max-md:p-4">
         <Layout className="card my-8 max-w-2xl space-y-4 p-16 max-md:my-0 max-md:p-8">
           <h1 className="text-3xl">Terms and Conditions of Use for Editbag</h1>
           <p className="text-muted-foreground">Last Updated: 02 may 2024</p>
