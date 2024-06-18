@@ -5,6 +5,7 @@ import { currentUser } from "@/lib/current-user";
 import { prisma } from "../prisma";
 
 export const publish = async (
+  type: string,
   title: string,
   content: string,
   image: string,
@@ -22,6 +23,7 @@ export const publish = async (
     await prisma.post.create({
       data: {
         title,
+        type,
         subtitle,
         content,
         image,
@@ -38,6 +40,7 @@ export const publish = async (
 };
 
 export const edit = async (
+  type: string,
   title: string,
   content: string,
   image: string,
@@ -56,6 +59,7 @@ export const edit = async (
     },
     data: {
       title,
+      type,
       subtitle,
       content,
       image,

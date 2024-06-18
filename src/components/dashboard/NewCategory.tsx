@@ -10,9 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { createCategory } from "../../actions/categories.actions";
 import { toast } from "sonner";
 
 export type NewCategoryProps = {
@@ -26,7 +24,6 @@ export const NewCategory = (props: NewCategoryProps) => {
     e.preventDefault();
     if (name) {
       props.onAdd(name);
-      await createCategory(name);
       setIsOpen(false);
       setName("");
     } else {

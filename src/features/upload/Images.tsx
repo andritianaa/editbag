@@ -47,7 +47,7 @@ export const ImageUpload = (props: ImagesProps) => {
     <Card
       className={cn(
         props.className,
-        "block flex-1 rounded-lg border border-input bg-background p-4 text-sm space-y-4 min-w-lg "
+        "block flex-1 rounded-lg border border-input p-4 text-sm space-y-4 min-w-lg "
       )}
     >
       <div className="">

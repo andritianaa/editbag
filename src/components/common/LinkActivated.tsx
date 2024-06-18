@@ -18,7 +18,7 @@ const Link = (props: LinkActivatedProps) => {
       className={cn(
         currentPath === `${props.href}`
           ? "bg-muted text-[#fbc466]"
-          : "text-muted-foreground ",
+          : "text-muted-foreground",
         props.className
       )}
     >

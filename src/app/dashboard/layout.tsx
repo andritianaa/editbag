@@ -30,11 +30,11 @@ export default async function RouteLayout(props: LayoutParams<{}>) {
   if (user) {
     return (
       <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-        <div className="hidden border-r bg-[#191919] bg-muted/40 md:block">
+        <div className="hidden border-r bg-[#191919] md:block">
           <div className="flex h-full max-h-screen flex-col gap-2 bg-[#191919]">
-            <div className="flex h-14 items-center justify-end gap-4 border-b bg-[#191919] bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+            <div className="flex h-14 items-center justify-end gap-4 border-b bg-[#191919] px-4 lg:h-[60px] lg:px-6">
               <Link className="flex items-center gap-2 font-semibold" href="#">
-                <Link href="/">
+                <Link href="/products">
                   <Logo />
                 </Link>
               </Link>
@@ -96,7 +96,7 @@ export default async function RouteLayout(props: LayoutParams<{}>) {
                     className="flex items-center gap-2 text-lg font-semibold"
                     href="#"
                   >
-                    <Link href="/">
+                    <Link href="/products">
                       <Logo />
                     </Link>
                   </Link>

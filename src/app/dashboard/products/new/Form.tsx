@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { BookCheck, BookDashed } from "lucide-react";
 import { ImageUpload } from "@/features/upload/Images";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { publish } from "@/actions/blog.actions";
 import { toast } from "sonner";
 import { Categories, PostStatus, SubCategories } from "@prisma/client";
@@ -20,10 +20,19 @@ import {
 import { FileUpload } from "@/features/upload/File";
 import { NewCategory } from "@/components/dashboard/NewCategory";
 import { NewSubCategory } from "@/components/dashboard/NewSubCategory";
+import {
+  Category,
+  CategoryWithSubcategoriesByType,
+  SubCategory,
+} from "@/types/next";
+import {
+  createCategory,
+  createSubCategory,
+  getCategoriesWithSubcategories,
+} from "@/actions/categories.actions";
 
 export type formProps = {
-  categories: Categories[];
-  subCategories: SubCategories[];
+  categories: CategoryWithSubcategoriesByType;
 };
 
 export const Form = (props: formProps) => {
@@ -35,24 +44,35 @@ export const Form = (props: formProps) => {
   const [fileSize, setFileSize] = useState<string>("");
   const [fileURL, setFileURL] = useState<string>("");
   const [category, setCategory] = useState<string>("");
+  const [productType, setProductType] = useState<string>("templates");
   const [subCategory, setSubCategory] = useState<string>("");
-  const [categories, setCategories] = useState<Categories[]>(props.categories);
-  const [subCategories, setSubCategories] = useState<SubCategories[]>(
-    props.subCategories
+
+  const [categories, setCategories] = useState<Category[]>(
+    props.categories[productType].categories
   );
+  const [subCategories, setSubCategories] = useState<SubCategory[]>(
+    props.categories.templates.categories[0]
+      ? props.categories.templates.categories[0].SubCategories
+      : []
+  );
+
+  console.log("categories ==> ", props.categories);
 
   const handleImageUrlChange = (newImageUrl: string) => {
     console.log(newImageUrl);
     setImageUrl(newImageUrl);
   };
+
   const handleFileUrlChange = (newFileUrl: string, fileSize: string) => {
     console.log(newFileUrl);
     setFileURL(newFileUrl);
     setFileSize(fileSize);
   };
+
   const handleSubImageUrlChange = (newImageUrl: string) => {
     setSubImage(newImageUrl);
   };
+
   const handleTextChange = (newText: string | null) => {
     setText(newText);
   };
@@ -66,6 +86,7 @@ export const Form = (props: formProps) => {
   const handlePublish = async () => {
     if (text && title && imageUrl && subtitle && fileURL && category) {
       await publish(
+        productType,
         title,
         text,
         imageUrl,
@@ -97,6 +118,7 @@ export const Form = (props: formProps) => {
   const handleDraft = async () => {
     if (title) {
       await publish(
+        productType,
         title,
         text ?? "",
         imageUrl ?? "",
@@ -114,15 +136,65 @@ export const Form = (props: formProps) => {
     }
   };
 
-  const handleNewCategory = (name: string) => {
-    toast.message("New category added");
+  const handleNewCategory = async (name: string) => {
+    await createCategory(name, productType);
+    await refetchCategories();
     setCategory(name);
-    setCategories([...categories, { name, id: categories.length }]);
+    toast.message("New category added");
   };
-  const handleNewSubCategory = (name: string) => {
-    toast.message("New subcategory added");
-    setSubCategory(name);
-    setSubCategories([...subCategories, { name, id: subCategories.length }]);
+
+  const handleNewSubCategory = useCallback(
+    async (name: string) => {
+      console.log("handleNewSubCategory called");
+
+      if (category) {
+        await createSubCategory(name, productType, category);
+        await refetchCategories();
+        setSubCategory(name);
+        toast.message("New subcategory added");
+      } else {
+        toast.error("Please select a category first");
+      }
+    },
+    [productType, category]
+  );
+
+  const refetchCategories = async () => {
+    const data = await getCategoriesWithSubcategories();
+    setCategories(data[productType].categories);
+    const selectedCategory = data[productType].categories.find(
+      (c: Category) => c.name === category
+    );
+    if (selectedCategory) {
+      setSubCategories(selectedCategory.SubCategories);
+    } else {
+      setSubCategories([]);
+    }
+  };
+
+  const handleChangeProductType = (newProductType: string) => {
+    setProductType(newProductType);
+    setSubCategories(
+      props.categories[newProductType].categories[0] == undefined
+        ? []
+        : props.categories[newProductType].categories[0].SubCategories
+    );
+
+    setCategories(props.categories[newProductType].categories);
+    setCategory("");
+    setSubCategory("");
+  };
+
+  const handleChangeCategory = (newCategory: string) => {
+    setCategory(newCategory);
+
+    const selectedCategory = categories.find((c) => c.name === newCategory);
+    if (selectedCategory) {
+      setSubCategories(selectedCategory.SubCategories);
+    } else {
+      setSubCategories([]);
+    }
+    setSubCategory("");
   };
 
   return (
@@ -139,8 +211,23 @@ export const Form = (props: formProps) => {
         label="Subtitle"
         onChange={(e) => handleSubtitleChange(e.target.value)}
       />
+
       <div className="flex gap-2">
-        <Select value={category} onValueChange={setCategory}>
+        <Select value={productType} onValueChange={handleChangeProductType}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Select an asset category..." />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Select product type...</SelectLabel>
+              <SelectItem value="templates"> Templates</SelectItem>
+              <SelectItem value="emoji"> Emoji</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="flex gap-2">
+        <Select value={category} onValueChange={handleChangeCategory}>
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Select an asset category..." />
           </SelectTrigger>
@@ -158,7 +245,11 @@ export const Form = (props: formProps) => {
         <NewCategory onAdd={handleNewCategory} />
       </div>
       <div className="flex gap-2">
-        <Select value={subCategory} onValueChange={setSubCategory}>
+        <Select
+          value={subCategory}
+          onValueChange={setSubCategory}
+          disabled={category != "" ? false : true}
+        >
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Select an asset sub category..." />
           </SelectTrigger>
@@ -166,11 +257,16 @@ export const Form = (props: formProps) => {
             <SelectGroup>
               <SelectLabel>Select an asset sub category...</SelectLabel>
               <SelectItem value=" ">Aucun</SelectItem>
-              {subCategories.map((c) => (
-                <SelectItem key={c.id} value={c.name}>
-                  {c.name}
-                </SelectItem>
-              ))}
+              {subCategories
+                .filter(
+                  (subCategory, index, self) =>
+                    index === self.findIndex((s) => s.name === subCategory.name)
+                )
+                .map((c) => (
+                  <SelectItem key={c.id} value={c.name}>
+                    {c.name}
+                  </SelectItem>
+                ))}
             </SelectGroup>
           </SelectContent>
         </Select>

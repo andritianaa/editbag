@@ -46,13 +46,13 @@ export const Product = (props: ProductProps) => {
   return (
     <Link
       href={`/products/${props.id}`}
-      className="relative w-full max-w-xs space-y-2 overflow-hidden"
+      className="relative w-full max-w-xs overflow-hidden rounded-xl p-4 hover:bg-[rgba(38,38,38,.9)]"
     >
       {isFavorite ? (
         <Button
           variant="outline"
           size="icon"
-          className="absolute right-4 top-4 z-10 border-none bg-red-700/50 hover:bg-red-700/70"
+          className="absolute right-6 top-6 z-10 border-none bg-red-700/50 hover:bg-red-700/70"
           onClick={handleRemoveFromFavorites}
         >
           <BookmarkCheck color="#ffffff" />
@@ -62,12 +62,12 @@ export const Product = (props: ProductProps) => {
           variant="outline"
           size="icon"
           onClick={handleAddToFavorites}
-          className="absolute right-4 top-4 z-10 border-none bg-muted-foreground/50 hover:bg-muted-foreground/70"
+          className="absolute right-6 top-6 z-10 border-none bg-muted-foreground/50 hover:bg-muted-foreground/70"
         >
           <BookmarkPlus color="#ffffff" />
         </Button>
       )}
-      <Card className="w-full max-w-sm space-y-2 overflow-hidden">
+      <Card className="w-full max-w-sm space-y-4 overflow-hidden rounded-none bg-transparent pb-2">
         <div
           className="relative aspect-square w-full"
           style={{ cursor: "pointer" }}
@@ -79,7 +79,7 @@ export const Product = (props: ProductProps) => {
             src={props.imageUrl}
             alt=""
             style={{ display: "block" }}
-            className="h-full w-full object-cover"
+            className="h-full w-full rounded-md object-cover shadow-xl"
           />
           {props.subImage && (
             <img
@@ -87,17 +87,17 @@ export const Product = (props: ProductProps) => {
               src={props.subImage}
               alt=""
               style={{ display: "none" }}
-              className="h-full w-full object-cover"
+              className="h-full w-full rounded-md object-cover shadow-xl"
             />
           )}
           <Badge className="absolute bottom-2 left-2 rounded">
             {props.category}
           </Badge>
         </div>
-        <CardContent className="h-16">
-          <p className="text-sm font-bold">{props.title}</p>
-          <p className="text-xs">{props.subTitle}</p>
-        </CardContent>
+        <div className="h-16">
+          <p className="text-md font-semibold">{props.title}</p>
+          <p className="text-muted-foreground">{props.subTitle}</p>
+        </div>
       </Card>
     </Link>
   );

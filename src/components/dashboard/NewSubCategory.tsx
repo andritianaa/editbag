@@ -28,7 +28,6 @@ export const NewSubCategory = (props: NewSubCategoryProps) => {
     e.preventDefault();
     if (name) {
       props.onAdd(name);
-      await createSubCategory(name);
       setIsOpen(false);
       setName("");
     } else {

@@ -1,6 +1,6 @@
 import { twx } from "@/lib/twx";
 export const Layout = twx.div((props) => [
-  `max-w-8xl w-full gap-4 mx-auto px-4`,
+  `max-w-7xl w-full gap-4 mx-auto px-4`,
 ]);
 
 export const LayoutContent = twx.div((props) => [`w-full`]);

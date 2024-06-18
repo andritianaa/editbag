@@ -9,10 +9,10 @@ import { Categories, Post, SubCategories } from "@prisma/client";
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Button } from "../../components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { Footer } from "../../components/common/Footer";
-import { Tab } from "../../components/products/Tab";
+import { Footer } from "@/components/common/Footer";
+import { Tab } from "../../../components/products/Tab";
 
 export type contentProps = {
   products: (Omit<Post, "id"> & { id: string; isFavorite: boolean })[];
@@ -108,7 +108,7 @@ export const Content = (props: contentProps) => {
             <div className="">
               {props.categories.map(
                 (c) =>
-                  c.type == "templates" && (
+                  c.type == "emoji" && (
                     <div
                       className="flex w-full items-center space-x-2"
                       key={c.id}
@@ -134,7 +134,7 @@ export const Content = (props: contentProps) => {
             <div className="">
               {props.subCategories.map(
                 (c) =>
-                  c.type == "templates" && (
+                  c.type == "emoji" && (
                     <div
                       className="flex w-full items-center space-x-2"
                       key={c.id}
@@ -196,7 +196,7 @@ export const Content = (props: contentProps) => {
                     <div className="">
                       {props.categories.map(
                         (c) =>
-                          c.type == "templates" && (
+                          c.type == "emoji" && (
                             <div
                               className="flex w-full items-center space-x-2"
                               key={c.id}
@@ -222,7 +222,7 @@ export const Content = (props: contentProps) => {
                     <div className="">
                       {props.subCategories.map(
                         (c) =>
-                          c.type == "templates" && (
+                          c.type == "emoji" && (
                             <div
                               className="flex w-full items-center space-x-2"
                               key={c.id}
@@ -249,13 +249,13 @@ export const Content = (props: contentProps) => {
               </Drawer>
             </div>
             <div className="w-full">
-              <Tab type="templates" />
+              <Tab type="emoji" />
               <div className="flex flex-wrap justify-center">
                 {props.products
                   .filter(
                     (product) =>
                       product.status === "online" &&
-                      product.type === "templates" &&
+                      product.type === "emoji" &&
                       (selectedCategories.length === 0 ||
                         selectedCategories.includes(product.category)) &&
                       (selectedSubCategories.length === 0 ||
@@ -290,7 +290,7 @@ export const Content = (props: contentProps) => {
                 {props.products.filter(
                   (product) =>
                     product.status === "online" &&
-                    product.type === "templates" &&
+                    product.type === "emoji" &&
                     (selectedCategories.length === 0 ||
                       selectedCategories.includes(product.category)) &&
                     (selectedSubCategories.length === 0 ||

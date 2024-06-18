@@ -14,3 +14,29 @@ export type ErrorParams = {
   error: Error & { digest?: string };
   reset: () => void;
 };
+
+export type SubCategory = {
+  id: number;
+  type: string;
+  name: string;
+  categoryId: number;
+};
+
+export type Category = {
+  id: number;
+  name: string;
+  type: string;
+  SubCategories: SubCategory[];
+};
+
+enum ProductTypes {
+  templates = "templates",
+  emoji = "emoji",
+}
+
+export type CategoryWithSubcategoriesByType = {
+  [key in ProductTypes]: {
+    categories: Category[];
+    subCategories: Record<string, SubCategory[]>;
+  };
+};

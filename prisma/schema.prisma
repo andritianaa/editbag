@@ -101,6 +101,7 @@ model Post {
   content     String
   image       String
   subImage    String?
+  type        String     @default("templates")
   fileUrl     String
   fileSize    String
   category    String     @default("Photoshop")
@@ -159,14 +160,19 @@ model Downloaded {
   user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model Categories {
-  id   Int    @id @default(autoincrement())
-  name String
+model SubCategories {
+  id         Int        @id @default(autoincrement())
+  type       String     @default("templates")
+  name       String
+  categoryId Int        @default(1)
+  category   Categories @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 }
 
-model SubCategories {
-  id   Int    @id @default(autoincrement())
-  name String
+model Categories {
+  id            Int             @id @default(autoincrement())
+  name          String
+  type          String          @default("templates")
+  SubCategories SubCategories[]
 }
 
 model Plan {
@@ -217,4 +223,9 @@ model Subscription {
   plan Plan @relation(fields: [planId], references: [id])
 
   @@map("subscription")
+}
+
+enum ProductTypes {
+  templates
+  emoji
 }
