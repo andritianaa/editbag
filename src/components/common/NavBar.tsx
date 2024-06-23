@@ -19,7 +19,16 @@ export const NavBar = async () => {
             <Logo />
           </Link> */}
           <SearchInput />
+
           <div className="flex items-center gap-2">
+            <div className="max-md:hidden">
+              <Link href={`/Plan`}>
+                <Button variant="ghost">Plan</Button>
+              </Link>
+              <Link href={`/affiliation`}>
+                <Button variant="ghost">Affiliation</Button>
+              </Link>
+            </div>
             <AuthenticatedMenu
               email={user.email}
               image={user.image}
