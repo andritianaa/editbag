@@ -312,6 +312,7 @@ export const Content = (props: contentProps) => {
                   <div className="mt-8 max-h-[50vh] w-full max-w-[60rem] overflow-hidden rounded-lg">
                     <LiteYouTubeEmbed
                       id="8JMbMjJozc0"
+                      thumbnail="https://www.homeofeditors.com/cdn/shop/files/j0fxy4.jpg?v=1718304831&width=2000"
                       title="What’s new in Material Design for the web (Chrome Dev Summit 2019)"
                     />
                   </div>
