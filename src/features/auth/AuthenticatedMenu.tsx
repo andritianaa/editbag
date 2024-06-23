@@ -10,7 +10,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { redirect, useRouter } from "next/navigation";
 
-import { Bookmark, Download, LayoutDashboard, LogOut } from "lucide-react";
+import {
+  Bookmark,
+  Download,
+  LayoutDashboard,
+  LogOut,
+  CreditCard,
+  ChevronDown,
+} from "lucide-react";
 import { signOut } from "next-auth/react";
 
 import Link from "next/link";
@@ -42,6 +49,7 @@ export const AuthenticatedMenu = (props: UserProps) => {
               alt={`${props.email} - profile picture`}
             />
           </Avatar>
+          <ChevronDown size={16} />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-full">
@@ -84,6 +92,12 @@ export const AuthenticatedMenu = (props: UserProps) => {
           <DropdownMenuItem className="flex items-center gap-3">
             <Bookmark size={21} />
             <span>Saved product</span>
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/u/pricing">
+          <DropdownMenuItem className="flex items-center gap-3">
+            <CreditCard size={21} />
+            <span>Pricing</span>
           </DropdownMenuItem>
         </Link>
         <Separator />

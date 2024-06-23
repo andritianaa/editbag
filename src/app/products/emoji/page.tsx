@@ -1,5 +1,9 @@
 import type { PageParams } from "@/types/next";
-import { getPost } from "@/actions/getters/post.get";
+import {
+  getPost,
+  mostDownloadedPost,
+  mostPopularPost,
+} from "@/actions/getters/post.get";
 import { Content } from "./content";
 import { getCategories, getSubCategories } from "@/actions/categories.actions";
 export default async function RoutePage({
@@ -23,6 +27,8 @@ export default async function RoutePage({
       : [];
   const search: string = (searchParams?.search as string) || "";
 
+  const mostDownloaded = await mostDownloadedPost("emoji");
+  const mostPopular = await mostPopularPost("emoji");
   return (
     <Content
       products={products}
@@ -31,6 +37,8 @@ export default async function RoutePage({
       currentCategories={categories}
       currentSubCategories={subCategories}
       currentSearch={search}
+      mostDownloaded={mostDownloaded}
+      mostPopular={mostPopular}
     />
   );
 }

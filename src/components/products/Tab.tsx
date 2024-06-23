@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -8,44 +9,64 @@ export type TabProps = {
 export const Tab = (props: TabProps) => {
   return (
     <div className="mt-6 flex gap-4">
-      <Link href="/products">
+      <Link className="flex" href="/products">
         <Button
           variant="ghost"
-          className={`${
-            props.type == "templates" ? "bg-muted" : "bg-[rgba(38,38,38,.9)]"
+          className={`w-36 h-32 p-4 flex-col justify-between hover:bg-[rgba(38,38,38,.9)] ${
+            props.type == "templates" ? "bg-[rgba(38,38,38,.9)]" : ""
           } `}
         >
-          Templates
+          <img
+            className="size-[3.75rem]"
+            src="/illustration/template.png"
+            alt="template"
+          />
+          <p className="text-lg">Templates</p>
         </Button>
       </Link>
-      <Link href="/products/emoji">
+      <Link className="flex" href="/products/emoji">
         <Button
           variant="ghost"
-          className={`${
-            props.type == "emoji" ? "bg-muted" : "bg-[rgba(38,38,38,.9)]"
+          className={`w-36 h-32 p-4 flex-col justify-between hover:bg-[rgba(38,38,38,.9)] ${
+            props.type == "emoji" ? "bg-[rgba(38,38,38,.9)]" : ""
           } `}
         >
-          Emoji
+          <img
+            className="size-[3.75rem]"
+            src="/illustration/emoji.png"
+            alt="emoji"
+          />
+          <p className="text-lg">Emoji</p>
         </Button>
       </Link>
-      <Link href="/products/images">
+      <Link className="flex" href="/products/images">
         <Button
           variant="ghost"
-          className={`${
-            props.type == "images" ? "bg-muted" : "bg-[rgba(38,38,38,.9)]"
+          className={`w-36 h-32 p-4 flex-col justify-between hover:bg-[rgba(38,38,38,.9)] ${
+            props.type == "images" ? "bg-[rgba(38,38,38,.9)]" : ""
           } `}
         >
-          Images
+          <img
+            className="size-[3.75rem]"
+            src="/illustration/images.png"
+            alt="images"
+          />
+          <p className="text-lg">Images</p>
         </Button>
       </Link>
-      <Link href="/products/videos">
+      <Link className="flex" href="/products/videos">
         <Button
           variant="ghost"
-          className={`${
-            props.type == "videos" ? "bg-muted" : "bg-[rgba(38,38,38,.9)]"
+          className={`w-36 h-32 p-4 flex-col justify-between hover:bg-[rgba(38,38,38,.9)] ${
+            props.type == "videos" ? "bg-[rgba(38,38,38,.9)]" : ""
           } `}
         >
-          Videos
+          <img
+            className="size-[3.75rem]"
+            src="/illustration/video.png"
+            alt="video"
+          />
+          <p className="text-lg">Videos</p>
         </Button>
       </Link>
     </div>

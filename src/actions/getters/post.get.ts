@@ -30,11 +30,15 @@ export const getPost = async (): Promise<
   return results;
 };
 
-export const mostDownloadedPost = async (): Promise<
-  (Omit<Post, "id"> & { id: string; isFavorite: boolean })[]
-> => {
+export const mostDownloadedPost = async (
+  type: string
+): Promise<(Omit<Post, "id"> & { id: string; isFavorite: boolean })[]> => {
   const user = await currentUser();
   const posts = await prisma.post.findMany({
+    where: {
+      type: type,
+      status: "online",
+    },
     take: 3,
     orderBy: {
       Downloaded: {
@@ -43,6 +47,45 @@ export const mostDownloadedPost = async (): Promise<
     },
     include: {
       Downloaded: true,
+    },
+  });
+  const favoritePosts = await prisma.favorite.findMany({
+    where: {
+      userId: user?.id ?? 0,
+    },
+    select: {
+      postId: true,
+    },
+    orderBy: {
+      postId: "desc",
+    },
+  });
+
+  const favoritePostIds = favoritePosts.map((fav) => fav.postId);
+  const results = posts.map((post) => ({
+    ...post,
+    id: post.id.toString(),
+    isFavorite: favoritePostIds.includes(post.id),
+  }));
+  return results;
+};
+export const mostPopularPost = async (
+  type: string
+): Promise<(Omit<Post, "id"> & { id: string; isFavorite: boolean })[]> => {
+  const user = await currentUser();
+  const posts = await prisma.post.findMany({
+    where: {
+      type: type,
+      status: "online",
+    },
+    take: 3,
+    orderBy: {
+      Favorite: {
+        _count: "desc",
+      },
+    },
+    include: {
+      Favorite: true,
     },
   });
   const favoritePosts = await prisma.favorite.findMany({

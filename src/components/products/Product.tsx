@@ -62,7 +62,7 @@ export const Product = (props: ProductProps) => {
           variant="outline"
           size="icon"
           onClick={handleAddToFavorites}
-          className="absolute right-6 top-6 z-10 border-none bg-muted-foreground/50 hover:bg-muted-foreground/70"
+          className="absolute right-6 top-6 z-10 border-none bg-muted-foreground/50 hover:bg-[rgba(38,38,38,.9)]-foreground/70"
         >
           <BookmarkPlus color="#ffffff" />
         </Button>
