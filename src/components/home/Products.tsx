@@ -7,7 +7,7 @@ export type ProductsProps = {};
 
 export const Products = async (props: ProductsProps) => {
   const products = await getPost();
-  const mostDownloaded = await mostDownloadedPost();
+  const mostDownloaded = await mostDownloadedPost("templates");
   return (
     <LayoutContent className="space-y-8 pb-20 lg:pb-[120px]">
       <div className="flex flex-col justify-center gap-4 pb-8 pt-20 lg:pb-[70px] lg:pt-[120px]">
