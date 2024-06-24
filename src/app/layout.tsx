@@ -50,7 +50,7 @@ export default function RootLayout({
       >
         <AuthContext>
           <Providers>
-            <NextTopLoader showSpinner={false} color="#fbc466" />
+            <NextTopLoader showSpinner={false} color="#ffffff" />
             {children}
           </Providers>
         </AuthContext>
