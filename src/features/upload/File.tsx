@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { Label } from "@radix-ui/react-dropdown-menu";
@@ -25,6 +25,7 @@ export const FileUpload = (props: FileProps) => {
   const [fileSize, setFileSize] = useState<string>(props.fileSize);
   const [fileName, setFileName] = useState<string>("");
   const [uploadProgress, setUploadProgress] = useState<number>(0);
+  const [xhr, setXhr] = useState<XMLHttpRequest | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,7 +37,8 @@ export const FileUpload = (props: FileProps) => {
       try {
         const newFileUrls = await uploadFilesWithProgress(
           formData,
-          setUploadProgress
+          setUploadProgress,
+          setXhr
         );
         setFile(newFileUrls[0]);
         props.onFileUpload(newFileUrls[0], fileSize);
@@ -48,6 +50,7 @@ export const FileUpload = (props: FileProps) => {
       }
     }
     setFiles([]);
+    setUploadProgress(0); // Reset the progress
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,6 +66,15 @@ export const FileUpload = (props: FileProps) => {
       }
     } catch (error) {
     } finally {
+      stopLoading();
+    }
+  };
+
+  const handleCancel = () => {
+    if (xhr) {
+      xhr.abort();
+      toast("Upload canceled");
+      setUploadProgress(0);
       stopLoading();
     }
   };
@@ -108,7 +120,17 @@ export const FileUpload = (props: FileProps) => {
             />
           </div>
           <Button type="submit">Upload</Button>
+          {uploadProgress > 0 && (
+            <button
+              className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white ring-offset-background transition-colors hover:bg-red-500/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+              type="button"
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
+          )}
         </div>
+        {uploadProgress > 0 && <p>{`${uploadProgress}%`}</p>}
         {uploadProgress > 0 && (
           <div className="mt-2 h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
             <div
@@ -126,12 +148,14 @@ export const FileUpload = (props: FileProps) => {
 // Function to upload files with progress tracking
 const uploadFilesWithProgress = async (
   formData: FormData,
-  onProgress: (progress: number) => void
+  onProgress: (progress: number) => void,
+  setXhr: (xhr: XMLHttpRequest) => void
 ): Promise<string[]> => {
   const env = await fileServer();
   console.log(env);
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
+    setXhr(xhr);
 
     xhr.open("POST", `${env}/`);
 
