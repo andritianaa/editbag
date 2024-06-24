@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { useEffect, useState, useCallback } from "react";
-import { uploadMultipleFile } from "@/actions/upload.actions";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { Label } from "@radix-ui/react-dropdown-menu";
 import { useLoadingStore } from "../../store/loading";
 import { Button } from "../../components/ui/button";
 import { Card } from "../../components/ui/card";
+import { fileServer } from "@/actions/getters/env.get";
 
 export type FileProps = {
   file: string;
@@ -24,6 +24,7 @@ export const FileUpload = (props: FileProps) => {
   const [file, setFile] = useState<string>(props.file);
   const [fileSize, setFileSize] = useState<string>(props.fileSize);
   const [fileName, setFileName] = useState<string>("");
+  const [uploadProgress, setUploadProgress] = useState<number>(0);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,13 +33,21 @@ export const FileUpload = (props: FileProps) => {
     files.forEach((file) => formData.append("files", file));
 
     if (files.length > 0) {
-      const newFileUrls = await uploadMultipleFile(formData);
-      setFile(newFileUrls[0]);
-      props.onFileUpload(newFileUrls[0], fileSize);
+      try {
+        const newFileUrls = await uploadFilesWithProgress(
+          formData,
+          setUploadProgress
+        );
+        setFile(newFileUrls[0]);
+        props.onFileUpload(newFileUrls[0], fileSize);
+        toast.success("Your file is ready!");
+      } catch (error) {
+        toast.error("Upload failed. Please try again.");
+      } finally {
+        stopLoading();
+      }
     }
-    stopLoading();
     setFiles([]);
-    toast.success("Your file is ready!");
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -100,8 +109,56 @@ export const FileUpload = (props: FileProps) => {
           </div>
           <Button type="submit">Upload</Button>
         </div>
+        {uploadProgress > 0 && (
+          <div className="mt-2 h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+            <div
+              className="h-2.5 rounded-full bg-blue-600"
+              style={{ width: `${uploadProgress}%` }}
+            ></div>
+          </div>
+        )}
         <p>{file}</p>
       </form>
     </Card>
   );
+};
+
+// Function to upload files with progress tracking
+const uploadFilesWithProgress = async (
+  formData: FormData,
+  onProgress: (progress: number) => void
+): Promise<string[]> => {
+  const env = await fileServer();
+  console.log(env);
+  alert(env);
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST", `${env}/`);
+
+    xhr.upload.onprogress = (event) => {
+      if (event.lengthComputable) {
+        const percentComplete = (event.loaded / event.total) * 100;
+        onProgress(Math.round(percentComplete));
+      }
+    };
+
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        const responseData = JSON.parse(xhr.responseText);
+        const urls = responseData.map((filename: string) => {
+          return `${env}/public/${filename}`;
+        });
+        resolve(urls);
+      } else {
+        reject(new Error(`Upload failed: ${xhr.statusText}`));
+      }
+    };
+
+    xhr.onerror = () => {
+      reject(new Error("Upload failed"));
+    };
+
+    xhr.send(formData);
+  });
 };
