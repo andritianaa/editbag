@@ -130,7 +130,6 @@ const uploadFilesWithProgress = async (
 ): Promise<string[]> => {
   const env = await fileServer();
   console.log(env);
-  alert(env);
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
