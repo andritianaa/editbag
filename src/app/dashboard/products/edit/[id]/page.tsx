@@ -3,9 +3,13 @@ import { Form } from "./Form";
 import { prisma } from "@/prisma";
 import { notFound } from "next/navigation";
 import { Post } from "@prisma/client";
-import { getCategories, getSubCategories } from "@/actions/categories.actions";
+import {
+  getCategories,
+  getCategoriesWithSubcategories,
+  getSubCategories,
+} from "@/actions/categories.actions";
 export default async function RoutePage(props: PageParams<{ id: string }>) {
-  const categories = await getCategories();
+  const categories = await getCategoriesWithSubcategories();
   const subCategories = await getSubCategories();
   const post: Post | null = await prisma.post.findUnique({
     where: {
@@ -13,8 +17,6 @@ export default async function RoutePage(props: PageParams<{ id: string }>) {
     },
   });
   if (post) {
-    return (
-      <Form {...post} categories={categories} subCategories={subCategories} />
-    );
+    return <Form post={post} categories={categories} />;
   } else notFound();
 }

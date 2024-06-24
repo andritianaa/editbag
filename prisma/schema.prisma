@@ -100,7 +100,7 @@ model Post {
   subtitle    String
   content     String
   image       String
-  subImage    String?
+  subImage    String     @default("")
   type        String     @default("templates")
   fileUrl     String
   fileSize    String

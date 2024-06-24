@@ -46,7 +46,7 @@ export const edit = async (
   image: string,
   status: PostStatus,
   subtitle: string,
-  subImage: string | null,
+  subImage: string,
   fileSize: string,
   fileUrl: string,
   category: string,

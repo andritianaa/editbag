@@ -7,7 +7,7 @@ import { ImageUpload } from "@/features/upload/Images";
 import { useCallback, useState } from "react";
 import { publish } from "@/actions/blog.actions";
 import { toast } from "sonner";
-import { Categories, PostStatus, SubCategories } from "@prisma/client";
+import { PostStatus } from "@prisma/client";
 import {
   Select,
   SelectContent,
@@ -42,7 +42,7 @@ export const Form = (props: formProps) => {
   const [subtitle, setSubtitle] = useState<string>("");
   const [subImage, setSubImage] = useState<string>("");
   const [fileSize, setFileSize] = useState<string>("");
-  const [illustrationSize, setIllustrationSize] = useState<string>("");
+  const [illustrationSize] = useState<string>("");
   const [fileURL, setFileURL] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [productType, setProductType] = useState<string>("templates");
