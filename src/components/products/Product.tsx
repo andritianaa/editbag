@@ -3,7 +3,12 @@
 import Link from "next/link";
 import { Badge } from "../ui/badge";
 import { Card } from "../ui/card";
-import { ArrowDownToLine, FolderMinus, FolderPlus } from "lucide-react";
+import {
+  ArrowDownToLine,
+  FolderMinus,
+  FolderPlus,
+  Forward,
+} from "lucide-react";
 import { useState, useRef } from "react";
 import { addFavorite, removeFavorite } from "../../actions/favorite.actions";
 import { addDownload } from "@/actions/download.actions";
@@ -71,6 +76,16 @@ export const Product = (props: ProductProps) => {
     setIsFavorite(false);
     removeFavorite(props.id);
   };
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(
+        `https://www.editbag.com/products/${props.id}`
+      );
+      toast("Link copied to clipboard! You can now share it anywhere.");
+    } catch (err) {
+      toast("Error copying the link. Please try again.");
+    }
+  };
 
   const handleAddToFavorites = async (e) => {
     e.preventDefault();
@@ -101,13 +116,11 @@ export const Product = (props: ProductProps) => {
 
   return (
     <div className="w-full max-w-[24rem] p-2">
-      <Link
-        href={`/products/${props.id}`}
-        className="w-full overflow-hidden rounded-xl bg-[rgba(38,38,38,.9)]"
-      >
+      <div className="w-full overflow-hidden rounded-xl bg-[rgba(38,38,38,.9)]">
         <Card className="w-full max-w-sm overflow-hidden rounded-md bg-[rgba(38,38,38,.9)]">
-          <div
-            className="relative aspect-video w-full"
+          <Link
+            href={`/products/${props.id}`}
+            className="relative w-full"
             style={{ cursor: "pointer" }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -117,18 +130,17 @@ export const Product = (props: ProductProps) => {
               src={props.imageUrl}
               alt=""
               style={{ display: "block" }}
-              className="h-full w-full object-cover shadow-xl"
+              className="aspect-video h-full w-full object-cover shadow-xl"
             />
             {props.subImage &&
               (isVideo ? (
                 <video
-
                   ref={videoRef}
                   id={`secondImage${props.id}${randomId}`}
                   muted
                   controls
                   style={{ display: "none" }}
-                  className="productVideo h-full w-full object-cover shadow-xl"
+                  className="productVideo aspect-video h-full w-full object-cover shadow-xl"
                 >
                   Your browser does not support the video tag.
                 </video>
@@ -138,19 +150,20 @@ export const Product = (props: ProductProps) => {
                   src={props.subImage}
                   alt=""
                   style={{ display: "none" }}
-                  className="h-full w-full object-cover shadow-xl"
+                  className="aspect-video h-full w-full object-cover shadow-xl"
                 />
               ))}
             <Badge className="absolute bottom-2 left-2 rounded">
               {props.category}
             </Badge>
-          </div>
+          </Link>
           <div className="flex items-center justify-between p-4">
             <div className="">
               <p className="font-semibold">{props.title}</p>
               <p className="text-sm text-muted-foreground">{props.subTitle}</p>
             </div>
             <div className="flex items-center gap-4">
+              <Forward onClick={copyToClipboard} />
               {isFavorite ? (
                 <FolderMinus
                   onClick={handleRemoveFromFavorites}
@@ -163,7 +176,7 @@ export const Product = (props: ProductProps) => {
             </div>
           </div>
         </Card>
-      </Link>
+      </div>
     </div>
   );
 };
