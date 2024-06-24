@@ -74,12 +74,9 @@ export const edit = async (
 };
 
 export const remove = async (id: number) => {
-  await prisma.post.update({
+  await prisma.post.delete({
     where: {
       id,
-    },
-    data: {
-      status: PostStatus.trash,
     },
   });
 };

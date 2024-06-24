@@ -109,9 +109,9 @@ export const Content = (props: contentProps) => {
   };
   return (
     <>
-      <div className="mx-auto flex w-full max-w-[1337px] gap-4 px-4 pr-0 md:justify-center">
+      <div className="mx-auto flex w-full max-w-[1500px] gap-4 px-4 pr-0 md:justify-center">
         <LayoutContent className="flex min-h-[calc(100vh-10.56rem)] gap-2 md:justify-center">
-          <Card className="mt-2 flex h-fit flex-col justify-start gap-4 bg-transparent p-4 max-lg:hidden">
+          <Card className="sticky top-[5.5rem] mt-2 flex h-fit max-h-[calc(100vh-6rem)] flex-col justify-start gap-4 overflow-y-auto bg-transparent p-4 pl-0 max-lg:hidden">
             <div className="flex justify-between">
               <Label className="flex w-[180px] items-center">
                 <Filter /> Filters
@@ -132,7 +132,7 @@ export const Content = (props: contentProps) => {
               <SimpleInput
                 value={textSearch}
                 onChange={(e) => handleTextChange(e.target.value)}
-                placeholder="Search for files or product..."
+                placeholder="Search for emoji..."
                 className="flex-1 border-0 px-4 py-2 text-sm focus:ring-0"
               />
             </div>
@@ -203,7 +203,7 @@ export const Content = (props: contentProps) => {
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full rounded border bg-[#191919] px-3 py-2 transition-colors focus:border-blue-900 focus:outline-0"
+                className="min-h-[100vh] w-full rounded border bg-[#191919] px-3 py-2 transition-colors focus:border-blue-900 focus:outline-0"
                 value={textSearch}
                 onChange={(e) => handleTextChange(e.target.value)}
               />
@@ -231,7 +231,7 @@ export const Content = (props: contentProps) => {
                     <SimpleInput
                       value={textSearch}
                       onChange={(e) => handleTextChange(e.target.value)}
-                      placeholder="Search for files or product..."
+                      placeholder="Search for emoji..."
                       className="flex-1 border-0 px-4 py-2 text-sm focus:ring-0"
                     />
                     <Separator />
@@ -305,7 +305,7 @@ export const Content = (props: contentProps) => {
               <Tab type="emoji" />
               {isSearching == false && (
                 <>
-                  <div className="mt-8 max-h-[50vh] w-full max-w-[60rem] overflow-hidden rounded-lg">
+                  <div className="mt-8 max-h-[50vh] w-full max-w-[86rem] overflow-hidden rounded-lg">
                     <LiteYouTubeEmbed
                       id="8JMbMjJozc0"
                       thumbnail="https://www.homeofeditors.com/cdn/shop/files/j0fxy4.jpg?v=1718304831&width=2000"
@@ -431,7 +431,6 @@ export const Content = (props: contentProps) => {
           </div>
         </LayoutContent>
       </div>
-      <Footer />
     </>
   );
 };

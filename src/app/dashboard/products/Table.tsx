@@ -30,6 +30,10 @@ export type TableProps = {
 };
 
 export const TablePost = (props: TableProps) => {
+  const handleRemove = (id: number) => {
+    remove(id);
+    window.location.reload();
+  };
   return (
     <Table>
       <TableHeader>
@@ -88,7 +92,7 @@ export const TablePost = (props: TableProps) => {
                     <Link href={`/dashboard/products/edit/${post.id}`}>
                       <DropdownMenuItem>Edit</DropdownMenuItem>
                     </Link>
-                    <DropdownMenuItem onClick={() => remove(post.id)}>
+                    <DropdownMenuItem onClick={() => handleRemove(post.id)}>
                       Delete
                     </DropdownMenuItem>
                   </DropdownMenuContent>
