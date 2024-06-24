@@ -139,6 +139,7 @@ export const Product = (props: ProductProps) => {
                   id={`secondImage${props.id}${randomId}`}
                   muted
                   controls
+                  loop
                   style={{ display: "none" }}
                   className="productVideo aspect-video h-full w-full object-cover shadow-xl"
                 >
