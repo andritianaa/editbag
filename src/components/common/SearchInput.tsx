@@ -13,7 +13,7 @@ export const SearchInput = (props: SearchInputProps) => {
   };
   return (
     <form className="w-full max-w-2xl max-md:hidden" onSubmit={handleSubmit}>
-      <div className="flex w-full max-w-md items-center rounded-md bg-background shadow-sm">
+      <div className="flex w-full max-w-md items-center rounded-md bg-transparent shadow-sm">
         <div className="flex-shrink-0 p-2 text-muted-foreground">
           <SearchIcon className="h-5 w-5" color="#bfa8fb" />
         </div>
@@ -22,7 +22,7 @@ export const SearchInput = (props: SearchInputProps) => {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Search for files or product..."
-          className="flex-1 border-0 px-4 py-2 text-sm focus:ring-0"
+          className="flex-1 border-0 bg-transparent px-4 py-2 text-sm focus:ring-0"
         />
       </div>
     </form>
