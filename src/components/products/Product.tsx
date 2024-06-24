@@ -2,11 +2,13 @@
 "use client";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
-import { Card, CardContent } from "../ui/card";
-import { BookmarkCheck, BookmarkPlus } from "lucide-react";
-import { Button } from "../ui/button";
-import { useState } from "react";
+import { Card } from "../ui/card";
+import { ArrowDownToLine, FolderMinus, FolderPlus } from "lucide-react";
+import { useState, useRef } from "react";
 import { addFavorite, removeFavorite } from "../../actions/favorite.actions";
+import { addDownload } from "@/actions/download.actions";
+import { useLoadingStore } from "@/store/loading";
+import { toast } from "sonner";
 
 export type ProductProps = {
   id: number;
@@ -19,18 +21,49 @@ export type ProductProps = {
 };
 
 export const Product = (props: ProductProps) => {
+  const videoExtensions = /\.(mp4|3gp|avi|mov)$/i;
+  const isVideo = videoExtensions.test(props.subImage || "");
   const [isFavorite, setIsFavorite] = useState(props.isFavorite);
+  const randomId = Math.floor(Math.random() * 1000);
+  const videoRef = useRef(null);
+
   const handleMouseEnter = () => {
     if (props.subImage) {
-      document.getElementById(`firstImage${props.id}`)!.style.display = "none";
-      document.getElementById(`secondImage${props.id}`)!.style.display =
-        "block";
+      document.getElementById(
+        `firstImage${props.id}${randomId}`
+      )!.style.display = "none";
+
+      if (isVideo) {
+        const videoElement: any = videoRef.current;
+        if (videoElement) {
+          videoElement.src = props.subImage;
+          videoElement.style.display = "block";
+          videoElement.play();
+        }
+      } else {
+        document.getElementById(
+          `secondImage${props.id}${randomId}`
+        )!.style.display = "block";
+      }
     }
   };
 
   const handleMouseLeave = () => {
-    document.getElementById(`firstImage${props.id}`)!.style.display = "block";
-    document.getElementById(`secondImage${props.id}`)!.style.display = "none";
+    document.getElementById(`firstImage${props.id}${randomId}`)!.style.display =
+      "block";
+
+    if (isVideo) {
+      const videoElement: any = videoRef.current;
+      if (videoElement) {
+        videoElement.pause();
+        videoElement.style.display = "none";
+        videoElement.src = "";
+      }
+    } else {
+      document.getElementById(
+        `secondImage${props.id}${randomId}`
+      )!.style.display = "none";
+    }
   };
 
   const handleRemoveFromFavorites = (e) => {
@@ -38,67 +71,99 @@ export const Product = (props: ProductProps) => {
     setIsFavorite(false);
     removeFavorite(props.id);
   };
+
   const handleAddToFavorites = async (e) => {
     e.preventDefault();
     setIsFavorite(true);
     addFavorite(props.id);
   };
+
+  const { startLoading, stopLoading } = useLoadingStore();
+
+  const handleDownload = async (e) => {
+    e.preventDefault();
+    startLoading();
+
+    try {
+      const url = await addDownload(props.id);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", url.split("/").pop() || "default_filename");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      toast.error("Erreur lors du téléchargement");
+    }
+
+    stopLoading();
+  };
+
   return (
-    <Link
-      href={`/products/${props.id}`}
-      className="relative w-full max-w-xs overflow-hidden rounded-xl p-4 hover:bg-[rgba(38,38,38,.9)]"
-    >
-      {isFavorite ? (
-        <Button
-          variant="outline"
-          size="icon"
-          className="absolute right-6 top-6 z-10 border-none bg-red-700/50 hover:bg-red-700/70"
-          onClick={handleRemoveFromFavorites}
-        >
-          <BookmarkCheck color="#ffffff" />
-        </Button>
-      ) : (
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={handleAddToFavorites}
-          className="absolute right-6 top-6 z-10 border-none bg-muted-foreground/50 hover:bg-[rgba(38,38,38,.9)]-foreground/70"
-        >
-          <BookmarkPlus color="#ffffff" />
-        </Button>
-      )}
-      <Card className="w-full max-w-sm space-y-4 overflow-hidden rounded-none bg-transparent pb-2">
-        <div
-          className="relative aspect-square w-full"
-          style={{ cursor: "pointer" }}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <img
-            id={`firstImage${props.id}`}
-            src={props.imageUrl}
-            alt=""
-            style={{ display: "block" }}
-            className="h-full w-full rounded-md object-cover shadow-xl"
-          />
-          {props.subImage && (
+    <div className="w-full max-w-[24rem] p-2">
+      <Link
+        href={`/products/${props.id}`}
+        className="w-full overflow-hidden rounded-xl bg-[rgba(38,38,38,.9)]"
+      >
+        <Card className="w-full max-w-sm overflow-hidden rounded-md bg-[rgba(38,38,38,.9)]">
+          <div
+            className="relative aspect-video w-full"
+            style={{ cursor: "pointer" }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <img
-              id={`secondImage${props.id}`}
-              src={props.subImage}
+              id={`firstImage${props.id}${randomId}`}
+              src={props.imageUrl}
               alt=""
-              style={{ display: "none" }}
-              className="h-full w-full rounded-md object-cover shadow-xl"
+              style={{ display: "block" }}
+              className="h-full w-full object-cover shadow-xl"
             />
-          )}
-          <Badge className="absolute bottom-2 left-2 rounded">
-            {props.category}
-          </Badge>
-        </div>
-        <div className="h-16">
-          <p className="text-md font-semibold">{props.title}</p>
-          <p className="text-muted-foreground">{props.subTitle}</p>
-        </div>
-      </Card>
-    </Link>
+            {props.subImage &&
+              (isVideo ? (
+                <video
+
+                  ref={videoRef}
+                  id={`secondImage${props.id}${randomId}`}
+                  muted
+                  controls
+                  style={{ display: "none" }}
+                  className="productVideo h-full w-full object-cover shadow-xl"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <img
+                  id={`secondImage${props.id}${randomId}`}
+                  src={props.subImage}
+                  alt=""
+                  style={{ display: "none" }}
+                  className="h-full w-full object-cover shadow-xl"
+                />
+              ))}
+            <Badge className="absolute bottom-2 left-2 rounded">
+              {props.category}
+            </Badge>
+          </div>
+          <div className="flex items-center justify-between p-4">
+            <div className="">
+              <p className="font-semibold">{props.title}</p>
+              <p className="text-sm text-muted-foreground">{props.subTitle}</p>
+            </div>
+            <div className="flex items-center gap-4">
+              {isFavorite ? (
+                <FolderMinus
+                  onClick={handleRemoveFromFavorites}
+                  color="#ffffff"
+                />
+              ) : (
+                <FolderPlus onClick={handleAddToFavorites} color="#fff" />
+              )}
+              <ArrowDownToLine onClick={(e) => handleDownload(e)} />
+            </div>
+          </div>
+        </Card>
+      </Link>
+    </div>
   );
 };

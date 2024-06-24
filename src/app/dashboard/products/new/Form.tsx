@@ -42,6 +42,7 @@ export const Form = (props: formProps) => {
   const [subtitle, setSubtitle] = useState<string>("");
   const [subImage, setSubImage] = useState<string>("");
   const [fileSize, setFileSize] = useState<string>("");
+  const [illustrationSize, setIllustrationSize] = useState<string>("");
   const [fileURL, setFileURL] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [productType, setProductType] = useState<string>("templates");
@@ -55,8 +56,6 @@ export const Form = (props: formProps) => {
       ? props.categories.templates.categories[0].SubCategories
       : []
   );
-
-  console.log("categories ==> ", props.categories);
 
   const handleImageUrlChange = (newImageUrl: string) => {
     console.log(newImageUrl);
@@ -280,16 +279,18 @@ export const Form = (props: formProps) => {
           title="Product image"
           subTitle="The image that will be displayed first"
         />
-        <ImageUpload
-          image={imageUrl}
-          onImageUpload={handleSubImageUrlChange}
+
+        <FileUpload
+          onFileUpload={handleSubImageUrlChange}
+          file={imageUrl}
           title="Illustration"
-          subTitle="The image that will be displayed on product hover"
+          subTitle="The image or video that will be displayed on product hover"
+          fileSize={illustrationSize}
         />
         <FileUpload
           onFileUpload={handleFileUrlChange}
           file={fileURL}
-          title="Product file"
+          title="Product"
           subTitle="The file to download"
           fileSize={fileSize}
         />

@@ -109,7 +109,7 @@ export const Content = (props: contentProps) => {
   };
   return (
     <>
-      <div className="mx-auto flex w-full max-w-[1337px] gap-4 px-4 pr-0 md:justify-center">
+      <div className="mx-auto flex w-full max-w-[1500px] gap-4 px-4 pr-0 md:justify-center">
         <LayoutContent className="flex min-h-[calc(100vh-10.56rem)] gap-2 md:justify-center">
           <Card className="mt-2 flex h-fit flex-col justify-start gap-4 bg-transparent p-4 max-lg:hidden">
             <div className="flex justify-between">
@@ -309,7 +309,7 @@ export const Content = (props: contentProps) => {
               <Tab type="templates" />
               {isSearching == false && (
                 <>
-                  <div className="mt-8 max-h-[50vh] w-full max-w-[60rem] overflow-hidden rounded-lg">
+                  <div className="mt-8 max-h-[50vh] w-full max-w-[86rem] overflow-hidden rounded-lg">
                     <LiteYouTubeEmbed
                       id="8JMbMjJozc0"
                       thumbnail="https://www.homeofeditors.com/cdn/shop/files/j0fxy4.jpg?v=1718304831&width=2000"

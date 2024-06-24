@@ -243,3 +243,14 @@ a{
   mask: radial-gradient(15rem 15rem at var(--x) var(--y), #000 1%, transparent 100%);
   -webkit-mask: radial-gradient(15rem 15rem at var(--x) var(--y), #000 1%, transparent 100%);
 }
+
+
+.productVideo::-webkit-media-controls-timeline,
+.productVideo::-webkit-media-slider,
+.productVideo::-webkit-media-controls-current-time-display,
+.productVideo::-webkit-media-controls-time-remaining-display,
+.productVideo::-webkit-media-controls-overlay-play-button,
+.productVideo::-webkit-media-controls-panel,
+.productVideo::-webkit-media-controls-enclosure {
+  display: none !important;
+}

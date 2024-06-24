@@ -14,7 +14,7 @@ export const NavBar = async () => {
   if (user) {
     return (
       <nav className="dotedNav max-w-screen sticky top-0 z-50 bg-[#1a1a1a] bg-opacity-50 p-2 py-4 shadow-lg">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4">
+        <div className="mx-auto flex w-full max-w-[1500px] items-center justify-between gap-4 px-4">
           {/* <Link href="/" className="w-32">
             <Logo />
           </Link> */}

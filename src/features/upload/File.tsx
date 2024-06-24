@@ -97,7 +97,7 @@ export const FileUpload = (props: FileProps) => {
           <div className="input">
             <>
               <label
-                htmlFor="file"
+                htmlFor={`file${props.title}`}
                 className="flex size-40 w-full cursor-pointer items-center justify-center rounded-lg border-dashed bg-[#191919] p-2 text-center text-sm"
               >
                 {files.length > 0
@@ -105,7 +105,7 @@ export const FileUpload = (props: FileProps) => {
                   : "Click to select file or drop here"}
               </label>
               <label
-                htmlFor="file"
+                htmlFor={`file${props.title}`}
                 className="transparent w-full cursor-pointer p-2 text-sm text-transparent"
               >
                 Select another file
@@ -114,7 +114,7 @@ export const FileUpload = (props: FileProps) => {
 
             <input
               type="file"
-              id="file"
+              id={`file${props.title}`}
               className="hidden max-w-[500px]"
               onChange={handleFileChange}
             />
