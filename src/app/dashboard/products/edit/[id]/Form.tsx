@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { BookCheck, BookDashed } from "lucide-react";
 import { ImageUpload } from "@/features/upload/Images";
 import { useCallback, useState } from "react";
-import { publish } from "@/actions/blog.actions";
 import { toast } from "sonner";
 import { PostStatus } from "@prisma/client";
 import {
@@ -40,8 +39,6 @@ export type formProps = {
 };
 
 export const Form = (props: formProps) => {
-  console.log("props ===> ", props);
-
   const [imageUrl, setImageUrl] = useState<string>(props.post.image);
   const [text, setText] = useState<string | null>(props.post.content);
   const [title, setTitle] = useState<string>(props.post.title);

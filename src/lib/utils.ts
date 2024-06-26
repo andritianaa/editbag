@@ -78,3 +78,23 @@ export function takeUniqueOrThrow<T extends unknown[]>(values: T): T[number] {
     throw new Error("Found non unique or inexistent value");
   return values[0];
 }
+
+export const formatTime = (seconds: number): string => {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+
+  let formattedTime = "";
+
+  if (mins > 0) {
+    formattedTime = mins.toString().padStart(2, "0") + " min ";
+  }
+
+  formattedTime += secs.toString().padStart(2, "0") + "s";
+
+  return formattedTime;
+};
+
+export const bitsToMegabits = (bits: number) => {
+  const megabits = bits / (1024 * 1024); // 1 mégabit = 1,048,576 bits (1024 * 1024)
+  return megabits.toFixed(2); // Limiter à 2 chiffres après la virgule
+};

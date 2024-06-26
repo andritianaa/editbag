@@ -3,13 +3,24 @@ import { useState } from "react";
 import { Input } from "../ui/input";
 import { SearchIcon } from "lucide-react";
 import { SimpleInput } from "../ui/SimpleInput";
+import { useSearchParams } from "next/navigation";
+import { toast } from "sonner";
 export type SearchInputProps = {};
 
 export const SearchInput = (props: SearchInputProps) => {
-  const [text, setText] = useState("");
+  console.log(props);
+
+  const searchParams = useSearchParams();
+
+  const currentSearch = searchParams.get("search");
+  const [text, setText] = useState<string>(currentSearch || "");
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.location.href = `/products?search=${text}`;
+    if (text.length == 1) {
+      toast.error("Search query too short");
+    } else {
+      window.location.href = `/products/all?search=${text}`;
+    }
   };
   return (
     <form className="w-full max-w-2xl max-md:hidden" onSubmit={handleSubmit}>
