@@ -116,11 +116,11 @@ export const Content = (props: contentProps) => {
         <LayoutContent className="flex min-h-[calc(100vh-10.56rem)] gap-2 md:justify-center">
           <div className="flex w-full flex-col items-center">
             <div className="w-full max-w-6xl">
-              <Tab type="" />
+              <Tab type="home" />
               {template.length > 0 && (
                 <Link
                   href={`/products?search=${currentSearch}`}
-                  className="flex w-fit items-center gap-4 border-b-2 border-b-transparent text-xl hover:gap-6 hover:border-b-white"
+                  className="mt-8 flex w-fit items-center gap-4 border-b-2 border-b-transparent text-xl hover:gap-6 hover:border-b-white"
                 >
                   Templates
                   <ArrowRight size={24} />
@@ -143,7 +143,7 @@ export const Content = (props: contentProps) => {
               {emoji.length > 0 && (
                 <Link
                   href={`/products/emoji?search=${currentSearch}`}
-                  className="flex w-fit items-center gap-4 border-b-2 border-b-transparent text-xl hover:gap-6 hover:border-b-white"
+                  className="mt-8 flex w-fit items-center gap-4 border-b-2 border-b-transparent text-xl hover:gap-6 hover:border-b-white"
                 >
                   Emoji
                   <ArrowRight size={24} />
@@ -166,7 +166,7 @@ export const Content = (props: contentProps) => {
               {photos.length > 0 && (
                 <Link
                   href={`/products/images?search=${currentSearch}`}
-                  className="flex w-fit items-center gap-4 border-b-2 border-b-transparent text-xl hover:gap-6 hover:border-b-white"
+                  className="mt-8 flex w-fit items-center gap-4 border-b-2 border-b-transparent text-xl hover:gap-6 hover:border-b-white"
                 >
                   Images
                   <ArrowRight size={24} />
@@ -180,7 +180,7 @@ export const Content = (props: contentProps) => {
               {videos.length > 0 && (
                 <Link
                   href={`/products/videos?search=${currentSearch}`}
-                  className="flex w-fit items-center gap-4 border-b-2 border-b-transparent text-xl hover:gap-6 hover:border-b-white"
+                  className="mt-8 flex w-fit items-center gap-4 border-b-2 border-b-transparent text-xl hover:gap-6 hover:border-b-white"
                 >
                   Videos
                   <ArrowRight size={24} />
