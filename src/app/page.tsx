@@ -7,7 +7,7 @@ export default async function Home() {
   const user = await currentUser();
 
   if (user) {
-    redirect("/products");
+    redirect("/products/all");
   }
   return (
     <>

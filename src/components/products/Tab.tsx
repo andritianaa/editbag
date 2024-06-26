@@ -10,6 +10,13 @@ export type TabProps = {
 export const Tab = (props: TabProps) => {
   const links = [
     {
+      href: "/products/all",
+      type: "home",
+      imgSrc: "/illustration/home.png",
+      alt: "home",
+      text: "Home",
+    },
+    {
       href: "/products",
       type: "templates",
       imgSrc: "/illustration/template.png",

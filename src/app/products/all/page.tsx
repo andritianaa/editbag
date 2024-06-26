@@ -1,3 +1,4 @@
+import { Footer } from "@/components/common/Footer";
 import { Content } from "./content";
 export default async function RoutePage({
   searchParams,
@@ -5,5 +6,10 @@ export default async function RoutePage({
   params: { slug: string };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  return <Content />;
+  return (
+    <>
+      <Content />
+      <Footer />
+    </>
+  );
 }
