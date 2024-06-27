@@ -254,3 +254,7 @@ a{
 .productVideo::-webkit-media-controls-enclosure {
   display: none !important;
 }
+
+.invert-img {
+  filter: invert(100%) hue-rotate(180deg);
+}
