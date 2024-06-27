@@ -192,7 +192,7 @@ export const Hero = (props: HeroProps) => {
           >
             <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#ffe27a]">
-                <img src="/Plugin.webp" alt="" className="size-6" />
+                <img src="/plugin.webp" alt="" className="size-6" />
               </div>
               <h4 className="mb-4 text-2xl font-bold text-white">
                 Plugins & Tools
