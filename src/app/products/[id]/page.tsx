@@ -11,6 +11,7 @@ import { Footer } from "@/components/common/Footer";
 import { getPost } from "@/actions/getters/post.get";
 import { Product } from "@/components/products/Product";
 import { BackBtn } from "./BackBtn";
+import { Preview } from "./Preview";
 export default async function RoutePage(props: PageParams<{ id: string }>) {
   const user = await currentUser();
   let similarPosts = await getPost();
@@ -66,6 +67,7 @@ export default async function RoutePage(props: PageParams<{ id: string }>) {
                     {post.status == "online" && user && (
                       <Download postId={post.id} />
                     )}
+                    {post.subImage && <Preview url={post.subImage} />}
                     {post.Downloaded.some((d) => d.userId === user?.id) && (
                       <Button variant="ghost">
                         You have already downloaded it
