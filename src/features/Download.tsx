@@ -15,13 +15,17 @@ export const Download = (props: DownloadProps) => {
     startLoading();
 
     try {
-      const url = await addDownload(props.postId);
+      const downloadUrl = await addDownload(props.postId);
+      const response = await fetch(downloadUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", url.split("/").pop() || "default_filename");
+      link.download = url.split("/").pop() || "default_filename" || "download";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
     } catch (error) {
       toast.error("Erreur lors du téléchargement");
     }
