@@ -33,9 +33,8 @@ export const Footer = () => {
             <h1 className="mb-2 text-2xl font-semibold">Contact</h1>
             <p className="text-lg">
               Email: editbagsaas@gmail.com <br /> Address: <br />
-              Singel 258
-              <br /> 1234 AB Amsterdam
-              <br /> The Netherlands
+              649 Clarence Crescent Thiès
+              <br /> Sénégal
             </p>
           </div>
           <div className="flex flex-col">
