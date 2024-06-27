@@ -16,6 +16,7 @@ import { PhotoContainer } from "@/app/products/all/PhotoContainer";
 import { getPost } from "@/actions/getters/post.get";
 import { Post } from "@prisma/client";
 import { Product } from "@/components/products/Product";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export type contentProps = {};
 
@@ -97,7 +98,6 @@ export const Content = (props: contentProps) => {
           product.category.toLowerCase().includes(textSearch.toLowerCase()) ||
           product.subCategory.toLowerCase().includes(textSearch.toLowerCase()))
     );
-    console.log("templatesFiltered ==========> ", templatesFiltered);
 
     setEmoji(emojiFiltered);
     setTemplate(templatesFiltered);
@@ -105,9 +105,9 @@ export const Content = (props: contentProps) => {
   };
 
   useEffect(() => {
+    fetchPosts();
     fetchVideo();
     fetchPhoto();
-    fetchPosts();
   }, []);
 
   return (
@@ -191,6 +191,14 @@ export const Content = (props: contentProps) => {
                   <VideoContainer key={i} {...p} />
                 ))}
               </div>
+
+              {isLoading && (
+                <div className="my-4 columns-3 gap-2 space-y-2">
+                  {Array.from({ length: 20 }).map((_, index) => (
+                    <Skeleton key={index} className="h-96 w-full" />
+                  ))}
+                </div>
+              )}
 
               {emoji.length == 0 &&
                 videos.length == 0 &&

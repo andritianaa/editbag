@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { Input } from "../ui/input";
 import { SearchIcon } from "lucide-react";
 import { SimpleInput } from "../ui/SimpleInput";
 import { useSearchParams } from "next/navigation";

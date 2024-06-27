@@ -28,36 +28,23 @@ export default async function RoutePage(props: PageParams<{ id: string }>) {
   if (post) {
     return (
       <>
-        <div className="dark mx-auto min-h-[calc(100vh-10.56rem)] max-w-3xl px-4 pb-12 pt-6 sm:px-6 lg:px-8 lg:pt-10">
-          <div className="max-w-2xl">
+        <div className="dark mx-auto min-h-[calc(100vh-10.56rem)] max-w-7xl pt-6">
+          <div className="max-w-6xl">
             <div className="mb-6 flex items-center justify-between">
               <div className="flex w-full gap-x-5 sm:items-center sm:gap-x-3">
                 <div className="grow">
                   <div className="flex items-center justify-between gap-x-2">
                     <div>
-                      <div className="hs-tooltip inline-block [--placement:bottom] [--trigger:hover]">
-                        <div className="hs-tooltip-toggle block cursor-pointer text-start sm:mb-1">
-                          <span className="font-semibold text-gray-800 dark:text-neutral-200"></span>
-                        </div>
-                      </div>
-
                       <ul className="text-xs text-gray-500 dark:text-neutral-500">
-                        <li className="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-gray-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600">
-                          {post.createdAt.toLocaleDateString()}
+                        <li className="relative inline-block pe-6 capitalize before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-gray-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600">
+                          {post.type}
                         </li>
                         <li className="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-gray-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600">
-                          {post.fileSize}
+                          {post.subCategory}
                         </li>
                         <li className="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-gray-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600">
                           <Badge variant="default">{post.category}</Badge>
                         </li>
-                        {post.subCategory ?? (
-                          <li className="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-gray-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600">
-                            <Badge variant="outline" className="p-4">
-                              {post.subCategory}
-                            </Badge>
-                          </li>
-                        )}
                       </ul>
                     </div>
                   </div>
@@ -65,30 +52,30 @@ export default async function RoutePage(props: PageParams<{ id: string }>) {
               </div>
             </div>
 
-            <div className="space-y-5 md:space-y-8">
-              <figure>
-                <img
-                  className="w-full rounded-xl object-cover shadow-lg"
-                  src={post.image}
-                  alt="Image Description"
-                />
-              </figure>
-              <div className="space-y-3">
-                <h2 className="text-2xl font-bold dark:text-white md:text-3xl">
-                  {post.title}
-                </h2>
-                <div className="flex gap-2">
-                  {post.status == "online" && user && (
-                    <Download postId={post.id} />
-                  )}
-                  {post.Downloaded.some((d) => d.userId === user?.id) && (
-                    <Button variant="ghost">
-                      You have already downloaded it
-                    </Button>
-                  )}
+            <div className="flex justify-around space-y-5 md:space-y-8">
+              <img
+                className="w-full max-w-xl rounded-xl object-cover shadow-lg"
+                src={post.image}
+                alt="Image Description"
+              />
+              <div className="">
+                <div className="space-y-3">
+                  <h2 className="text-2xl font-bold dark:text-white md:text-3xl">
+                    {post.title}
+                  </h2>
+                  <div className="flex gap-2">
+                    {post.status == "online" && user && (
+                      <Download postId={post.id} />
+                    )}
+                    {post.Downloaded.some((d) => d.userId === user?.id) && (
+                      <Button variant="ghost">
+                        You have already downloaded it
+                      </Button>
+                    )}
+                  </div>
                 </div>
+                <Content content={post.content} />
               </div>
-              <Content content={post.content} />
             </div>
           </div>
         </div>

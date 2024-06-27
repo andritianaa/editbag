@@ -1,4 +1,6 @@
 import type { PageParams } from "@/types/next";
+import { Suspense } from "react";
+
 import {
   getPost,
   mostDownloadedPost,
@@ -30,15 +32,17 @@ export default async function RoutePage({
   const mostDownloaded = await mostDownloadedPost("emoji");
   const mostPopular = await mostPopularPost("emoji");
   return (
-    <Content
-      products={products}
-      categories={categoriesData}
-      subCategories={subCategoriesData}
-      currentCategories={categories}
-      currentSubCategories={subCategories}
-      currentSearch={search}
-      mostDownloaded={mostDownloaded}
-      mostPopular={mostPopular}
-    />
+    <Suspense fallback={<div></div>}>
+      <Content
+        products={products}
+        categories={categoriesData}
+        subCategories={subCategoriesData}
+        currentCategories={categories}
+        currentSubCategories={subCategories}
+        currentSearch={search}
+        mostDownloaded={mostDownloaded}
+        mostPopular={mostPopular}
+      />
+    </Suspense>
   );
 }

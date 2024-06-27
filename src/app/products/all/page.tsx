@@ -1,5 +1,7 @@
 import { Footer } from "@/components/common/Footer";
 import { Content } from "./content";
+import { Suspense } from "react";
+
 export default async function RoutePage({
   searchParams,
 }: {
@@ -8,7 +10,9 @@ export default async function RoutePage({
 }) {
   return (
     <>
-      <Content />
+      <Suspense fallback={<div></div>}>
+        <Content />
+      </Suspense>
       <Footer />
     </>
   );

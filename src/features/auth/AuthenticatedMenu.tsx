@@ -17,6 +17,7 @@ import {
   LogOut,
   CreditCard,
   ChevronDown,
+  User,
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 
@@ -82,22 +83,28 @@ export const AuthenticatedMenu = (props: UserProps) => {
         ) : (
           <></>
         )}
-        <Link href="/download">
+        <Link href="/user">
+          <DropdownMenuItem className="flex items-center gap-3">
+            <User size={21} />
+            <span>Account</span>
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/user/download">
           <DropdownMenuItem className="flex items-center gap-3">
             <Download size={21} />
             <span>Your download</span>
           </DropdownMenuItem>
         </Link>
-        <Link href="/bookmark">
+        <Link href="/user/bookmark">
           <DropdownMenuItem className="flex items-center gap-3">
             <Bookmark size={21} />
             <span>Saved product</span>
           </DropdownMenuItem>
         </Link>
-        <Link href="/u/pricing">
+        <Link href="/user/subscription">
           <DropdownMenuItem className="flex items-center gap-3">
             <CreditCard size={21} />
-            <span>Pricing</span>
+            <span>Subscription</span>
           </DropdownMenuItem>
         </Link>
         <Separator />
