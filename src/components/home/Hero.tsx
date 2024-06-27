@@ -11,8 +11,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Fragment, useEffect } from "react";
 import { Footer } from "../common/Footer";
-import { testimonials } from "../../lib/testimonial";
-import { logos } from "../../lib/logos";
+import { testimonials } from "@/lib/testimonial";
+import { logos } from "@/lib/logos";
 export type HeroProps = {};
 
 export const Hero = (props: HeroProps) => {
@@ -23,6 +23,7 @@ export const Hero = (props: HeroProps) => {
     <Layout className="flex flex-col items-center justify-center">
       {/* hero */}
       <div
+        id="about"
         data-aos="fade"
         data-aos-duration="1500"
         className="flex h-[70vh] w-full max-w-6xl flex-col items-start justify-center space-y-10 py-8"
@@ -71,17 +72,16 @@ export const Hero = (props: HeroProps) => {
         className="mt-32 flex w-full max-w-6xl items-start justify-center gap-20 py-8"
       >
         <Card className="flex w-[50%] items-center justify-center border border-[#3f3f3f] bg-[#212121]">
-          <img
-            src="https://framerusercontent.com/images/4CgzWyHvfnclw7zTig67f8Ecgl8.png"
-            alt=""
-            className="h-72 py-4"
-          />
+          <img src="/IMAGE1.png" alt="" className="h-72 py-4" />
         </Card>
         <div className="sticky top-[5.5rem] w-[50%]">
-          <p className="mb-2 text-3xl font-bold">Delightful user experience</p>
+          <p className="mb-2 text-3xl font-bold">
+            Unleash Your Creative Potential
+          </p>
           <p className="text-lg">
-            AITool assists you in managing your tasks and achieving your goals
-            using an interactive and straightforward method.
+            With our premium selection, transform your ideas into reality with
+            high-quality assets: royalty-free music, sound effects, stock
+            footage, video templates, and more.
           </p>
         </div>
       </div>
@@ -91,17 +91,14 @@ export const Hero = (props: HeroProps) => {
         className="flex w-full max-w-6xl flex-row-reverse items-start justify-center gap-20 py-8"
       >
         <Card className="flex w-[50%] items-center justify-center border border-[#3f3f3f] bg-[#212121]">
-          <img
-            src="https://framerusercontent.com/images/bnnutbU3kyeL97GzQIXp0CAmA.png"
-            alt=""
-            className="h-72 py-4"
-          />
+          <img src="IMAGE2.png" alt="" className="h-72 py-4" />
         </Card>
         <div className="sticky top-[5.5rem] w-[50%]">
-          <p className="mb-2 text-3xl font-bold">Customization theme</p>
+          <p className="mb-2 text-3xl font-bold">Find Inspiration Instantly</p>
           <p className="text-lg">
-            AITool offers lot of customizations, one of them allowing you to
-            choose from light, dark and black UI theme.
+            Our intuitive platform allows you to quickly find the inspiration
+            you need with powerful search tools and expertly curated themed
+            collections.
           </p>
         </div>
       </div>
@@ -111,17 +108,15 @@ export const Hero = (props: HeroProps) => {
         className="flex w-full max-w-6xl items-start justify-center gap-20 py-8"
       >
         <Card className="flex w-[50%] items-center justify-center border border-[#3f3f3f] bg-[#212121]">
-          <img
-            src="https://framerusercontent.com/images/AKPoNO79KUV6LLktEb6iyng0Ro0.png"
-            alt=""
-            className="h-72 py-4"
-          />
+          <img src="IMAGE3.png" alt="" className="h-72 py-4" />
         </Card>
         <div className="sticky top-[5.5rem] w-[50%]">
-          <p className="mb-2 text-3xl font-bold">Smart Automation</p>
+          <p className="mb-2 text-3xl font-bold">Easy Integration</p>
           <p className="text-lg">
-            Utilizing intelligent automation and exceptional safety measures,
-            this is the ideal choice for teams aiming to increase efficiency.
+            Seamlessly integrate our resources with the most popular video
+            editing software like Adobe Premiere Pro, Final Cut Pro, DaVinci
+            Resolve, and more. Spend less time setting up and more time
+            creating.
           </p>
         </div>
       </div>
@@ -131,7 +126,9 @@ export const Hero = (props: HeroProps) => {
         data-aos-duration="1500"
         className="flex w-full max-w-6xl flex-col items-center justify-center space-y-8 p-8"
       >
-        <h1 className="animatedText text-6xl font-bold">More Features</h1>
+        <h1 className="animatedText text-center text-6xl font-bold">
+          Power your videos with the best creative assets
+        </h1>
         <p className="max-w-lg text-center text-lg text-muted-foreground">
           These are a few of the key features of AITool that distinguish it from
           other AI platforms.
@@ -144,26 +141,14 @@ export const Hero = (props: HeroProps) => {
           >
             <div className="wow fadeInUp group mb-12">
               <div className="relative z-10 mb-10 flex size-12 items-center justify-center rounded-full bg-[#c2a8ff]">
-                <svg
-                  className="scale-75"
-                  width="37"
-                  height="37"
-                  viewBox="0 0 37 37"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M30.5801 8.30514H27.9926C28.6113 7.85514 29.1176 7.34889 29.3426 6.73014C29.6801 5.88639 29.6801 4.48014 27.9363 2.84889C26.0801 1.04889 24.3926 1.04889 23.3238 1.33014C20.9051 1.94889 19.2738 4.76139 18.3738 6.78639C17.4738 4.76139 15.8426 2.00514 13.4238 1.33014C12.3551 1.04889 10.6676 1.10514 8.81133 2.84889C7.06758 4.53639 7.12383 5.88639 7.40508 6.73014C7.63008 7.34889 8.13633 7.85514 8.75508 8.30514H5.71758C4.08633 8.30514 2.73633 9.65514 2.73633 11.2864V14.9989C2.73633 16.5739 4.03008 17.8676 5.60508 17.9239V31.6489C5.60508 33.5614 7.18008 35.1926 9.14883 35.1926H27.5426C29.4551 35.1926 31.0863 33.6176 31.0863 31.6489V17.8676C32.4926 17.6426 33.5613 16.4051 33.5613 14.9426V11.2301C33.5613 9.59889 32.2113 8.30514 30.5801 8.30514ZM23.9426 3.69264C23.9988 3.69264 24.1676 3.63639 24.3363 3.63639C24.7301 3.63639 25.3488 3.80514 26.1926 4.59264C26.8676 5.21139 27.0363 5.66139 26.9801 5.77389C26.6988 6.56139 23.8863 7.40514 20.6801 7.74264C21.4676 5.99889 22.6488 4.03014 23.9426 3.69264ZM10.4988 4.64889C11.3426 3.86139 11.9613 3.69264 12.3551 3.69264C12.5238 3.69264 12.6363 3.74889 12.7488 3.74889C14.0426 4.08639 15.2801 5.99889 16.0676 7.79889C12.8613 7.46139 10.0488 6.61764 9.76758 5.83014C9.71133 5.66139 9.88008 5.26764 10.4988 4.64889ZM5.26758 14.9426V11.2301C5.26758 11.0051 5.43633 10.7801 5.71758 10.7801H30.5801C30.8051 10.7801 31.0301 10.9489 31.0301 11.2301V14.9426C31.0301 15.1676 30.8613 15.3926 30.5801 15.3926H5.71758C5.49258 15.3926 5.26758 15.2239 5.26758 14.9426ZM27.5426 32.6614H9.14883C8.58633 32.6614 8.13633 32.2114 8.13633 31.6489V17.9239H28.4988V31.6489C28.5551 32.2114 28.1051 32.6614 27.5426 32.6614Z"
-                    fill="black"
-                  />
-                </svg>
+                <img src="/templates.webp" alt="" />
               </div>
               <h4 className="mb-4 text-2xl font-bold text-white">
-                Create command
+                Video & Motion Template
               </h4>
               <p className="text-dark-6 mb-8 text-lg lg:mb-9">
-                Enables users to locate solutions to their inquiries without
-                browsing numerous resources.
+                Access After Effects and Premiere Pro templates, 3D/2D
+                animations, and animated presentations for professional videos.
               </p>
             </div>
           </div>
@@ -189,11 +174,11 @@ export const Hero = (props: HeroProps) => {
                 </svg>
               </div>
               <h4 className="mb-4 text-2xl font-bold text-white">
-                Improve everyday
+                Musics & Sound effects
               </h4>
               <p className="text-dark-6 mb-8 text-lg lg:mb-9">
-                The app uses natural language processing to understand user
-                queries and provide accurate and relevant responses.
+                Royalty-free music, immersive sound effects, varied soundscapes,
+                and seamless music loops for dynamic videos.
               </p>
             </div>
           </div>
@@ -251,11 +236,11 @@ export const Hero = (props: HeroProps) => {
                 </svg>
               </div>
               <h4 className="mb-4 text-2xl font-bold text-white">
-                Connect everywhere
+                Footage, Illustration & Gif
               </h4>
               <p className="text-dark-6 mb-8 text-lg lg:mb-9">
-                Connect with the AI tool from anywhere, on any device, making it
-                more accessible and convenient.
+                HD/4K footage, high-quality vector illustrations, animated GIFs,
+                and dynamic backgrounds for engaging projects.
               </p>
             </div>
           </div>
@@ -293,11 +278,11 @@ export const Hero = (props: HeroProps) => {
                 </svg>
               </div>
               <h4 className="mb-4 text-2xl font-bold text-white">
-                Create command
+                Plugins & Tools
               </h4>
               <p className="text-dark-6 mb-8 text-lg lg:mb-9">
-                Enables users to locate solutions to their inquiries without
-                browsing numerous resources.
+                Adobe plugins, 3D animation tools, automation scripts, and
+                advanced visual effects for professional results.
               </p>
             </div>
           </div>
@@ -335,11 +320,11 @@ export const Hero = (props: HeroProps) => {
                 </svg>
               </div>
               <h4 className="mb-4 text-2xl font-bold text-white">
-                Improve everyday
+                Character font
               </h4>
               <p className="text-dark-6 mb-8 text-lg lg:mb-9">
-                The app uses natural language processing to understand user
-                queries and provide accurate and relevant responses.
+                Unique fonts, animated typefaces, and artistic scripts to
+                personalize your videos with creative typography.
               </p>
             </div>
           </div>
@@ -376,12 +361,10 @@ export const Hero = (props: HeroProps) => {
                   />
                 </svg>
               </div>
-              <h4 className="mb-4 text-2xl font-bold text-white">
-                Improve everyday
-              </h4>
+              <h4 className="mb-4 text-2xl font-bold text-white">Presets</h4>
               <p className="text-dark-6 mb-8 text-lg lg:mb-9">
-                The app uses natural language processing to understand user
-                queries and provide accurate and relevant responses.
+                Professional color presets, cinematic LUTs, animation presets,
+                text effects, and transitions for seamless video editing.
               </p>
             </div>
           </div>
@@ -391,7 +374,7 @@ export const Hero = (props: HeroProps) => {
       <div
         data-aos="fade"
         data-aos-duration="1500"
-        className="flex w-full max-w-6xl flex-col items-center justify-center gap-10 py-8"
+        className="hidden w-full max-w-6xl flex-col items-center justify-center gap-10 py-8"
       >
         <h1 className="text-center text-4xl font-bold">
           Relied on by organizations globally{" "}
@@ -438,16 +421,16 @@ export const Hero = (props: HeroProps) => {
           data-aos-duration="1500"
           className="container mx-auto"
         >
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <div className="mt-8 flex justify-center gap-4">
             <Glowing
               color="#8ecffb"
-              className="relative w-full rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
+              className="relative w-full max-w-[22rem] rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
             >
               <span className="mb-5 block rounded-full bg-white/10 px-6 py-2 text-xl font-medium text-white backdrop-blur-2xl">
-                Starter
+                BETA
               </span>
               <h2 className="text-dark mb-4 text-4xl font-semibold dark:text-white xl:text-[42px] xl:leading-[1.21]">
-                <span className="-ml-1 -tracking-[2px]">€ 15</span>
+                <span className="-ml-1 -tracking-[2px]">€ 10</span>
                 <span className="text-body-color ml-2 text-base font-normal text-muted-foreground">
                   Per Month
                 </span>
@@ -461,14 +444,14 @@ export const Hero = (props: HeroProps) => {
                     <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" "}
-                      HD Footage & Photos{" "}
+                      Unlimited download{" "}
                     </span>
                   </li>
                   <li className="inline-flex items-center space-x-2">
                     <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" "}
-                      Musics & sound Effects{" "}
+                      Publish anywere offline{" "}
                     </span>
                   </li>
                   <li className="inline-flex items-center space-x-2">
@@ -481,38 +464,105 @@ export const Hero = (props: HeroProps) => {
                     <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" "}
-                      Pack for video editing and thumbnails{" "}
+                      New assets added daily{" "}
                     </span>
                   </li>
                   <li className="inline-flex items-center space-x-2">
                     <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" "}
-                      Cancel anytime{" "}
+                      Exclusive Adobe extension{" "}
+                    </span>
+                  </li>
+                  <li className="inline-flex items-center space-x-2">
+                    <Check color="#ffffff" />
+                    <span className="text-base font-medium text-white">
+                      {" "}
+                      Professional plugins{" "}
                     </span>
                   </li>
                 </ul>
               </div>
-              <a
-                href="javascript:void(0)"
-                className="hover:bg-blue-dark recommended inline-block rounded-md px-7 py-3 text-center text-base font-medium text-black transition"
+              <Link
+                href="/signin"
+                className="hover:bg-blue-dark inline-block rounded-md bg-white px-7 py-3 text-center text-base font-medium text-black transition hover:bg-[#ffffffbb]"
               >
                 Get started
-              </a>
+              </Link>
             </Glowing>
-
             <Glowing
               color="#8ecffb"
-              className="relative w-full overflow-hidden rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
+              className="relative w-full max-w-[22rem] overflow-hidden rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
             >
               <p className="recommended absolute right-[-50px] inline-block -rotate-90 rounded-bl-md rounded-tl-md px-5 py-2 text-base font-medium text-black">
                 Recommended
               </p>
               <span className="mb-5 block rounded-full bg-white/10 px-6 py-2 text-xl font-medium text-white backdrop-blur-2xl">
-                Business
+                Annualy
               </span>
               <h2 className="text-dark mb-4 text-4xl font-semibold dark:text-white xl:text-[42px] xl:leading-[1.21]">
-                <span className="-ml-1 -tracking-[2px]">€ 29</span>
+                <span className="-ml-1 -tracking-[2px]">€ 199</span>
+                <span className="text-body-color ml-2 text-base font-normal text-muted-foreground">
+                  Per Year
+                </span>
+              </h2>
+              <div className="mb-[30px]">
+                <h5 className="text-dark mb-5 text-lg font-medium dark:text-white">
+                  Features
+                </h5>
+                <ul className="mt-8 flex flex-col space-y-4">
+                  <li className="inline-flex items-center space-x-2">
+                    <Check color="#ffffff" />
+                    <span className="text-base font-medium text-white">
+                      {" "}
+                      HD Footage & Photos{" "}
+                    </span>
+                  </li>
+                  <li className="inline-flex items-center space-x-2">
+                    <Check color="#ffffff" />
+                    <span className="text-base font-medium text-white">
+                      {" "}
+                      Musics & sound Effects{" "}
+                    </span>
+                  </li>
+                  <li className="inline-flex items-center space-x-2">
+                    <Check color="#ffffff" />
+                    <span className="text-base font-medium text-white">
+                      {" Adobe's app templates "}
+                    </span>
+                  </li>
+                  <li className="inline-flex items-center space-x-2">
+                    <Check color="#ffffff" />
+                    <span className="text-base font-medium text-white">
+                      {" "}
+                      Pack for video editing and thumbnails{" "}
+                    </span>
+                  </li>
+                  <li className="inline-flex items-center space-x-2">
+                    <Check color="#ffffff" />
+                    <span className="text-base font-medium text-white">
+                      {" "}
+                      Cancel anytime{" "}
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <Link
+                href="/signin"
+                className="hover:bg-blue-dark inline-block rounded-md bg-white px-7 py-3 text-center text-base font-medium text-black transition hover:bg-[#ffffffbb]"
+              >
+                Get started
+              </Link>
+            </Glowing>
+            <Glowing
+              color="#8ecffb"
+              className="relative w-full max-w-[22rem] rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
+            >
+              <span className="mb-5 block rounded-full bg-white/10 px-6 py-2 text-xl font-medium text-white backdrop-blur-2xl">
+                Monthly
+              </span>
+              <h2 className="text-dark mb-4 text-4xl font-semibold dark:text-white xl:text-[42px] xl:leading-[1.21]">
+                <span className="-ml-1 -tracking-[2px]">€ 19</span>
                 <span className="text-body-color ml-2 text-base font-normal text-muted-foreground">
                   Per Month
                 </span>
@@ -558,12 +608,12 @@ export const Hero = (props: HeroProps) => {
                   </li>
                 </ul>
               </div>
-              <a
-                href="javascript:void(0)"
-                className="hover:bg-blue-dark recommended inline-block rounded-md px-7 py-3 text-center text-base font-medium text-black transition"
+              <Link
+                href="/signin"
+                className="hover:bg-blue-dark inline-block rounded-md bg-white px-7 py-3 text-center text-base font-medium text-black transition hover:bg-[#ffffffbb]"
               >
                 Get started
-              </a>
+              </Link>
             </Glowing>
           </div>
         </div>
@@ -575,9 +625,10 @@ export const Hero = (props: HeroProps) => {
         data-aos-duration="1500"
         className="flex w-full max-w-6xl flex-col items-center justify-center gap-10 py-8"
       >
-        <h1 className="text-center text-4xl font-bold">
-          Community members opinions
-        </h1>
+        <div className="flex items-center gap-2 text-center text-4xl font-bold">
+          Our users <img src="/red-heart.png" alt="" className="size-10" />{" "}
+          EditBag
+        </div>
         <div className="gradient-mask flex w-full max-w-6xl items-start justify-between">
           <div className="flex animate-infinite-scroll gap-16">
             {Array.from({ length: 10 }).map((_, index) => (

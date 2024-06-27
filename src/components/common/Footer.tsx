@@ -32,7 +32,7 @@ export const Footer = () => {
           <div className="flex w-1/4 flex-col">
             <h1 className="mb-2 text-2xl font-semibold">Contact</h1>
             <p className="text-lg">
-              Email: hello@tool.ai <br /> Address: <br />
+              Email: editbagsaas@gmail.com <br /> Address: <br />
               Singel 258
               <br /> 1234 AB Amsterdam
               <br /> The Netherlands
@@ -40,7 +40,10 @@ export const Footer = () => {
           </div>
           <div className="flex flex-col">
             <h1 className="mb-2 text-2xl font-semibold">Links</h1>
-            <Link className="w-full text-lg hover:text-[#c2a8ff]" href="#">
+            <Link
+              className="w-full text-lg hover:text-[#c2a8ff]"
+              href="/#about"
+            >
               About
             </Link>
             <Link className="w-full text-lg hover:text-[#c2a8ff]" href="#">
@@ -51,12 +54,6 @@ export const Footer = () => {
               href="/#pricing"
             >
               Pricing
-            </Link>
-            <Link className="w-full text-lg hover:text-[#c2a8ff]" href="#">
-              Home 02
-            </Link>
-            <Link className="w-full text-lg hover:text-[#c2a8ff]" href="#">
-              More products
             </Link>
           </div>
         </div>
