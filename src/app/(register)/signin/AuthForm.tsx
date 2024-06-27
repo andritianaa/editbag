@@ -98,7 +98,7 @@ const AuthForm = () => {
                 : "Already joined ?"}
               <span
                 onClick={toggleVariant}
-                className="ml-2 cursor-pointer text-[#ffbb80] transition-all duration-200 hover:text-[#d89459] hover:underline"
+                className="ml-2 cursor-pointer text-[#8ecffb] transition-all duration-200 hover:text-[#71a4c7] hover:underline"
               >
                 {variant === "LOGIN" ? "Create an account" : "Login"}
               </span>

@@ -46,7 +46,7 @@ export const Tab = (props: TabProps) => {
     },
   ];
   return (
-    <div className="mt-6 flex gap-4">
+    <div className="mt-6 flex justify-center gap-4">
       {links.map((link) => {
         const content = (
           <Link key={link.type} className="flex" href={link.href}>
