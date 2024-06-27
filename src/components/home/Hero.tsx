@@ -91,7 +91,7 @@ export const Hero = (props: HeroProps) => {
         className="flex w-full max-w-6xl flex-row-reverse items-start justify-center gap-20 py-8"
       >
         <Card className="flex w-[50%] items-center justify-center border border-[#3f3f3f] bg-[#212121]">
-          <img src="IMAGE2.png" alt="" className="h-72 py-4" />
+          <img src="/IMAGE2.png" alt="" className="h-72 py-4" />
         </Card>
         <div className="sticky top-[5.5rem] w-[50%]">
           <p className="mb-2 text-3xl font-bold">Find Inspiration Instantly</p>
@@ -129,10 +129,7 @@ export const Hero = (props: HeroProps) => {
         <h1 className="animatedText text-center text-6xl font-bold">
           Power your videos with the best creative assets
         </h1>
-        <p className="max-w-lg text-center text-lg text-muted-foreground">
-          These are a few of the key features of AITool that distinguish it from
-          other AI platforms.
-        </p>
+
         <div className="flex flex-wrap">
           <div
             data-aos="zoom-in"
@@ -280,14 +277,7 @@ export const Hero = (props: HeroProps) => {
         >
           Pricing
         </h1>
-        <p
-          data-aos="fade"
-          data-aos-duration="1500"
-          className="max-w-lg text-center text-lg text-muted-foreground"
-        >
-          These are a few of the key features of AITool that distinguish it from
-          other AI platforms.
-        </p>
+
         <div
           data-aos="fade"
           data-aos-duration="1500"
@@ -296,7 +286,7 @@ export const Hero = (props: HeroProps) => {
           <div className="mt-8 flex justify-center gap-4">
             <Glowing
               color="#8ecffb"
-              className="relative w-full max-w-[22rem] rounded-xl p-6 px-8 py-10 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:py-10 xl:p-14"
+              className="relative w-full max-w-[22rem] rounded-xl p-6 px-8 pl-10 pr-2 sm:p-12 md:w-1/2 lg:w-1/3 lg:px-6 lg:pl-10 xl:p-14"
             >
               <span className="mb-5 block rounded-full bg-white/10 px-6 py-2 text-xl font-medium text-white backdrop-blur-2xl">
                 BETA
@@ -315,42 +305,9 @@ export const Hero = (props: HeroProps) => {
                   <li className="inline-flex items-center space-x-2">
                     <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
-                      {" "}
-                      Unlimited download{" "}
-                    </span>
-                  </li>
-                  <li className="inline-flex items-center space-x-2">
-                    <Check color="#ffffff" />
-                    <span className="text-base font-medium text-white">
-                      {" "}
-                      Publish anywere offline{" "}
-                    </span>
-                  </li>
-                  <li className="inline-flex items-center space-x-2">
-                    <Check color="#ffffff" />
-                    <span className="text-base font-medium text-white">
-                      {" Adobe's app templates "}
-                    </span>
-                  </li>
-                  <li className="inline-flex items-center space-x-2">
-                    <Check color="#ffffff" />
-                    <span className="text-base font-medium text-white">
-                      {" "}
-                      New assets added daily{" "}
-                    </span>
-                  </li>
-                  <li className="inline-flex items-center space-x-2">
-                    <Check color="#ffffff" />
-                    <span className="text-base font-medium text-white">
-                      {" "}
-                      Exclusive Adobe extension{" "}
-                    </span>
-                  </li>
-                  <li className="inline-flex items-center space-x-2">
-                    <Check color="#ffffff" />
-                    <span className="text-base font-medium text-white">
-                      {" "}
-                      Professional plugins{" "}
+                      <p className="whitespace-nowrap text-lg text-white">
+                        Full access to beta version
+                      </p>
                     </span>
                   </li>
                 </ul>
