@@ -7,8 +7,6 @@ import { toast } from "sonner";
 export type SearchInputProps = {};
 
 export const SearchInput = (props: SearchInputProps) => {
-  console.log(props);
-
   const searchParams = useSearchParams();
 
   const currentSearch = searchParams.get("search");

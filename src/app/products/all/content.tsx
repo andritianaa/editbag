@@ -31,13 +31,28 @@ export const Content = (props: contentProps) => {
   const [videos, setVideos] = useState<Video[]>([]);
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [emoji, setEmoji] = useState<
-    (Omit<Post, "id"> & { id: string; isFavorite: boolean })[]
+    (Omit<Post, "id"> & {
+      id: string;
+      isFavorite: boolean;
+      favoriteCount: number;
+      downloadedCount: number;
+    })[]
   >([]);
   const [template, setTemplate] = useState<
-    (Omit<Post, "id"> & { id: string; isFavorite: boolean })[]
+    (Omit<Post, "id"> & {
+      id: string;
+      isFavorite: boolean;
+      favoriteCount: number;
+      downloadedCount: number;
+    })[]
   >([]);
   const [posts, setPosts] = useState<
-    (Omit<Post, "id"> & { id: string; isFavorite: boolean })[]
+    (Omit<Post, "id"> & {
+      id: string;
+      isFavorite: boolean;
+      favoriteCount: number;
+      downloadedCount: number;
+    })[]
   >([]);
 
   const fetchVideo = async () => {

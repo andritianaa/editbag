@@ -5,9 +5,25 @@ import { currentUser } from "../../lib/current-user";
 import { prisma } from "../../prisma";
 
 export const getPost = async (): Promise<
-  (Omit<Post, "id"> & { id: string; isFavorite: boolean })[]
+  (Omit<Post, "id"> & {
+    id: string;
+    isFavorite: boolean;
+    favoriteCount: number;
+    downloadedCount: number;
+  })[]
 > => {
-  const posts = await prisma.post.findMany();
+  const data = await prisma.post.findMany({
+    include: {
+      Favorite: true,
+      Downloaded: true,
+    },
+  });
+
+  const posts = data.map((post) => ({
+    ...post,
+    favoriteCount: post.Favorite.length,
+    downloadedCount: post.Downloaded.length,
+  }));
   const user = await currentUser();
 
   const favoritePosts = await prisma.favorite.findMany({
@@ -32,7 +48,12 @@ export const getPost = async (): Promise<
 
 export const mostDownloadedPost = async (
   type: string
-): Promise<(Omit<Post, "id"> & { id: string; isFavorite: boolean })[]> => {
+): Promise<
+  (Omit<Post, "id"> & {
+    id: string;
+    isFavorite: boolean;
+  })[]
+> => {
   const user = await currentUser();
   const posts = await prisma.post.findMany({
     where: {
@@ -69,9 +90,15 @@ export const mostDownloadedPost = async (
   }));
   return results;
 };
+
 export const mostPopularPost = async (
   type: string
-): Promise<(Omit<Post, "id"> & { id: string; isFavorite: boolean })[]> => {
+): Promise<
+  (Omit<Post, "id"> & {
+    id: string;
+    isFavorite: boolean;
+  })[]
+> => {
   const user = await currentUser();
   const posts = await prisma.post.findMany({
     where: {

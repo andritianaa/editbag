@@ -15,11 +15,30 @@ import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { SimpleInput } from "@/components/ui/SimpleInput";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+type PostWithStats = Omit<Post, "id"> & {
+  id: string;
+  isFavorite: boolean;
+  favoriteCount: number;
+  downloadedCount: number;
+};
 
 export type contentProps = {
-  products: (Omit<Post, "id"> & { id: string; isFavorite: boolean })[];
-  mostDownloaded: (Omit<Post, "id"> & { id: string; isFavorite: boolean })[];
-  mostPopular: (Omit<Post, "id"> & { id: string; isFavorite: boolean })[];
+  products: PostWithStats[];
+  mostDownloaded: (Omit<Post, "id"> & {
+    id: string;
+    isFavorite: boolean;
+  })[];
+  mostPopular: (Omit<Post, "id"> & {
+    id: string;
+    isFavorite: boolean;
+  })[];
   categories: Categories[];
   subCategories: SubCategories[];
   currentCategories: string[];
@@ -27,10 +46,34 @@ export type contentProps = {
   currentSearch: string;
 };
 
+const sort = [
+  {
+    name: "Newest",
+    field: "createdAt",
+    order: "asc",
+  },
+  {
+    name: "Oldest",
+    field: "createdAt",
+    order: "desc",
+  },
+  {
+    name: "Most downloaded",
+    field: "downloadedCount",
+    order: "desc",
+  },
+  {
+    name: "Most saved",
+    field: "favoriteCount",
+    order: "desc",
+  },
+];
+
 export const Content = (props: contentProps) => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>(
     props.currentCategories
   );
+
   const [selectedSubCategories, setSelectedSubCategories] = useState<string[]>(
     props.currentSubCategories
   );
@@ -46,13 +89,43 @@ export const Content = (props: contentProps) => {
       : false
   );
 
+  const [posts, setPosts] = useState<PostWithStats[]>(props.products);
+  const [currentSort, setCurrentSort] = useState<string>("");
+
+  const sortPosts = (field: string, order: string, name: string) => {
+    setCurrentSort(name);
+    console.log(posts);
+
+    setPosts(
+      posts.sort((a, b) => {
+        const fieldA = a[field as keyof PostWithStats];
+        const fieldB = b[field as keyof PostWithStats];
+
+        if (fieldA == null && fieldB == null) {
+          return 0;
+        } else if (fieldA == null) {
+          return order === "asc" ? 1 : -1;
+        } else if (fieldB == null) {
+          return order === "asc" ? -1 : 1;
+        } else if (fieldA < fieldB) {
+          return order === "asc" ? -1 : 1;
+        } else if (fieldA > fieldB) {
+          return order === "asc" ? 1 : -1;
+        } else {
+          return 0;
+        }
+      })
+    );
+  };
+
   useEffect(() => {
     setIsSearching(
       textSearch.length > 0 ||
+        currentSort.length > 0 ||
         selectedCategories.length > 0 ||
         selectedSubCategories.length > 0
     );
-  }, [textSearch, selectedCategories, selectedSubCategories]);
+  }, [textSearch, selectedCategories, selectedSubCategories, currentSort]);
 
   const handleCategoryChange = (categoryName: string) => {
     let updatedCategories: string[] = [];
@@ -138,70 +211,97 @@ export const Content = (props: contentProps) => {
               />
             </div>
             <Separator />
-            <Label className="flex w-[200px] items-center">
-              Find by software
-            </Label>
-            <div className="">
-              {props.categories.map(
-                (c) =>
-                  c.type == "templates" && (
-                    <div
-                      className="flex w-full items-center space-x-2"
-                      key={c.id}
-                    >
+            <Accordion type="multiple" className="">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="w-[200px]">
+                  Sort by
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="">
+                    {sort.map((s) => (
                       <label
-                        onClick={() => handleCategoryChange(c.name)}
-                        htmlFor={`category-${c.id}`}
+                        key={s.field}
+                        onClick={() => sortPosts(s.field, s.order, s.name)}
+                        htmlFor={`orientation-`}
                         className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                          selectedCategories.includes(c.name)
-                            ? "bg-[rgba(38,38,38,.9)]"
-                            : ""
+                          s.name == currentSort ? "bg-[rgba(38,38,38,.9)]" : ""
                         }`}
                       >
-                        <Checkbox
-                          checked={selectedCategories.includes(c.name)}
-                        />
-                        {c.name}
+                        {s.name}
                       </label>
-                    </div>
-                  )
-              )}
-            </div>
-
-            <Separator />
-            <Label className="flex w-[200px] items-center">
-              Find by templates type
-            </Label>
-            <div className="">
-              {(() => {
-                const displayedNames = new Set();
-                return props.subCategories.map((c) =>
-                  c.type === "templates" && !displayedNames.has(c.name)
-                    ? displayedNames.add(c.name) && (
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="w-[200px]">
+                  Find by software
+                </AccordionTrigger>
+                <AccordionContent>
+                  {props.categories.map(
+                    (c) =>
+                      c.type == "templates" && (
                         <div
                           className="flex w-full items-center space-x-2"
                           key={c.id}
                         >
                           <label
-                            onClick={() => handleSubCategoryChange(c.name)}
-                            htmlFor={`subcategory-${c.id}`}
+                            onClick={() => handleCategoryChange(c.name)}
+                            htmlFor={`category-${c.id}`}
                             className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                              selectedSubCategories.includes(c.name)
+                              selectedCategories.includes(c.name)
                                 ? "bg-[rgba(38,38,38,.9)]"
                                 : ""
                             }`}
                           >
                             <Checkbox
-                              checked={selectedSubCategories.includes(c.name)}
+                              checked={selectedCategories.includes(c.name)}
                             />
                             {c.name}
                           </label>
                         </div>
                       )
-                    : null
-                );
-              })()}
-            </div>
+                  )}
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger className="w-[200px]">
+                  Categories
+                </AccordionTrigger>
+                <AccordionContent>
+                  {(() => {
+                    const displayedNames = new Set();
+                    return props.subCategories.map((c) =>
+                      c.type === "templates" && !displayedNames.has(c.name)
+                        ? displayedNames.add(c.name) && (
+                            <div
+                              className="flex w-full items-center space-x-2"
+                              key={c.id}
+                            >
+                              <label
+                                onClick={() => handleSubCategoryChange(c.name)}
+                                htmlFor={`subcategory-${c.id}`}
+                                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
+                                  selectedSubCategories.includes(c.name)
+                                    ? "bg-[rgba(38,38,38,.9)]"
+                                    : ""
+                                }`}
+                              >
+                                <Checkbox
+                                  checked={selectedSubCategories.includes(
+                                    c.name
+                                  )}
+                                />
+                                {c.name}
+                              </label>
+                            </div>
+                          )
+                        : null
+                    );
+                  })()}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </Card>
           <div className="flex w-full flex-col items-center">
             <div className="mt-4 flex w-full max-w-[41rem] items-center justify-center gap-2 lg:hidden">
@@ -239,64 +339,55 @@ export const Content = (props: contentProps) => {
                       placeholder="Search for templates..."
                       className="flex-1 border-0 px-4 py-2 text-sm focus:ring-0"
                     />
-                    <Separator />
-                    <Label className="flex items-center">
-                      Find by software
-                    </Label>
-                    <div className="">
-                      {props.categories.map(
-                        (c) =>
-                          c.type == "templates" && (
-                            <div
-                              className="flex w-full items-center space-x-2"
-                              key={c.id}
-                            >
+                    <Accordion type="multiple" className="">
+                      <AccordionItem value="item-1">
+                        <AccordionTrigger className="w-[200px]">
+                          Sort by
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          <div className="">
+                            {sort.map((s) => (
                               <label
-                                onClick={() => handleCategoryChange(c.name)}
-                                htmlFor={`category-${c.id}`}
+                                key={s.field}
+                                onClick={() =>
+                                  sortPosts(s.field, s.order, s.name)
+                                }
+                                htmlFor={`orientation-`}
                                 className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                                  selectedCategories.includes(c.name)
+                                  s.name == currentSort
                                     ? "bg-[rgba(38,38,38,.9)]"
                                     : ""
                                 }`}
                               >
-                                <Checkbox
-                                  checked={selectedCategories.includes(c.name)}
-                                />
-                                {c.name}
+                                {s.name}
                               </label>
-                            </div>
-                          )
-                      )}
-                    </div>
-
-                    <Separator />
-                    <Label className="flex items-center">
-                      Find by templates type
-                    </Label>
-                    <div className="">
-                      {(() => {
-                        const displayedNames = new Set();
-                        return props.subCategories.map((c) =>
-                          c.type === "templates" && !displayedNames.has(c.name)
-                            ? displayedNames.add(c.name) && (
+                            ))}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="item-2">
+                        <AccordionTrigger className="w-[200px]">
+                          Find by software
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          {props.categories.map(
+                            (c) =>
+                              c.type == "templates" && (
                                 <div
                                   className="flex w-full items-center space-x-2"
                                   key={c.id}
                                 >
                                   <label
-                                    onClick={() =>
-                                      handleSubCategoryChange(c.name)
-                                    }
-                                    htmlFor={`subcategory-${c.id}`}
+                                    onClick={() => handleCategoryChange(c.name)}
+                                    htmlFor={`category-${c.id}`}
                                     className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                                      selectedSubCategories.includes(c.name)
+                                      selectedCategories.includes(c.name)
                                         ? "bg-[rgba(38,38,38,.9)]"
                                         : ""
                                     }`}
                                   >
                                     <Checkbox
-                                      checked={selectedSubCategories.includes(
+                                      checked={selectedCategories.includes(
                                         c.name
                                       )}
                                     />
@@ -304,10 +395,50 @@ export const Content = (props: contentProps) => {
                                   </label>
                                 </div>
                               )
-                            : null
-                        );
-                      })()}
-                    </div>
+                          )}
+                        </AccordionContent>
+                      </AccordionItem>
+                      <AccordionItem value="item-3">
+                        <AccordionTrigger className="w-[200px]">
+                          Categories
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          {(() => {
+                            const displayedNames = new Set();
+                            return props.subCategories.map((c) =>
+                              c.type === "templates" &&
+                              !displayedNames.has(c.name)
+                                ? displayedNames.add(c.name) && (
+                                    <div
+                                      className="flex w-full items-center space-x-2"
+                                      key={c.id}
+                                    >
+                                      <label
+                                        onClick={() =>
+                                          handleSubCategoryChange(c.name)
+                                        }
+                                        htmlFor={`subcategory-${c.id}`}
+                                        className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
+                                          selectedSubCategories.includes(c.name)
+                                            ? "bg-[rgba(38,38,38,.9)]"
+                                            : ""
+                                        }`}
+                                      >
+                                        <Checkbox
+                                          checked={selectedSubCategories.includes(
+                                            c.name
+                                          )}
+                                        />
+                                        {c.name}
+                                      </label>
+                                    </div>
+                                  )
+                                : null
+                            );
+                          })()}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
                   </div>
                 </DrawerContent>
               </Drawer>
@@ -371,7 +502,7 @@ export const Content = (props: contentProps) => {
                 </>
               )}
               <div className="mt-2 flex flex-wrap justify-start">
-                {props.products
+                {posts
                   .filter(
                     (product) =>
                       product.status === "online" &&
@@ -407,7 +538,7 @@ export const Content = (props: contentProps) => {
                     />
                   ))}
 
-                {props.products.filter(
+                {posts.filter(
                   (product) =>
                     product.status === "online" &&
                     product.type === "templates" &&
