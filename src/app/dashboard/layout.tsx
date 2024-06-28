@@ -3,24 +3,16 @@ import { AuthenticatedMenu } from "@/features/auth/AuthenticatedMenu";
 
 import Link from "@/components/common/LinkActivated";
 import { Button } from "@/components/ui/button";
-import {
-  CardTitle,
-  CardDescription,
-  CardHeader,
-  CardContent,
-  Card,
-} from "@/components/ui/card";
+
 import { SheetTrigger, SheetContent, Sheet } from "@/components/ui/sheet";
 import {
   BellIcon,
   HomeIcon,
-  LineChartIcon,
   MenuIcon,
   Newspaper,
   SquarePen,
   UsersIcon,
 } from "lucide-react";
-import Image from "next/image";
 import { currentUser } from "@/lib/current-user";
 import { notFound } from "next/navigation";
 import { Logo } from "../../components/common/Logo";
@@ -46,28 +38,28 @@ export default async function RouteLayout(props: LayoutParams<{}>) {
             <div className="flex-1">
               <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
                 <Link
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#fbc466]"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#ffffff]"
                   href="/dashboard"
                 >
                   <HomeIcon className="h-4 w-4" />
                   Dashboard
                 </Link>
                 <Link
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#fbc466]"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#ffffff]"
                   href="/dashboard/users"
                 >
                   <UsersIcon className="h-4 w-4" />
                   Users
                 </Link>
                 <Link
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#fbc466]"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#ffffff]"
                   href="/dashboard/products"
                 >
                   <Newspaper className="h-4 w-4" />
                   Products
                 </Link>
                 <Link
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#fbc466]"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#ffffff]"
                   href="/dashboard/products/new"
                 >
                   <SquarePen className="h-4 w-4" />

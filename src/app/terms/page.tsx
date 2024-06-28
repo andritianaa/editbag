@@ -87,7 +87,7 @@ export default async function RoutePage(props: PageParams<{}>) {
             {`Pour toute question concernant ces Conditions, veuillez nous contacter à `}
             <a
               href="mailto:editbagsaas@gmail.com"
-              className="ml-2 text-[#fbc466] hover:underline"
+              className="ml-2 text-[#ffffff] hover:underline"
             >
               editbagsaas@gmail.com
             </a>

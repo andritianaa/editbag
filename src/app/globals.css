@@ -14,7 +14,7 @@
     --primary-foreground: 222.2 47.4% 11.2%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 38 30% 30%;
+    --muted: 217 19% 27%;
     --muted-foreground: 215 20.2% 65.1%;
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
@@ -66,7 +66,7 @@
   background-color: #191919 !important;
 }
 .wmde-markdown a {
-  color: #fbc466 !important;
+  color: #ffffff !important;
 }
 
 .wmde-markdown h1,
@@ -103,16 +103,32 @@
 .zoomEffect {
   animation: zoomEffect 0.5s ease-out forwards;
 }
-.animatedText{
+.animatedText {
   text-transform: none;
-  background-image: linear-gradient(to right, rgb(194, 168, 255), rgb(194, 168, 255), rgb(255, 153, 235), rgb(255, 153, 235), rgb(255, 148, 210), rgb(255, 148, 210), hsl(348, 100%, 78%), rgb(255, 143, 165), hsl(28, 100%, 75%), rgb(255, 187, 128), hsl(47, 100%, 74%), rgb(255, 226, 122), rgb(173, 216, 230), rgb(144, 238, 144));
+  background-image: linear-gradient(
+    to right,
+    rgb(194, 168, 255),
+    rgb(194, 168, 255),
+    rgb(255, 153, 235),
+    rgb(255, 153, 235),
+    rgb(255, 148, 210),
+    rgb(255, 148, 210),
+    hsl(348, 100%, 78%),
+    rgb(255, 143, 165),
+    hsl(28, 100%, 75%),
+    rgb(255, 187, 128),
+    hsl(47, 100%, 74%),
+    rgb(255, 226, 122),
+    rgb(173, 216, 230),
+    rgb(144, 238, 144)
+  );
   background-clip: text;
   color: transparent;
   filter: hue-rotate(0deg);
   background-size: 600% auto;
   animation: moveGradient 20s ease-in-out infinite;
 }
-.animatedTextWhite{
+.animatedTextWhite {
   background-color: white;
   text-transform: none;
   background-clip: text;
@@ -123,27 +139,61 @@
 }
 
 @keyframes moveGradient {
-  0% { background-position: 0% 10%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position:0 90%; }
+  0% {
+    background-position: 0% 10%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 90%;
+  }
 }
 
-.gradientBG{
-filter: hue-rotate(0deg);
-background-image: linear-gradient(to right, rgb(194, 168, 255), rgb(194, 168, 255), rgb(255, 153, 235), rgb(255, 153, 235)) !important;
+.gradientBG {
+  filter: hue-rotate(0deg);
+  background-image: linear-gradient(
+    to right,
+    rgb(194, 168, 255),
+    rgb(194, 168, 255),
+    rgb(255, 153, 235),
+    rgb(255, 153, 235)
+  ) !important;
 }
 
-.recommended{
-  background-image: linear-gradient(to right, rgb(194, 168, 255), rgb(194, 168, 255), rgb(255, 153, 235), rgb(255, 153, 235), rgb(255, 148, 210), rgb(255, 148, 210), hsl(348, 100%, 78%), rgb(255, 143, 165), hsl(28, 100%, 75%), rgb(255, 187, 128), hsl(47, 100%, 74%), rgb(255, 226, 122), rgb(173, 216, 230), rgb(144, 238, 144));
+.recommended {
+  background-image: linear-gradient(
+    to right,
+    rgb(194, 168, 255),
+    rgb(194, 168, 255),
+    rgb(255, 153, 235),
+    rgb(255, 153, 235),
+    rgb(255, 148, 210),
+    rgb(255, 148, 210),
+    hsl(348, 100%, 78%),
+    rgb(255, 143, 165),
+    hsl(28, 100%, 75%),
+    rgb(255, 187, 128),
+    hsl(47, 100%, 74%),
+    rgb(255, 226, 122),
+    rgb(173, 216, 230),
+    rgb(144, 238, 144)
+  );
   filter: hue-rotate(0deg);
   background-size: 600% auto;
   animation: moveBG 20s ease-in-out infinite;
 }
 
 @keyframes moveBG {
-  0% { background-position:  10% 0%; }
-  50% { background-position:  50% 100%; }
-  100% { background-position: 90% 0; }
+  0% {
+    background-position: 10% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 90% 0;
+  }
 }
 
 .custom-bg::before {
@@ -153,7 +203,8 @@ background-image: linear-gradient(to right, rgb(194, 168, 255), rgb(194, 168, 25
   right: 0;
   bottom: 0;
   left: 0;
-  background: url('https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png') repeat;
+  background: url("https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png")
+    repeat;
   height: 400%;
   width: 400%;
   opacity: 0.03;
@@ -161,45 +212,70 @@ background-image: linear-gradient(to right, rgb(194, 168, 255), rgb(194, 168, 25
   z-index: -1; /* Ensure it stays behind other content */
 }
 
-.dotedNav{
+.dotedNav {
   backdrop-filter: blur(30px);
-  background-image: radial-gradient(circle, transparent 25%, rgb(25, 25, 25) 26%), linear-gradient(45deg, transparent 46%, rgb(25, 25, 25) 47%, rgb(25, 25, 25) 52%, transparent 53%), linear-gradient(135deg, transparent 46%, rgb(25, 25, 25) 47%, rgb(25, 25, 25) 52%, transparent 53%);
+  background-image: radial-gradient(
+      circle,
+      transparent 25%,
+      rgb(25, 25, 25) 26%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 46%,
+      rgb(25, 25, 25) 47%,
+      rgb(25, 25, 25) 52%,
+      transparent 53%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 46%,
+      rgb(25, 25, 25) 47%,
+      rgb(25, 25, 25) 52%,
+      transparent 53%
+    );
   background-size: 12px 12px;
   opacity: 1;
 }
 
-.twin .accordeonContent{
+.twin .accordeonContent {
   display: none !important;
 }
 
 .play-button {
   width: 0;
   height: 0;
-  border-left: .3rem solid transparent;
-  border-right: .3rem solid transparent;
-  border-bottom: .5rem solid white;
+  border-left: 0.3rem solid transparent;
+  border-right: 0.3rem solid transparent;
+  border-bottom: 0.5rem solid white;
   cursor: pointer;
   transition: transform 0.2s;
   transform: scale(3) rotate(-45deg);
 }
 
-.pinkButton{
-  background: linear-gradient(105deg, var(--token-453bc13c-d1fe-4e41-8437-573a6a0d2bb3, rgb(194, 168, 255)) /* {&quot;name&quot;:&quot;Primitive/Purple&quot;} */ 0%, var(--token-de20aae4-b9e3-4889-96c6-3c9ddfca9fb3, rgb(255, 153, 235)) /* {&quot;name&quot;:&quot;Primitives/Pink&quot;} */ 52.25225225225225%, var(--token-5bd83abb-9da9-4531-b25d-3b70d9eda54b, rgb(255, 226, 122)) /* {&quot;name&quot;:&quot;Primitives/Yellow&quot;} */ 100%);
+.pinkButton {
+  background: linear-gradient(
+    105deg,
+    var(--token-453bc13c-d1fe-4e41-8437-573a6a0d2bb3, rgb(194, 168, 255))
+      /* {&quot;name&quot;:&quot;Primitive/Purple&quot;} */ 0%,
+    var(--token-de20aae4-b9e3-4889-96c6-3c9ddfca9fb3, rgb(255, 153, 235))
+      /* {&quot;name&quot;:&quot;Primitives/Pink&quot;} */ 52.25225225225225%,
+    var(--token-5bd83abb-9da9-4531-b25d-3b70d9eda54b, rgb(255, 226, 122))
+      /* {&quot;name&quot;:&quot;Primitives/Yellow&quot;} */ 100%
+  );
   opacity: 1;
-  transition: ease all .3s;
+  transition: ease all 0.3s;
   background-size: 200% 200%;
-            background-position: 0 0;
-            color: black;
-
+  background-position: 0 0;
+  color: black;
 }
 
-.pinkButton:hover{
+.pinkButton:hover {
   background-position: 100% 0;
   /* background: white; */
 }
 
-.glow{
-transition: ease all .5s;
+.glow {
+  transition: ease all 0.5s;
 }
 
 .gradient-mask {
@@ -213,25 +289,33 @@ transition: ease all .5s;
   padding: 0px;
   list-style-type: none;
   opacity: 1;
-  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 15%, rgb(0, 0, 0) 85%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0) 15%,
+    rgb(0, 0, 0) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
   overflow: hidden;
 }
 
-a{
-  transition: ease all .3s;
+a {
+  transition: ease all 0.3s;
 }
 
 .rainbow-shadow {
   position: absolute;
   inset: -1rem;
   border-radius: 9999px;
-  background: linear-gradient(to right, 
-              rgb(224, 44, 45), 
-              rgb(247, 146, 0), 
-              rgb(244, 240, 0), 
-              rgb(12, 255, 10), 
-              rgb(11, 228, 255), 
-              rgb(233, 8, 247));
+  background: linear-gradient(
+    to right,
+    rgb(224, 44, 45),
+    rgb(247, 146, 0),
+    rgb(244, 240, 0),
+    rgb(12, 255, 10),
+    rgb(11, 228, 255),
+    rgb(233, 8, 247)
+  );
   opacity: 0.4;
   backdrop-filter: blur(20px); /* Ajoute un flou à l'ombre */
   transition: opacity 1s ease;
@@ -240,10 +324,17 @@ a{
 .glow-effect {
   opacity: 0.2;
   transition: opacity 0.5s ease-in-out;
-  mask: radial-gradient(15rem 15rem at var(--x) var(--y), #000 1%, transparent 100%);
-  -webkit-mask: radial-gradient(15rem 15rem at var(--x) var(--y), #000 1%, transparent 100%);
+  mask: radial-gradient(
+    15rem 15rem at var(--x) var(--y),
+    #000 1%,
+    transparent 100%
+  );
+  -webkit-mask: radial-gradient(
+    15rem 15rem at var(--x) var(--y),
+    #000 1%,
+    transparent 100%
+  );
 }
-
 
 .productVideo::-webkit-media-controls-timeline,
 .productVideo::-webkit-media-slider,

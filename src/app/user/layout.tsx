@@ -42,28 +42,28 @@ export default async function RouteLayout(props: LayoutParams<{}>) {
             <div className="flex-1">
               <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
                 <Link
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#fbc466]"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#ffffff]"
                   href="/user"
                 >
                   <User className="h-4 w-4" />
                   Account
                 </Link>
                 <Link
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#fbc466]"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#ffffff]"
                   href="/user/download"
                 >
                   <Download className="h-4 w-4" />
                   Download
                 </Link>
                 <Link
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#fbc466]"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#ffffff]"
                   href="/user/bookmark"
                 >
                   <Bookmark className="h-4 w-4" />
                   Saved
                 </Link>
                 <Link
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#fbc466]"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-[#ffffff]"
                   href="/user/subscription"
                 >
                   <CreditCard className="h-4 w-4" />

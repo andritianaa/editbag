@@ -201,7 +201,7 @@ export const Content = (props: contentProps) => {
 
             <div className="flex w-full max-w-md items-center rounded-md bg-background shadow-sm">
               <div className="flex-shrink-0 p-2 text-muted-foreground">
-                <SearchIcon className="h-5 w-5" color="#bfa8fb" />
+                <SearchIcon className="h-5 w-5" color="#ffffff" />
               </div>
               <SimpleInput
                 value={textSearch}

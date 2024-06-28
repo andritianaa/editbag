@@ -19,7 +19,7 @@ export const Pricing = (props: PricingProps) => {
           <div className="w-full px-4">
             <div className="mx-auto mb-[60px] max-w-[510px] text-center">
               <span
-                className="mb-2 block text-lg font-semibold text-[#fbc466]"
+                className="mb-2 block text-lg font-semibold text-[#ffffff]"
                 data-aos="fade-up"
               >
                 Pricing Table
@@ -61,34 +61,34 @@ export const Pricing = (props: PricingProps) => {
                 </h5>
                 <ul className="mt-8 flex flex-col space-y-4">
                   <li className="inline-flex items-center space-x-2">
-                    <Check color="#fbc466" />
+                    <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" "}
                       HD Footage & Photos{" "}
                     </span>
                   </li>
                   <li className="inline-flex items-center space-x-2">
-                    <Check color="#fbc466" />
+                    <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" "}
                       Musics & sound Effects{" "}
                     </span>
                   </li>
                   <li className="inline-flex items-center space-x-2">
-                    <Check color="#fbc466" />
+                    <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" Adobe's app templates "}
                     </span>
                   </li>
                   <li className="inline-flex items-center space-x-2">
-                    <Check color="#fbc466" />
+                    <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" "}
                       Pack for video editing and thumbnails{" "}
                     </span>
                   </li>
                   <li className="inline-flex items-center space-x-2">
-                    <Check color="#fbc466" />
+                    <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" "}
                       Cancel anytime{" "}
@@ -98,7 +98,7 @@ export const Pricing = (props: PricingProps) => {
               </div>
               <a
                 href="javascript:void(0)"
-                className="hover:bg-blue-dark inline-block rounded-md bg-[#fbc466] px-7 py-3 text-center text-base font-medium text-black transition"
+                className="hover:bg-blue-dark inline-block rounded-md bg-[#ffffff] px-7 py-3 text-center text-base font-medium text-black transition"
               >
                 Get started
               </a>
@@ -107,9 +107,9 @@ export const Pricing = (props: PricingProps) => {
           <div className="w-full px-4 md:w-1/2 lg:w-1/3">
             <div
               data-aos="zoom-in-up"
-              className="shadow-pricing relative z-10 mb-10 overflow-hidden rounded-xl border-4 border-[#fbc466] bg-background px-8 py-10 sm:p-12 lg:px-6 lg:py-10 xl:p-14"
+              className="shadow-pricing relative z-10 mb-10 overflow-hidden rounded-xl border-4 border-[#ffffff] bg-background px-8 py-10 sm:p-12 lg:px-6 lg:py-10 xl:p-14"
             >
-              <p className="absolute right-[-50px] inline-block -rotate-90 rounded-bl-md rounded-tl-md bg-[#fbc466] px-5 py-2 text-base font-medium text-black">
+              <p className="absolute right-[-50px] inline-block -rotate-90 rounded-bl-md rounded-tl-md bg-[#ffffff] px-5 py-2 text-base font-medium text-black">
                 Recommended
               </p>
               <span className="text-dark mb-5 block text-xl font-medium dark:text-white">
@@ -127,34 +127,34 @@ export const Pricing = (props: PricingProps) => {
                 </h5>
                 <ul className="mt-8 flex flex-col space-y-4">
                   <li className="inline-flex items-center space-x-2">
-                    <Check color="#fbc466" />
+                    <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" "}
                       HD Footage & Photos{" "}
                     </span>
                   </li>
                   <li className="inline-flex items-center space-x-2">
-                    <Check color="#fbc466" />
+                    <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" "}
                       Musics & sound Effects{" "}
                     </span>
                   </li>
                   <li className="inline-flex items-center space-x-2">
-                    <Check color="#fbc466" />
+                    <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" Adobe's app templates "}
                     </span>
                   </li>
                   <li className="inline-flex items-center space-x-2">
-                    <Check color="#fbc466" />
+                    <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" "}
                       Pack for video editing and thumbnails{" "}
                     </span>
                   </li>
                   <li className="inline-flex items-center space-x-2">
-                    <Check color="#fbc466" />
+                    <Check color="#ffffff" />
                     <span className="text-base font-medium text-white">
                       {" "}
                       Cancel anytime{" "}
@@ -164,7 +164,7 @@ export const Pricing = (props: PricingProps) => {
               </div>
               <a
                 href="javascript:void(0)"
-                className="hover:bg-blue-dark inline-block rounded-md bg-[#fbc466] px-7 py-3 text-center text-base font-medium text-black transition"
+                className="hover:bg-blue-dark inline-block rounded-md bg-[#ffffff] px-7 py-3 text-center text-base font-medium text-black transition"
               >
                 Get started
               </a>

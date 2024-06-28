@@ -41,34 +41,34 @@ export default function Pricing() {
 
               <ul className="mt-8 flex flex-col space-y-4">
                 <li className="inline-flex items-center space-x-2">
-                  <Check color="#fbc466" />
+                  <Check color="#ffffff" />
                   <span className="text-base font-medium text-white">
                     {" "}
                     HD Footage & Photos{" "}
                   </span>
                 </li>
                 <li className="inline-flex items-center space-x-2">
-                  <Check color="#fbc466" />
+                  <Check color="#ffffff" />
                   <span className="text-base font-medium text-white">
                     {" "}
                     Musics & sound Effects{" "}
                   </span>
                 </li>
                 <li className="inline-flex items-center space-x-2">
-                  <Check color="#fbc466" />
+                  <Check color="#ffffff" />
                   <span className="text-base font-medium text-white">
                     {" Adobe's app templates "}
                   </span>
                 </li>
                 <li className="inline-flex items-center space-x-2">
-                  <Check color="#fbc466" />
+                  <Check color="#ffffff" />
                   <span className="text-base font-medium text-white">
                     {" "}
                     Pack for video editing and thumbnails{" "}
                   </span>
                 </li>
                 <li className="inline-flex items-center space-x-2">
-                  <Check color="#fbc466" />
+                  <Check color="#ffffff" />
                   <span className="text-base font-medium text-white">
                     {" "}
                     Cancel anytime{" "}
@@ -82,7 +82,7 @@ export default function Pricing() {
             </div>
           </Card>
 
-          <Card className="rounded-md border-4 border-[#fbc466]">
+          <Card className="rounded-md border-4 border-[#ffffff]">
             <div className="p-6 md:px-9 md:py-10">
               <div className="inline-block rounded-full bg-gray-100/20 px-4 py-2">
                 <h3 className="text-sm font-semibold text-white">Business</h3>
@@ -99,34 +99,34 @@ export default function Pricing() {
 
               <ul className="mt-8 flex flex-col space-y-4">
                 <li className="inline-flex items-center space-x-2">
-                  <Check color="#fbc466" />
+                  <Check color="#ffffff" />
                   <span className="text-base font-medium text-white">
                     {" "}
                     HD Footage & Photos{" "}
                   </span>
                 </li>
                 <li className="inline-flex items-center space-x-2">
-                  <Check color="#fbc466" />
+                  <Check color="#ffffff" />
                   <span className="text-base font-medium text-white">
                     {" "}
                     Musics & sound Effects{" "}
                   </span>
                 </li>
                 <li className="inline-flex items-center space-x-2">
-                  <Check color="#fbc466" />
+                  <Check color="#ffffff" />
                   <span className="text-base font-medium text-white">
                     {" Adobe's app templates "}
                   </span>
                 </li>
                 <li className="inline-flex items-center space-x-2">
-                  <Check color="#fbc466" />
+                  <Check color="#ffffff" />
                   <span className="text-base font-medium text-white">
                     {" "}
                     Pack for video editing and thumbnails{" "}
                   </span>
                 </li>
                 <li className="inline-flex items-center space-x-2">
-                  <Check color="#fbc466" />
+                  <Check color="#ffffff" />
                   <span className="text-base font-medium text-white">
                     {" "}
                     Cancel anytime{" "}

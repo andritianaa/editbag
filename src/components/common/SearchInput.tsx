@@ -23,7 +23,7 @@ export const SearchInput = (props: SearchInputProps) => {
     <form className="w-full max-w-2xl max-md:hidden" onSubmit={handleSubmit}>
       <div className="flex w-full max-w-md items-center rounded-md bg-transparent shadow-sm">
         <div className="flex-shrink-0 p-2 text-muted-foreground">
-          <SearchIcon className="h-5 w-5" color="#bfa8fb" />
+          <SearchIcon className="h-5 w-5" color="#ffffff" />
         </div>
         <SimpleInput
           type="search"

@@ -13,7 +13,7 @@ export const Products = async (props: ProductsProps) => {
       <div className="flex flex-col justify-center gap-4 pb-8 pt-20 lg:pb-[70px] lg:pt-[120px]">
         <div className="w-full px-4">
           <div className="mx-auto mb-6 max-w-[485px] text-center">
-            <span className="mb-2 block text-lg font-semibold text-[#fbc466]">
+            <span className="mb-2 block text-lg font-semibold text-[#ffffff]">
               Products
             </span>
             <h2 className="text-dark mb-3 text-3xl font-bold dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">

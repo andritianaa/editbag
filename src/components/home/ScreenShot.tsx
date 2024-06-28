@@ -15,7 +15,7 @@ export function ScreenShot() {
               <span className="flex justify-center">
                 <img src="/emoji/dice.png" alt="" className="size-14" />
                 <span>
-                  Every<span className="text-[#fbc466]">thing</span> you
+                  Every<span className="text-[#ffffff]">thing</span> you
                 </span>
                 <img src="/emoji/finger.png" alt="" className="size-14" />
               </span>
