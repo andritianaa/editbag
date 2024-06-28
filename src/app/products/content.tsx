@@ -14,6 +14,7 @@ import { Tab } from "@/components/products/Tab";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { SimpleInput } from "@/components/ui/SimpleInput";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export type contentProps = {
   products: (Omit<Post, "id"> & { id: string; isFavorite: boolean })[];
@@ -157,10 +158,9 @@ export const Content = (props: contentProps) => {
                             : ""
                         }`}
                       >
-                        {/* <Checkbox
-                          id={`category-${c.id}`}
+                        <Checkbox
                           checked={selectedCategories.includes(c.name)}
-                        /> */}
+                        />
                         {c.name}
                       </label>
                     </div>
@@ -191,6 +191,9 @@ export const Content = (props: contentProps) => {
                                 : ""
                             }`}
                           >
+                            <Checkbox
+                              checked={selectedSubCategories.includes(c.name)}
+                            />
                             {c.name}
                           </label>
                         </div>
@@ -257,10 +260,9 @@ export const Content = (props: contentProps) => {
                                     : ""
                                 }`}
                               >
-                                {/* <Checkbox
-                          id={`category-${c.id}`}
-                          checked={selectedCategories.includes(c.name)}
-                        /> */}
+                                <Checkbox
+                                  checked={selectedCategories.includes(c.name)}
+                                />
                                 {c.name}
                               </label>
                             </div>
@@ -293,6 +295,11 @@ export const Content = (props: contentProps) => {
                                         : ""
                                     }`}
                                   >
+                                    <Checkbox
+                                      checked={selectedSubCategories.includes(
+                                        c.name
+                                      )}
+                                    />
                                     {c.name}
                                   </label>
                                 </div>
