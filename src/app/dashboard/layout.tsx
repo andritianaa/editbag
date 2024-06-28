@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 
 import { SheetTrigger, SheetContent, Sheet } from "@/components/ui/sheet";
 import {
-  BellIcon,
   HomeIcon,
   MenuIcon,
   Newspaper,
@@ -30,8 +29,11 @@ export default async function RouteLayout(props: LayoutParams<{}>) {
                   <Logo />
                 </Link>
               </Link>
-              <Button className="ml-auto h-8 w-8" size="icon" variant="outline">
-                <BellIcon className="h-4 w-4" />
+              <Button
+                className="ml-auto h-8 w-8 opacity-0"
+                size="icon"
+                variant="outline"
+              >
                 <span className="sr-only">Toggle notifications</span>
               </Button>
             </div>

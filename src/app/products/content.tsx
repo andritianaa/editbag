@@ -211,7 +211,11 @@ export const Content = (props: contentProps) => {
               />
             </div>
             <Separator />
-            <Accordion type="multiple" className="">
+            <Accordion
+              type="multiple"
+              className=""
+              defaultValue={["item-1", "item-2", "item-3"]}
+            >
               <AccordionItem value="item-1">
                 <AccordionTrigger className="w-[200px]">
                   Sort by
@@ -339,7 +343,11 @@ export const Content = (props: contentProps) => {
                       placeholder="Search for templates..."
                       className="flex-1 border-0 px-4 py-2 text-sm focus:ring-0"
                     />
-                    <Accordion type="multiple" className="">
+                    <Accordion
+                      type="multiple"
+                      className=""
+                      defaultValue={["item-1", "item-2", "item-3"]}
+                    >
                       <AccordionItem value="item-1">
                         <AccordionTrigger className="w-[200px]">
                           Sort by
