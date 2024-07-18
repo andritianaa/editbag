@@ -1,4 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+export default async function (req: NextApiRequest, res: NextApiResponse) {
+    const { product_id: productId, test } = req.body;
+
+    if (!test && req.method?.toUpperCase() === 'POST' && productId === 'YOUR_PRODUCT_ID') {
+        console.log(req.body)
+    }
+
+    res.status(200).send('');
+}
 
 export const POST = async (req: NextRequest) => {
     const body = await req.json();
