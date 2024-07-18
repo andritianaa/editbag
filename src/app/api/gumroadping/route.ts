@@ -2,7 +2,10 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
     try {
-        const body = await request.json();
+        const bodyText = await request.text();
+        const params = new URLSearchParams(bodyText);
+        const body = Object.fromEntries(params.entries());
+        console.log('Received webhook:', body, request.headers);
         // const {
         //     sale_id,
         //     sale_timestamp,
