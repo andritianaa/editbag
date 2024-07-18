@@ -1,5 +1,6 @@
-import type { PageParams } from "@/types/next";
+"use client"
+import Link from "next/link";
 
-export default async function RoutePage(props: PageParams<{}>) {
-  return;
+export default function RoutePage() {
+  return <Link href={"https://editbag.gumroad.com/l/jswlxl?wanted=true"}>Subscribe</Link>
 }

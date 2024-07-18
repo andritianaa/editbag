@@ -1,0 +1,22 @@
+Application ID
+jJixKYcZ8BsRC0W5k-oMnmMFhxOoc37JmuGg3Ye4gW8
+
+Application Secret
+wXvaZ6Ypsh-dWYV8lxMgWT5Er54C5XvoEOjTaejJKKs
+
+Access Token
+5gHitvJZ6SVadaNPUBEqJo39wAqnMyX95LNpVOg4DuI
+
+
+- notifications
+- block user
+- report user
+- report bug
+- idea box
+- app admin
+- admin group chat
+- delete comment
+- update comment
+- update post
+- delete post
+

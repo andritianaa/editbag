@@ -93,7 +93,7 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-//blog
+// blog
 model Post {
   id          Int        @id @default(autoincrement())
   title       String
@@ -203,7 +203,6 @@ model WebhookEvent {
 
 model Subscription {
   id                 Int     @id @default(autoincrement())
-  lemonSqueezyId     String  @unique
   orderId            Int
   name               String
   email              String
