@@ -13,6 +13,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { useAskToSub } from "../../../store/askToSub";
+import { canDownload } from "../../../actions/canDownload";
 
 export const PhotoContainer = (props: Photo) => {
   return (
@@ -35,18 +37,26 @@ export const PhotoContainer = (props: Photo) => {
 };
 
 const Content = (props: Photo) => {
+  const { startAsking } = useAskToSub();
+
   const handleDownload = async (type: string) => {
     try {
-      const response = await fetch(props.src[type]);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = type + " - " + props.alt || "download";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
+
+      if (await canDownload()) {
+        const response = await fetch(props.src[type]);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = type + " - " + props.alt || "download";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+
+      } else {
+        startAsking()
+      }
     } catch (error) {
       console.error("Failed to download image", error);
     }

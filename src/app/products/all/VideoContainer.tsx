@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { bitsToMegabits, formatTime } from "@/lib/utils";
+import { canDownload } from "../../../actions/canDownload";
+import { useAskToSub } from "../../../store/askToSub";
 
 export const VideoContainer = (props: Video) => {
   return (
@@ -33,20 +35,26 @@ export const VideoContainer = (props: Video) => {
 };
 
 const Content = (props: Video) => {
+  const { startAsking } = useAskToSub();
+
   const handleDownload = async (videoUrl: string, quality: string) => {
     try {
-      const response = await fetch(videoUrl);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download =
-        quality.toUpperCase() + " - " + props.user.id + ".mp4" ||
-        "download.mp4";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
+      if (await canDownload()) {
+        const response = await fetch(videoUrl);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download =
+          quality.toUpperCase() + " - " + props.user.id + ".mp4" ||
+          "download.mp4";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      } else {
+        startAsking()
+      }
     } catch (error) {
       console.error("Failed to download image", error);
     }
@@ -100,11 +108,10 @@ const Content = (props: Video) => {
               key={i}
               variant="outline"
               onClick={() => handleDownload(f.link, f.quality)}
-              className={`${
-                f.width == props.width && f.height == props.height
-                  ? "bg-white text-black hover:bg-slate-200 hover:text-black"
-                  : ""
-              }  `}
+              className={`${f.width == props.width && f.height == props.height
+                ? "bg-white text-black hover:bg-slate-200 hover:text-black"
+                : ""
+                }  `}
             >
               {f.width} X {f.height} - {f.fps} ips
               <span className="mx-2 uppercase">({f.quality}) - </span>

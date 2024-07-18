@@ -14,6 +14,8 @@ import { addFavorite, removeFavorite } from "../../actions/favorite.actions";
 import { addDownload } from "@/actions/download.actions";
 import { useLoadingStore } from "@/store/loading";
 import { toast } from "sonner";
+import { canDownload } from "../../actions/canDownload";
+import { useAskToSub } from "../../store/askToSub";
 
 export type ProductProps = {
   id: number;
@@ -26,6 +28,8 @@ export type ProductProps = {
 };
 
 export const Product = (props: ProductProps) => {
+  const { startAsking } = useAskToSub()
+
   const videoExtensions = /\.(mp4|3gp|avi|mov)$/i;
   const isVideo = videoExtensions.test(props.subImage || "");
   const [isFavorite, setIsFavorite] = useState(props.isFavorite);
@@ -106,11 +110,18 @@ export const Product = (props: ProductProps) => {
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = url.split("/").pop() || "default_filename" || "download";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
+
+      if (await canDownload()) {
+        link.download = url.split("/").pop() || "default_filename" || "download";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      } else {
+        startAsking()
+      }
+
+
     } catch (error) {
       toast.error("Erreur lors du téléchargement");
     }
