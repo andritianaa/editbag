@@ -9,6 +9,8 @@ import {
   FolderPlus,
   Forward,
 } from "lucide-react";
+import { useRouter } from 'next/navigation'
+
 import { useState, useRef } from "react";
 import { addFavorite, removeFavorite } from "../../actions/favorite.actions";
 import { addDownload } from "@/actions/download.actions";
@@ -16,6 +18,7 @@ import { useLoadingStore } from "@/store/loading";
 import { toast } from "sonner";
 import { canDownload } from "../../actions/canDownload";
 import { useAskToSub } from "../../store/askToSub";
+import { redirect } from "next/navigation";
 
 export type ProductProps = {
   id: number;
@@ -28,6 +31,8 @@ export type ProductProps = {
 };
 
 export const Product = (props: ProductProps) => {
+  const router = useRouter()
+
   const [isSubed, setIsSubed] = useState(false)
   const { startAsking, stopAsking } = useAskToSub()
   const check = async () => {
@@ -135,17 +140,26 @@ export const Product = (props: ProductProps) => {
     }
     stopLoading();
   };
+  const preview = async () => {
+
+    const e = await canDownload()
+    if (e) {
+      router.push(`/products/${props.id}`)
+    } else {
+      startAsking()
+    }
+  }
 
   return (
     <div className="w-full max-w-[24rem] p-2">
       <div className="w-full overflow-hidden rounded-xl bg-[rgba(38,38,38,.9)]">
         <Card className="w-full max-w-sm overflow-hidden rounded-md bg-[rgba(38,38,38,.9)]">
-          <Link
-            href={isSubed ? `/products/${props.id}` : `#`}
+          <div
             className="relative w-full"
             style={{ cursor: "pointer" }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={preview}
           >
             <img
               id={`firstImage${props.id}${randomId}`}
@@ -179,7 +193,7 @@ export const Product = (props: ProductProps) => {
             <Badge className="absolute bottom-2 left-2 rounded">
               {props.category}
             </Badge>
-          </Link>
+          </div>
           <div className="flex items-center justify-between p-4">
             <div className="">
               <p className="font-semibold">{props.title}</p>
