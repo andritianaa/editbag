@@ -16,47 +16,53 @@ import { Button } from "@/components/ui/button";
 import { bitsToMegabits, formatTime } from "@/lib/utils";
 import { useAskToSub } from "../../../store/askToSub";
 import { canDownload } from "../../../actions/canDownload";
+import { useState } from "react";
 
 export const VideoContainer = (props: Video) => {
+  const [isSubed, setIsSubed] = useState(false)
+  const { startAsking, stopAsking } = useAskToSub()
+  const check = async () => {
+    const e = await canDownload()
+    if (e) {
+      setIsSubed(true)
+    } else {
+      startAsking()
+    }
+  }
   return (
     <Dialog>
       <DialogTrigger>
-        <div className={`overflow-hidden rounded-md`}>
+        <div className={`overflow-hidden rounded-md`} onClick={check}>
           <DirectionAwareHover imageUrl={props.video_pictures[0].picture}>
             <p>{props.user.name}</p>
           </DirectionAwareHover>
         </div>
       </DialogTrigger>
-      <DialogContent className="max-w-5xl">
-        <Content {...props} />
-      </DialogContent>
+      {isSubed &&
+        <DialogContent className="max-w-5xl">
+          <Content {...props} />
+        </DialogContent>
+      }
     </Dialog>
   );
 };
 
 const Content = (props: Video) => {
-  const { startAsking } = useAskToSub()
 
   const handleDownload = async (videoUrl: string, quality: string) => {
     try {
-      if (await canDownload()) {
-        const response = await fetch(videoUrl);
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download =
-          quality.toUpperCase() + " - " + props.user.id + ".mp4" ||
-          "download.mp4";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-
-
-      } else {
-        startAsking()
-      }
+      const response = await fetch(videoUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download =
+        quality.toUpperCase() + " - " + props.user.id + ".mp4" ||
+        "download.mp4";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Failed to download image", error);
     }

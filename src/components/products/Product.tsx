@@ -28,8 +28,16 @@ export type ProductProps = {
 };
 
 export const Product = (props: ProductProps) => {
-  const { startAsking } = useAskToSub()
-
+  const [isSubed, setIsSubed] = useState(false)
+  const { startAsking, stopAsking } = useAskToSub()
+  const check = async () => {
+    const e = await canDownload()
+    if (e) {
+      setIsSubed(true)
+    } else {
+      startAsking()
+    }
+  }
   const videoExtensions = /\.(mp4|3gp|avi|mov)$/i;
   const isVideo = videoExtensions.test(props.subImage || "");
   const [isFavorite, setIsFavorite] = useState(props.isFavorite);
@@ -133,7 +141,7 @@ export const Product = (props: ProductProps) => {
       <div className="w-full overflow-hidden rounded-xl bg-[rgba(38,38,38,.9)]">
         <Card className="w-full max-w-sm overflow-hidden rounded-md bg-[rgba(38,38,38,.9)]">
           <Link
-            href={`/products/${props.id}`}
+            href={isSubed ? `/products/${props.id}` : `#`}
             className="relative w-full"
             style={{ cursor: "pointer" }}
             onMouseEnter={handleMouseEnter}
@@ -178,7 +186,10 @@ export const Product = (props: ProductProps) => {
               <p className="text-sm text-muted-foreground">{props.subTitle}</p>
             </div>
             <div className="flex items-center gap-4">
-              <Forward onClick={copyToClipboard} />
+              {isSubed ?
+                <Forward onClick={copyToClipboard} /> :
+                <Forward onClick={check} />
+              }
               {isFavorite ? (
                 <FolderMinus
                   onClick={handleRemoveFromFavorites}
@@ -187,7 +198,11 @@ export const Product = (props: ProductProps) => {
               ) : (
                 <FolderPlus onClick={handleAddToFavorites} color="#fff" />
               )}
-              <ArrowDownToLine onClick={(e) => handleDownload(e)} />
+              {
+                isSubed ?
+                  <ArrowDownToLine onClick={(e) => handleDownload(e)} /> :
+                  <ArrowDownToLine onClick={check} />
+              }
             </div>
           </div>
         </Card>

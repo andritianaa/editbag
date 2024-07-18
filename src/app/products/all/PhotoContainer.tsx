@@ -15,46 +15,56 @@ import {
 import { Button } from "@/components/ui/button";
 import { canDownload } from "../../../actions/canDownload";
 import { useAskToSub } from "../../../store/askToSub";
+import { useState } from "react";
 
 export const PhotoContainer = (props: Photo) => {
+  const [isSubed, setIsSubed] = useState(false)
+  const { startAsking, stopAsking } = useAskToSub()
+  const check = async () => {
+    const e = await canDownload()
+    if (e) {
+      setIsSubed(true)
+    } else {
+      startAsking()
+    }
+  }
   return (
     <Dialog>
       <DialogTrigger>
         <div
           className={`overflow-hidden rounded-md`}
           style={{ backgroundColor: props.avg_color }}
+          onClick={check}
         >
           <DirectionAwareHover imageUrl={props.src.large}>
             <p>{props.alt}</p>
           </DirectionAwareHover>
         </div>
       </DialogTrigger>
-      <DialogContent className="max-w-5xl">
-        <Content {...props} />
-      </DialogContent>
+      {isSubed &&
+        <DialogContent className="max-w-5xl">
+          <Content {...props} />
+        </DialogContent>
+      }
     </Dialog>
   );
 };
 
 const Content = (props: Photo) => {
-  const { startAsking } = useAskToSub();
 
   const handleDownload = async (type: string) => {
     try {
-      if (await canDownload()) {
-        const response = await fetch(props.src[type]);
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = type + " - " + props.alt || "download";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-      } else {
-        startAsking()
-      }
+      const response = await fetch(props.src[type]);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = type + " - " + props.alt || "download";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
     } catch (error) {
       console.error("Failed to download image", error);
     }

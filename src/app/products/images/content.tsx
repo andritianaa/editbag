@@ -32,19 +32,6 @@ const colors = [
   "white",
 ];
 
-function reorganizePhotos(photos: Photo[]) {
-  const columns = 3;
-  const rows = Math.ceil(photos.length / columns);
-
-  const photoGrid: any = Array.from({ length: rows }, () => []);
-
-  photos.forEach((photo, index) => {
-    const rowIndex = index % rows;
-    photoGrid[rowIndex].push(photo);
-  });
-
-  return photoGrid.flat();
-}
 
 export const Content = (props: contentProps) => {
   console.log(props);
@@ -150,36 +137,32 @@ export const Content = (props: contentProps) => {
               <label
                 onClick={() => setOrientation("")}
                 htmlFor={`orientation-`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  orientation == "" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
+                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${orientation == "" ? "bg-[rgba(38,38,38,.9)]" : ""
+                  }`}
               >
                 All
               </label>
               <label
                 onClick={() => setOrientation("landscape")}
                 htmlFor={`orientation-landscape`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  orientation == "landscape" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
+                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${orientation == "landscape" ? "bg-[rgba(38,38,38,.9)]" : ""
+                  }`}
               >
                 Landscape
               </label>
               <label
                 onClick={() => setOrientation("portrait")}
                 htmlFor={`orientation-portrait`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  orientation == "portrait" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
+                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${orientation == "portrait" ? "bg-[rgba(38,38,38,.9)]" : ""
+                  }`}
               >
                 Portrait
               </label>
               <label
                 onClick={() => setOrientation("square")}
                 htmlFor={`orientation-square`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  orientation == "square" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
+                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${orientation == "square" ? "bg-[rgba(38,38,38,.9)]" : ""
+                  }`}
               >
                 Square
               </label>
@@ -191,36 +174,32 @@ export const Content = (props: contentProps) => {
               <label
                 onClick={() => setSize("")}
                 htmlFor={`size-`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  size == "" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
+                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${size == "" ? "bg-[rgba(38,38,38,.9)]" : ""
+                  }`}
               >
                 All
               </label>
               <label
                 onClick={() => setSize("large")}
                 htmlFor={`size-large`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  size == "large" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
+                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${size == "large" ? "bg-[rgba(38,38,38,.9)]" : ""
+                  }`}
               >
                 Large
               </label>
               <label
                 onClick={() => setSize("medium")}
                 htmlFor={`size-medium`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  size == "medium" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
+                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${size == "medium" ? "bg-[rgba(38,38,38,.9)]" : ""
+                  }`}
               >
                 Medium
               </label>
               <label
                 onClick={() => setSize("small")}
                 htmlFor={`size-small`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  size == "small" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
+                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${size == "small" ? "bg-[rgba(38,38,38,.9)]" : ""
+                  }`}
               >
                 Small
               </label>
@@ -234,9 +213,8 @@ export const Content = (props: contentProps) => {
                   e.preventDefault();
                   setColor("");
                 }}
-                className={`flex w-fit cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  color == "" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
+                className={`flex w-fit cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${color == "" ? "bg-[rgba(38,38,38,.9)]" : ""
+                  }`}
               >
                 <span className="w-8">All</span>
               </Button>
@@ -248,9 +226,8 @@ export const Content = (props: contentProps) => {
                     e.preventDefault();
                     setColor(c);
                   }}
-                  className={`flex w-fit cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                    color == c ? "bg-[rgba(38,38,38,.9)]" : ""
-                  }`}
+                  className={`flex w-fit cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${color == c ? "bg-[rgba(38,38,38,.9)]" : ""
+                    }`}
                 >
                   <span
                     className={`size-8 rounded-full`}
