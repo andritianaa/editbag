@@ -20,15 +20,17 @@ model User {
   // Optional for WebAuthn support
   Authenticator Authenticator[]
 
-  createdAt DateTime @default(now())
+  createdAt DateTime
   updatedAt DateTime @updatedAt
 
-  Rating       Rating[]
-  Comment      Comment[]
-  privileges   Privilege[]
-  Favorite     Favorite[]
-  Downloaded   Downloaded[]
-  Subscription Subscription[]
+  isSubscribed   Boolean        @default(false)
+  subscribeEndAt DateTime       @default("1970-01-01T00:00:00Z")
+  Rating         Rating[]
+  Comment        Comment[]
+  privileges     Privilege[]
+  Favorite       Favorite[]
+  Downloaded     Downloaded[]
+  Subscription   Subscription[]
 }
 
 enum Privilege {

@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { prisma } from "@/prisma";
+import { addDays } from 'date-fns';
 
 export async function POST(request: Request) {
     try {
@@ -7,48 +9,34 @@ export async function POST(request: Request) {
         const body = Object.fromEntries(params.entries());
         console.log('Received webhook:', body, request.headers);
 
-        const product = body.short_product_id
-        
-        // const {
-        //     sale_id,
-        //     sale_timestamp,
-        //     order_number,
-        //     seller_id,
-        //     product_id,
-        //     product_permalink,
-        //     short_product_id,
-        //     product_name,
-        //     email,
-        //     url_params,
-        //     full_name,
-        //     purchaser_id,
-        //     subscription_id,
-        //     ip_country,
-        //     price,
-        //     recurrence,
-        //     variants,
-        //     offer_code,
-        //     test,
-        //     custom_fields,
-        //     shipping_information,
-        //     is_recurring_charge,
-        //     is_preorder_authorization,
-        //     license_key,
-        //     quantity,
-        //     shipping_rate,
-        //     affiliate,
-        //     affiliate_credit_amount_cents,
-        //     is_gift_receiver_purchase,
-        //     gifter_email,
-        //     gift_price,
-        //     refunded,
-        //     discover_fee_charged,
-        //     can_contact,
-        //     referrer,
-        //     gumroad_fee,
-        //     card
-        // } = body;
+        const userEmail = body.email;
+        const product = body.product_id;
+
+        if(product == "jswlxl"){
+            const updatedUser = await prisma.user.update({
+                where: {
+                    email: userEmail,
+                },
+                data: {
+                    subscribeEndAt: addDays(new Date(), 30),
+                },
+            });
+            console.log("Updated User : ", updatedUser);
+
+        }else{
+            const updatedUser = await prisma.user.update({
+                where: {
+                    email: userEmail,
+                },
+                data: {
+                    subscribeEndAt: addDays(new Date(), 365),
+                },
+            });
+            console.log("Updated User : ", updatedUser);
+        }
         console.log("BODY : ", body);
+
+
 
         return NextResponse.json("", { status: 200 });
     } catch (error: any) {
