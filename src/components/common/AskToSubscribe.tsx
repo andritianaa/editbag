@@ -57,7 +57,7 @@ export function AskToSbuscribe(props: AskToSbuscribeProps) {
                         <img src={"/gumroad.png"} className={"h-7"} alt={""} />
                         <p className={"text-black text-lg font-bold"}>Subscribe Yearly</p>
                     </a>
-                    <p className="text-muted-foreground">If you've just paid your subscription, please wait up to 5 minutes for Gumroad to update our system with your payment information</p>
+                    <p className="text-muted-foreground">{`If you've just paid your subscription, please wait up to 5 minutes for Gumroad to update our system with your payment information`}</p>
                 </div>
             </DialogContent>
         </Dialog>
