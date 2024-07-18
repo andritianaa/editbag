@@ -10,7 +10,7 @@ export async function POST(request: Request) {
         console.log('Received webhook:', body, request.headers);
 
         const userEmail = body.email;
-        const product = body.product_id;
+        const product = body.short_product_id;
         console.log("body.product_id == ", body.product_id)
         if (product == "jswlxl") {
             const updatedUser = await prisma.user.update({
