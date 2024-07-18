@@ -6,6 +6,9 @@ export async function POST(request: Request) {
         const params = new URLSearchParams(bodyText);
         const body = Object.fromEntries(params.entries());
         console.log('Received webhook:', body, request.headers);
+
+        const product = body.short_product_id
+        
         // const {
         //     sale_id,
         //     sale_timestamp,
