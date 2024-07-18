@@ -11,13 +11,18 @@ export async function POST(request: Request) {
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
+    const now = new Date(); // Current timestamp
+
     const user = await prisma.user.create({
       data: {
         email,
         name,
         hashedPassword,
+        createdAt: now, // Provide the createdAt field
+        updatedAt: now, // Provide the updatedAt field
       },
     });
+
     return NextResponse.json(user);
   } catch (error: any) {
     console.log(error, "REGISTRATION_ERROR");
