@@ -316,7 +316,7 @@ export const Hero = (props: HeroProps) => {
                 href="/signin"
                 className="hover:bg-blue-dark inline-block rounded-md bg-white px-7 py-3 text-center text-base font-medium text-black transition hover:bg-[#ffffffbb]"
               >
-                Get started
+                Upgrade
               </Link>
             </Glowing>
             <Glowing
@@ -380,7 +380,7 @@ export const Hero = (props: HeroProps) => {
                 href="/signin"
                 className="hover:bg-blue-dark inline-block rounded-md bg-white px-7 py-3 text-center text-base font-medium text-black transition hover:bg-[#ffffffbb]"
               >
-                Get started
+                Upgrade
               </Link>
             </Glowing>
             <Glowing
@@ -441,7 +441,7 @@ export const Hero = (props: HeroProps) => {
                 href="/signin"
                 className="hover:bg-blue-dark inline-block rounded-md bg-white px-7 py-3 text-center text-base font-medium text-black transition hover:bg-[#ffffffbb]"
               >
-                Get started
+                Upgrade
               </Link>
             </Glowing>
           </div>

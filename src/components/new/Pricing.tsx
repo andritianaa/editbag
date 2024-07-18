@@ -100,7 +100,7 @@ export const Pricing = (props: PricingProps) => {
                 href="javascript:void(0)"
                 className="hover:bg-blue-dark inline-block rounded-md bg-[#ffffff] px-7 py-3 text-center text-base font-medium text-black transition"
               >
-                Get started
+                Upgrade
               </a>
             </div>
           </div>
@@ -166,7 +166,7 @@ export const Pricing = (props: PricingProps) => {
                 href="javascript:void(0)"
                 className="hover:bg-blue-dark inline-block rounded-md bg-[#ffffff] px-7 py-3 text-center text-base font-medium text-black transition"
               >
-                Get started
+                Upgrade
               </a>
             </div>
           </div>

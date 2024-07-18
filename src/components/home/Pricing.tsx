@@ -77,7 +77,7 @@ export default function Pricing() {
               </ul>
 
               <Button className="mt-4 w-full" size={"lg"}>
-                Get started
+                Upgrade
               </Button>
             </div>
           </Card>
@@ -135,7 +135,7 @@ export default function Pricing() {
               </ul>
 
               <Button className="mt-4 w-full" size={"lg"}>
-                Get started
+                Upgrade
               </Button>
             </div>
           </Card>

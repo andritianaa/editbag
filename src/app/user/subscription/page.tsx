@@ -33,7 +33,7 @@ export default async function RoutePage() {
                         </CardDescription>
                         <CardContent className={"p-0"}>
                             <Link
-                                href={"editbag.gumroad.com/l/jswlxl?wanted=true"}
+                                href={"https://editbag.gumroad.com/l/jswlxl?wanted=true"}
                                 className={"p-4 bg-[#ffffff] w-full flex justify-between items-center hover:opacity-90"}
                             >
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
