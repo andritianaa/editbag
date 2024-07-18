@@ -34,7 +34,7 @@ export default async function RoutePage() {
                         <CardContent className={"p-0"}>
                             <a
                                 target="_blank"
-                                href={"https://editbag.gumroad.com/l/jswlxl?wanted=true"}
+                                href={`https://editbag.gumroad.com/l/jswlxl?wanted=true&email=${user.email}`}
                                 className={"p-4 bg-[#ffffff] w-full flex justify-between items-center hover:opacity-90"}
                             >
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -43,7 +43,7 @@ export default async function RoutePage() {
                             </a>
                             <a
                                 target="_blank"
-                                href={"https://editbag.gumroad.com/l/jswlxl?wanted=true"}
+                                href={`https://editbag.gumroad.com/l/jswlxl?wanted=true&email=${user.email}`}
                                 className={"p-4 bg-[#ffffff] w-full flex justify-between items-center hover:opacity-90 my-4"}
                             >
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
