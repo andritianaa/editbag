@@ -32,22 +32,24 @@ export default async function RoutePage() {
                             </ul>
                         </CardDescription>
                         <CardContent className={"p-0"}>
-                            <Link
+                            <a
+                                target="_blank"
                                 href={"https://editbag.gumroad.com/l/jswlxl?wanted=true"}
                                 className={"p-4 bg-[#ffffff] w-full flex justify-between items-center hover:opacity-90"}
                             >
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img src={"/gumroad.png"} className={"h-10"} alt={""} />
                                 <p className={"text-black text-lg font-bold"}>Subscribe Monthly</p>
-                            </Link>
-                            <Link
+                            </a>
+                            <a
+                                target="_blank"
                                 href={"https://editbag.gumroad.com/l/jswlxl?wanted=true"}
                                 className={"p-4 bg-[#ffffff] w-full flex justify-between items-center hover:opacity-90 my-4"}
                             >
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img src={"/gumroad.png"} className={"h-10"} alt={""} />
                                 <p className={"text-black text-lg font-bold"}>Subscribe Yearly</p>
-                            </Link>
+                            </a>
                             <Button className={"w-full"} variant={"outline"}>
                                 <Link href={"/user/subscription"}>Refresh</Link>
                             </Button>
