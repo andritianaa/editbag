@@ -12,24 +12,23 @@ export async function POST(request: Request) {
         const userEmail = body.email;
         const product = body.product_id;
 
-        if(product == "jswlxl"){
+        if (product == "jswlxl") {
             const updatedUser = await prisma.user.update({
                 where: {
                     email: userEmail,
                 },
                 data: {
-                    subscribeEndAt: addDays(new Date(), 30),
+                    subscribeEnd: addDays(new Date(), 30),
                 },
             });
             console.log("Updated User : ", updatedUser);
-
-        }else{
+        } else {
             const updatedUser = await prisma.user.update({
                 where: {
                     email: userEmail,
                 },
                 data: {
-                    subscribeEndAt: addDays(new Date(), 365),
+                    subscribeEnd: addDays(new Date(), 365),
                 },
             });
             console.log("Updated User : ", updatedUser);

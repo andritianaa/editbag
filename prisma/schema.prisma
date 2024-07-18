@@ -23,14 +23,12 @@ model User {
   createdAt DateTime
   updatedAt DateTime @updatedAt
 
-  isSubscribed   Boolean        @default(false)
-  subscribeEndAt DateTime       @default("1970-01-01T00:00:00Z")
-  Rating         Rating[]
-  Comment        Comment[]
-  privileges     Privilege[]
-  Favorite       Favorite[]
-  Downloaded     Downloaded[]
-  Subscription   Subscription[]
+  subscribeEnd DateTime?
+  Rating       Rating[]
+  Comment      Comment[]
+  privileges   Privilege[]
+  Favorite     Favorite[]
+  Downloaded   Downloaded[]
 }
 
 enum Privilege {
@@ -175,55 +173,6 @@ model Categories {
   name          String
   type          String          @default("templates")
   SubCategories SubCategories[]
-}
-
-model Plan {
-  id                 String         @unique
-  productId          Int
-  productName        String?
-  variantId          Int            @unique
-  name               String
-  description        String?
-  price              String
-  isUsageBased       Boolean        @default(false)
-  interval           String?
-  intervalCount      Int?
-  trialInterval      String?
-  trialIntervalCount Int?
-  sort               Int?
-  Subscription       Subscription[]
-}
-
-model WebhookEvent {
-  id              Int      @id @default(autoincrement())
-  createdAt       DateTime @default(now())
-  eventName       String
-  processed       Boolean  @default(false)
-  body            Json
-  processingError String?
-}
-
-model Subscription {
-  id                 Int     @id @default(autoincrement())
-  orderId            Int
-  name               String
-  email              String
-  status             String
-  statusFormatted    String
-  renewsAt           String?
-  endsAt             String?
-  trialEndsAt        String?
-  price              String
-  isUsageBased       Boolean @default(false)
-  isPaused           Boolean @default(false)
-  subscriptionItemId Int? // Assuming serial should be an optional integer
-  userId             Int
-  planId             String
-
-  user User @relation(fields: [userId], references: [id])
-  plan Plan @relation(fields: [planId], references: [id])
-
-  @@map("subscription")
 }
 
 enum ProductTypes {

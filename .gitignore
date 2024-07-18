@@ -49,3 +49,5 @@ TODO.md
 fileserver/node_modules
 fileserver/public/*
 !fileserver/public/blank
+
+prisma/migrations
