@@ -2,5 +2,5 @@
 import Link from "next/link";
 
 export default function RoutePage() {
-  return <Link href={"https://editbag.gumroad.com/l/jswlxl?wanted=true"}>Subscribe</Link>
+  return <Link href={"andritianasteve.gumroad.com/l/mrsvh?wanted=true"}>Subscribe</Link>
 }
