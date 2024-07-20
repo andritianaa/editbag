@@ -15,6 +15,7 @@ import { fetchPhotoNextPage, fetchPhotos } from "@/lib/pexels";
 import { Photo } from "@/types/pexels";
 import { toast } from "sonner";
 import { PhotoContainer } from "./PhotoContainer";
+import {InputGlowing} from "@/components/ui/InputGlowing";
 
 export type contentProps = {};
 
@@ -117,35 +118,20 @@ export const Content = (props: contentProps) => {
                 Reset
               </Button>
             </div>
-
-            <div className="flex w-full max-w-md items-center rounded-md bg-background shadow-sm">
-              <div className="flex-shrink-0 p-2 text-muted-foreground">
-                <SearchIcon className="h-5 w-5" color="#ffffff" />
-              </div>
-              <form onSubmit={handleSearch}>
-                <SimpleInput
-                  value={textSearch}
-                  onChange={(e) => handleTextChange(e.target.value)}
-                  placeholder="Search for images..."
-                  className="flex-1 border-0 px-4 py-2 text-sm focus:ring-0"
-                />
-              </form>
-            </div>
-            <Separator />
             <Label className="flex w-[200px] items-center">Orientation</Label>
             <div className="flex w-full flex-col items-center gap-2 space-x-2">
               <label
-                onClick={() => setOrientation("")}
-                htmlFor={`orientation-`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${orientation == "" ? "bg-[rgba(38,38,38,.9)]" : ""
+                  onClick={() => setOrientation("")}
+                  htmlFor={`orientation-`}
+                  className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${orientation == "" ? "bg-[rgba(38,38,38,.9)]" : ""
                   }`}
               >
                 All
               </label>
               <label
-                onClick={() => setOrientation("landscape")}
-                htmlFor={`orientation-landscape`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${orientation == "landscape" ? "bg-[rgba(38,38,38,.9)]" : ""
+                  onClick={() => setOrientation("landscape")}
+                  htmlFor={`orientation-landscape`}
+                  className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${orientation == "landscape" ? "bg-[rgba(38,38,38,.9)]" : ""
                   }`}
               >
                 Landscape
@@ -241,15 +227,7 @@ export const Content = (props: contentProps) => {
             </div>
           </Card>
           <div className="flex w-full flex-col items-center">
-            <div className="mt-4 flex w-full max-w-[41rem] items-center justify-center gap-2 lg:hidden">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="min-h-[100vh] w-full rounded border bg-[#191919] px-3 py-2 transition-colors focus:border-blue-900 focus:outline-0"
-                value={textSearch}
-                onChange={(e) => handleTextChange(e.target.value)}
-              />
-
+            <div className="mt-4 flex w-full max-w-[41rem] items-center justify-end gap-2 lg:hidden">
               <Drawer>
                 <DrawerTrigger asChild>
                   <Button>
@@ -270,13 +248,6 @@ export const Content = (props: contentProps) => {
                         Reset
                       </Button>
                     </div>
-                    <SimpleInput
-                      value={textSearch}
-                      onChange={(e) => handleTextChange(e.target.value)}
-                      placeholder="Search for emoji..."
-                      className="flex-1 border-0 px-4 py-2 text-sm focus:ring-0"
-                    />
-                    <Separator />
                     <Label className="flex items-center">Find by style</Label>
                     <div className=""></div>
                   </div>
@@ -284,24 +255,40 @@ export const Content = (props: contentProps) => {
               </Drawer>
             </div>
             <div className="w-full">
-              <Tab type="images" />
+              <Tab type="images"/>
+              <form onSubmit={handleSearch}>
+                <div className={"mt-10"}>
+                  <InputGlowing className=" w-full max-w-[86rem]">
+                    <div className={"flex w-full items-center space-x-2 bg-background rounded-sm overflow-hidden"}>
+                      <div className="flex-shrink-0 p-2 text-muted-foreground bg-background">
+                        <SearchIcon className="h-5 w-5" color="#ffffff"/>
+                      </div>
+                      <SimpleInput
+                          value={textSearch}
+                          onChange={(e) => handleTextChange(e.target.value)}
+                          placeholder="Search for templates..."
+                          className="flex-1 border-0 px-4 py-4 text-sm focus:ring-0 h-full"
+                      /></div>
 
+                  </InputGlowing>
+                </div>
+              </form>
               <div className="my-4 columns-3 gap-2 space-y-2">
                 {photos.map((p, i) => (
-                  <PhotoContainer key={i} {...p} />
+                    <PhotoContainer key={i} {...p} />
                 ))}
               </div>
               {nextPage && (
-                <Button
-                  variant="outline"
-                  className="mb-12 w-full"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    fetchNextPage();
-                  }}
-                >
-                  See more
-                </Button>
+                  <Button
+                      variant="outline"
+                      className="mb-12 w-full"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        fetchNextPage();
+                      }}
+                  >
+                    See more
+                  </Button>
               )}
             </div>
           </div>

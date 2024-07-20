@@ -142,7 +142,7 @@ export const Content = (props: contentProps) => {
                 </Link>
               )}
               <div className="mt-2 flex flex-wrap justify-start">
-                {template.map((product) => (
+                {template.slice(0, 9).map((product) => (
                   <Product
                     key={product.id}
                     subImage={product.subImage ?? null}
@@ -165,7 +165,7 @@ export const Content = (props: contentProps) => {
                 </Link>
               )}
               <div className="mt-2 flex flex-wrap justify-start">
-                {emoji.map((product) => (
+                {emoji.slice(0, 9).map((product) => (
                   <Product
                     key={product.id}
                     subImage={product.subImage ?? null}
@@ -188,7 +188,7 @@ export const Content = (props: contentProps) => {
                 </Link>
               )}
               <div className="my-4 columns-3 gap-2 space-y-2">
-                {photos.map((p, i) => (
+                {photos.slice(0, 9).map((p, i) => (
                   <PhotoContainer key={i} {...p} />
                 ))}
               </div>
@@ -202,14 +202,14 @@ export const Content = (props: contentProps) => {
                 </Link>
               )}
               <div className="my-4 columns-3 gap-2 space-y-2">
-                {videos.map((p, i) => (
+                {videos.slice(0, 9).map((p, i) => (
                   <VideoContainer key={i} {...p} />
                 ))}
               </div>
 
               {isLoading && (
                 <div className="my-4 columns-3 gap-2 space-y-2">
-                  {Array.from({ length: 20 }).map((_, index) => (
+                  {Array.from({ length: 9 }).map((_, index) => (
                     <Skeleton key={index} className="h-96 w-full" />
                   ))}
                 </div>

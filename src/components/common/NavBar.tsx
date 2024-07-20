@@ -24,8 +24,8 @@ export const NavBar = async () => {
 
             <div className="flex items-center gap-2">
               <div className="max-md:hidden">
-                <Link href={`/Plan`}>
-                  <Button variant="ghost">Plan</Button>
+                <Link href={`/user/subscription`}>
+                  <Button variant="ghost">Subscription</Button>
                 </Link>
                 <Link href={`/affiliation`}>
                   <Button variant="ghost">Affiliation</Button>

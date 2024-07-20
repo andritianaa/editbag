@@ -15,6 +15,7 @@ import { fetchVideoNextPage, fetchVideos } from "@/lib/pexels";
 import { Video } from "@/types/pexels";
 import { toast } from "sonner";
 import { VideoContainer } from "./VideoContainer";
+import {InputGlowing} from "@/components/ui/InputGlowing";
 
 export type contentProps = {};
 function reorganizeVideos(videos: Video[]) {
@@ -113,61 +114,6 @@ export const Content = (props: contentProps) => {
               </Button>
             </div>
 
-            <div className="flex w-full max-w-md items-center rounded-md bg-background shadow-sm">
-              <div className="flex-shrink-0 p-2 text-muted-foreground">
-                <SearchIcon className="h-5 w-5" color="#ffffff" />
-              </div>
-              <form onSubmit={handleSearch}>
-                <SimpleInput
-                  value={textSearch}
-                  onChange={(e) => handleTextChange(e.target.value)}
-                  placeholder="Search for images..."
-                  className="flex-1 border-0 px-4 py-2 text-sm focus:ring-0"
-                />
-              </form>
-            </div>
-            {/* <Separator />
-            <Label className="flex w-[200px] items-center">Orientation</Label>
-            <div className="flex w-full flex-col items-center gap-2 space-x-2">
-              <label
-                onClick={() => setOrientation("")}
-                htmlFor={`orientation-`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  orientation == "" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
-              >
-                All
-              </label>
-              <label
-                onClick={() => setOrientation("landscape")}
-                htmlFor={`orientation-landscape`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  orientation == "landscape" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
-              >
-                Landscape
-              </label>
-              <label
-                onClick={() => setOrientation("portrait")}
-                htmlFor={`orientation-portrait`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  orientation == "portrait" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
-              >
-                Portrait
-              </label>
-              <label
-                onClick={() => setOrientation("square")}
-                htmlFor={`orientation-square`}
-                className={`flex w-full cursor-pointer items-center gap-2 rounded p-2 text-gray-50 hover:bg-[rgba(38,38,38,.9)] ${
-                  orientation == "square" ? "bg-[rgba(38,38,38,.9)]" : ""
-                }`}
-              >
-                Square
-              </label>
-            </div> */}
-
-            <Separator />
             <Label className="flex w-[200px] items-center">Size</Label>
             <div className="flex w-full flex-col items-center gap-2 space-x-2">
               <label
@@ -256,24 +202,40 @@ export const Content = (props: contentProps) => {
               </Drawer>
             </div>
             <div className="w-full">
-              <Tab type="videos" />
+              <Tab type="videos"/>
+              <form onSubmit={handleSearch}>
+                <div className={"mt-10"}>
+                  <InputGlowing className=" w-full max-w-[86rem]">
+                    <div className={"flex w-full items-center space-x-2 bg-background rounded-sm overflow-hidden"}>
+                      <div className="flex-shrink-0 p-2 text-muted-foreground bg-background">
+                        <SearchIcon className="h-5 w-5" color="#ffffff"/>
+                      </div>
+                      <SimpleInput
+                          value={textSearch}
+                          onChange={(e) => handleTextChange(e.target.value)}
+                          placeholder="Search for templates..."
+                          className="flex-1 border-0 px-4 py-4 text-sm focus:ring-0 h-full"
+                      /></div>
 
+                  </InputGlowing>
+                </div>
+              </form>
               <div className="my-4 columns-3 gap-2 space-y-2">
                 {videos.map((p, i) => (
-                  <VideoContainer key={i} {...p} />
+                    <VideoContainer key={i} {...p} />
                 ))}
               </div>
               {nextPage && (
-                <Button
-                  variant="outline"
-                  className="mb-12 w-full"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    fetchNextPage();
-                  }}
-                >
-                  See more
-                </Button>
+                  <Button
+                      variant="outline"
+                      className="mb-12 w-full"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        fetchNextPage();
+                      }}
+                  >
+                    See more
+                  </Button>
               )}
             </div>
           </div>

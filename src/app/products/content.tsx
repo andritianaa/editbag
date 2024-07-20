@@ -4,14 +4,11 @@ import { Product } from "@/components/products/Product";
 import { Label } from "@/components/ui/label";
 import { Filter, ListFilter, SearchIcon } from "lucide-react";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Categories, Post, SubCategories } from "@prisma/client";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { Footer } from "@/components/common/Footer";
 import { Tab } from "@/components/products/Tab";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { SimpleInput } from "@/components/ui/SimpleInput";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -21,6 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { InputGlowing } from "@/components/ui/InputGlowing";
 
 type PostWithStats = Omit<Post, "id"> & {
   id: string;
@@ -199,18 +197,6 @@ export const Content = (props: contentProps) => {
               </Button>
             </div>
 
-            <div className="flex w-full max-w-md items-center rounded-md bg-background shadow-sm">
-              <div className="flex-shrink-0 p-2 text-muted-foreground">
-                <SearchIcon className="h-5 w-5" color="#ffffff" />
-              </div>
-              <SimpleInput
-                value={textSearch}
-                onChange={(e) => handleTextChange(e.target.value)}
-                placeholder="Search for templates..."
-                className="flex-1 border-0 px-4 py-2 text-sm focus:ring-0"
-              />
-            </div>
-            <Separator />
             <Accordion
               type="multiple"
               className=""
@@ -308,15 +294,7 @@ export const Content = (props: contentProps) => {
             </Accordion>
           </Card>
           <div className="flex w-full flex-col items-center">
-            <div className="mt-4 flex w-full max-w-[41rem] items-center justify-center gap-2 lg:hidden">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="min-h-[100vh] w-full rounded border bg-[#191919] px-3 py-2 transition-colors focus:border-blue-900 focus:outline-0"
-                value={textSearch}
-                onChange={(e) => handleTextChange(e.target.value)}
-              />
-
+            <div className="mt-4 flex w-full max-w-[41rem] items-center end gap-2 lg:hidden">
               <Drawer>
                 <DrawerTrigger asChild>
                   <Button>
@@ -337,12 +315,7 @@ export const Content = (props: contentProps) => {
                         Reset
                       </Button>
                     </div>
-                    <SimpleInput
-                      value={textSearch}
-                      onChange={(e) => handleTextChange(e.target.value)}
-                      placeholder="Search for templates..."
-                      className="flex-1 border-0 px-4 py-2 text-sm focus:ring-0"
-                    />
+
                     <Accordion
                       type="multiple"
                       className=""
@@ -452,129 +425,137 @@ export const Content = (props: contentProps) => {
               </Drawer>
             </div>
             <div className="w-full">
-              <Tab type="templates" />
+              <Tab type="templates"/>
+              <div className={"mt-10"}>
+                <InputGlowing className=" w-full max-w-[86rem]">
+                  <div className={"flex w-full items-center space-x-2 bg-background rounded-sm overflow-hidden"}>
+                    <div className="flex-shrink-0 p-2 text-muted-foreground bg-background">
+                      <SearchIcon className="h-5 w-5" color="#ffffff"/>
+                    </div>
+                    <SimpleInput
+                        value={textSearch}
+                        onChange={(e) => handleTextChange(e.target.value)}
+                        placeholder="Search for templates..."
+                        className="flex-1 border-0 px-4 py-4 text-sm focus:ring-0 h-full"
+                    /></div>
+
+                </InputGlowing>
+              </div>
               {isSearching == false && (
-                <>
-                  <div className="mt-8 max-h-[50vh] w-full max-w-[86rem] overflow-hidden rounded-lg">
-                    <LiteYouTubeEmbed
-                      id="8JMbMjJozc0"
-                      thumbnail="https://www.homeofeditors.com/cdn/shop/files/j0fxy4.jpg?v=1718304831&width=2000"
-                      title="What’s new in Material Design for the web (Chrome Dev Summit 2019)"
-                    />
-                  </div>
-                  <h1 className="mt-6 text-2xl font-semibold">
-                    Most downloaded
-                  </h1>
-                  <div className="mt-2 flex flex-wrap justify-start">
-                    {props.mostDownloaded
-                      .filter(
-                        (product) =>
-                          product.status === "online" &&
-                          product.type === "templates"
-                      )
-                      .map((product) => (
-                        <Product
-                          key={product.id}
-                          subImage={product.subImage ?? null}
-                          id={parseInt(product.id)}
-                          imageUrl={product.image}
-                          title={product.title}
-                          category={product.category}
-                          subTitle={product.subtitle}
-                          isFavorite={product.isFavorite}
-                        />
-                      ))}
-                  </div>
-                  <h1 className="mt-6 text-2xl font-semibold">Most popular</h1>
-                  <div className="mt-2 flex flex-wrap justify-start">
-                    {props.mostPopular
-                      .filter(
-                        (product) =>
-                          product.status === "online" &&
-                          product.type === "templates"
-                      )
-                      .map((product) => (
-                        <Product
-                          key={product.id}
-                          subImage={product.subImage ?? null}
-                          id={parseInt(product.id)}
-                          imageUrl={product.image}
-                          title={product.title}
-                          category={product.category}
-                          subTitle={product.subtitle}
-                          isFavorite={product.isFavorite}
-                        />
-                      ))}
-                  </div>
-                  <h1 className="mt-6 text-2xl font-semibold">All products</h1>
-                </>
+                  <>
+                    <h1 className="mt-20 text-2xl font-semibold">
+                      Most downloaded
+                    </h1>
+                    <div className="mt-2 flex flex-wrap justify-start">
+                      {props.mostDownloaded
+                          .filter(
+                              (product) =>
+                                  product.status === "online" &&
+                                  product.type === "templates"
+                          )
+                          .map((product) => (
+                              <Product
+                                  key={product.id}
+                                  subImage={product.subImage ?? null}
+                                  id={parseInt(product.id)}
+                                  imageUrl={product.image}
+                                  title={product.title}
+                                  category={product.category}
+                                  subTitle={product.subtitle}
+                                  isFavorite={product.isFavorite}
+                              />
+                          ))}
+                    </div>
+                    <h1 className="mt-20 text-2xl font-semibold">Most popular</h1>
+                    <div className="mt-2 flex flex-wrap justify-start">
+                      {props.mostPopular
+                          .filter(
+                              (product) =>
+                                  product.status === "online" &&
+                                  product.type === "templates"
+                          )
+                          .map((product) => (
+                              <Product
+                                  key={product.id}
+                                  subImage={product.subImage ?? null}
+                                  id={parseInt(product.id)}
+                                  imageUrl={product.image}
+                                  title={product.title}
+                                  category={product.category}
+                                  subTitle={product.subtitle}
+                                  isFavorite={product.isFavorite}
+                              />
+                          ))}
+                    </div>
+                    <h1 className="mt-20 text-2xl font-semibold">All products</h1>
+                  </>
               )}
               <div className="mt-2 flex flex-wrap justify-start">
                 {posts
-                  .filter(
-                    (product) =>
-                      product.status === "online" &&
-                      product.type === "templates" &&
-                      (selectedCategories.length === 0 ||
-                        selectedCategories.includes(product.category)) &&
-                      (selectedSubCategories.length === 0 ||
-                        selectedSubCategories.includes(product.subCategory)) &&
-                      (textSearch.trim() === "" ||
-                        product.title
-                          .toLowerCase()
-                          .includes(textSearch.toLowerCase()) ||
-                        product.subtitle
-                          .toLowerCase()
-                          .includes(textSearch.toLowerCase()) ||
-                        product.category
-                          .toLowerCase()
-                          .includes(textSearch.toLowerCase()) ||
-                        product.subCategory
-                          .toLowerCase()
-                          .includes(textSearch.toLowerCase()))
-                  )
-                  .map((product) => (
-                    <Product
-                      key={product.id}
-                      subImage={product.subImage ?? null}
-                      id={parseInt(product.id)}
-                      imageUrl={product.image}
-                      title={product.title}
-                      category={product.category}
-                      subTitle={product.subtitle}
-                      isFavorite={product.isFavorite}
-                    />
-                  ))}
+                    .filter(
+                        (product) =>
+                            product.status === "online" &&
+                            product.type === "templates" &&
+                            (selectedCategories.length === 0 ||
+                                selectedCategories.includes(product.category)) &&
+                            (selectedSubCategories.length === 0 ||
+                                selectedSubCategories.includes(product.subCategory)) &&
+                            (textSearch.trim() === "" ||
+                                product.title
+                                    .toLowerCase()
+                                    .includes(textSearch.toLowerCase()) ||
+                                product.subtitle
+                                    .toLowerCase()
+                                    .includes(textSearch.toLowerCase()) ||
+                                product.category
+                                    .toLowerCase()
+                                    .includes(textSearch.toLowerCase()) ||
+                                product.subCategory
+                                    .toLowerCase()
+                                    .includes(textSearch.toLowerCase()))
+                    )
+                    .map((product) => (
+                        <Product
+                            key={product.id}
+                            subImage={product.subImage ?? null}
+                            id={parseInt(product.id)}
+                            imageUrl={product.image}
+                            title={product.title}
+                            category={product.category}
+                            subTitle={product.subtitle}
+                            isFavorite={product.isFavorite}
+                        />
+                    ))}
 
                 {posts.filter(
-                  (product) =>
-                    product.status === "online" &&
-                    product.type === "templates" &&
-                    (selectedCategories.length === 0 ||
-                      selectedCategories.includes(product.category)) &&
-                    (selectedSubCategories.length === 0 ||
-                      selectedSubCategories.includes(product.subCategory)) &&
-                    (textSearch.trim() === "" ||
-                      product.title
-                        .toLowerCase()
-                        .includes(textSearch.toLowerCase()) ||
-                      product.subtitle
-                        .toLowerCase()
-                        .includes(textSearch.toLowerCase()) ||
-                      product.category
-                        .toLowerCase()
-                        .includes(textSearch.toLowerCase()) ||
-                      product.subCategory
-                        .toLowerCase()
-                        .includes(textSearch.toLowerCase()))
+                    (product) =>
+                        product.status === "online" &&
+                        product.type === "templates" &&
+                        (selectedCategories.length === 0 ||
+                            selectedCategories.includes(product.category)) &&
+                        (selectedSubCategories.length === 0 ||
+                            selectedSubCategories.includes(product.subCategory)) &&
+                        (textSearch.trim() === "" ||
+                            product.title
+                                .toLowerCase()
+                                .includes(textSearch.toLowerCase()) ||
+                            product.subtitle
+                                .toLowerCase()
+                                .includes(textSearch.toLowerCase()) ||
+                            product.category
+                                .toLowerCase()
+                                .includes(textSearch.toLowerCase()) ||
+                            product.subCategory
+                                .toLowerCase()
+                                .includes(textSearch.toLowerCase()))
                 ).length == 0 && (
-                  <Card className="mt-2 flex flex-col items-center justify-center gap-4 p-6">
-                    <CardTitle>Oups! There is no product</CardTitle>
-                    <CardDescription>
-                      No products found. Please try again with different
-                      filters.
-                    </CardDescription>
-                  </Card>
+                    <Card className="mt-2 flex flex-col items-center justify-center gap-4 p-6">
+                      <CardTitle>Oups! There is no product</CardTitle>
+                      <CardDescription>
+                        No products found. Please try again with different
+                        filters.
+                      </CardDescription>
+                    </Card>
                 )}
               </div>
             </div>
