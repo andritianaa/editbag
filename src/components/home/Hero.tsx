@@ -43,7 +43,7 @@ export const Hero = (props: HeroProps) => {
             <Play />
             Watch video
           </button>
-          <Link href="/products">
+          <Link href={"/signin"}>
             <button className="pinkButton inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 font-semibold text-white transition-colors">
               Brows content
               <MoveRight color="#000000" />
@@ -316,7 +316,7 @@ export const Hero = (props: HeroProps) => {
                 href="/signin"
                 className="hover:bg-blue-dark inline-block rounded-md bg-white px-7 py-3 text-center text-base font-medium text-black transition hover:bg-[#ffffffbb]"
               >
-                Upgrade
+                Get started
               </Link>
             </Glowing>
             <Glowing
@@ -327,7 +327,7 @@ export const Hero = (props: HeroProps) => {
                 Recommended
               </p>
               <span className="mb-5 block rounded-full bg-white/10 px-6 py-2 text-xl font-medium text-white backdrop-blur-2xl">
-                Annualy
+                Annually
               </span>
               <h2 className="text-dark mb-4 text-4xl font-semibold dark:text-white xl:text-[42px] xl:leading-[1.21]">
                 <span className="-ml-1 -tracking-[2px]">€ 199</span>
@@ -380,7 +380,7 @@ export const Hero = (props: HeroProps) => {
                 href="/signin"
                 className="hover:bg-blue-dark inline-block rounded-md bg-white px-7 py-3 text-center text-base font-medium text-black transition hover:bg-[#ffffffbb]"
               >
-                Upgrade
+                Get started
               </Link>
             </Glowing>
             <Glowing
@@ -441,7 +441,7 @@ export const Hero = (props: HeroProps) => {
                 href="/signin"
                 className="hover:bg-blue-dark inline-block rounded-md bg-white px-7 py-3 text-center text-base font-medium text-black transition hover:bg-[#ffffffbb]"
               >
-                Upgrade
+                Get started
               </Link>
             </Glowing>
           </div>

@@ -113,7 +113,7 @@ export default async function RoutePage(props: PageParams<{}>) {
               <p className="mx-auto mt-5 max-w-xs text-center text-sm text-muted-foreground">
                 This site is protected by reCAPTCHA and the Google{" "}
                 <a
-                  href="#"
+                  href="/privacy"
                   title=""
                   className="text-blue-600 transition-all duration-200 hover:text-blue-700 hover:underline"
                 >
@@ -121,7 +121,7 @@ export default async function RoutePage(props: PageParams<{}>) {
                 </a>{" "}
                 &
                 <a
-                  href="#"
+                  href="/terms"
                   title=""
                   className="text-blue-600 transition-all duration-200 hover:text-blue-700 hover:underline"
                 >

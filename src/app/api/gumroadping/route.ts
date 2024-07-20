@@ -18,6 +18,7 @@ export async function POST(request: Request) {
                     email: userEmail,
                 },
                 data: {
+                    planName: "monthly",
                     subscribeEnd: addDays(new Date(), 30),
                 },
             });

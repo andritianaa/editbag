@@ -16,13 +16,13 @@ model User {
   accounts       Account[]
   sessions       Session[]
   hashedPassword String?
+  planName       String    @default("free")
 
   // Optional for WebAuthn support
   Authenticator Authenticator[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
   subscribeEnd DateTime?
   Rating       Rating[]
   Comment      Comment[]
